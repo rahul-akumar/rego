@@ -13,6 +13,7 @@ interface Props {
   loading?: boolean;
   iconOnly?: boolean;
   inverted?: boolean;
+  iconPosition?: "left" | "right" | "top" | "bottom";
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -22,10 +23,23 @@ const props = withDefaults(defineProps<Props>(), {
   loading: false,
   iconOnly: false,
   inverted: false,
+  iconPosition: "left",
 });
 
 const styles = {
-  base: "inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-blue-400  disabled:cursor-no-drop disabled:opacity-50",
+  base: "inline-flex justify-center font-medium rounded transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-blue-500 disabled:cursor-no-drop disabled:opacity-50",
+
+  // Icon Positions
+  iconLeft: "flex-row items-center",
+  iconRight: "flex-row-reverse items-center",
+  iconTop: "flex-col items-center",
+  iconBottom: "flex-col-reverse items-center",
+
+  // Icon Spacing
+  iconSpacingLeft: "gap-2",
+  iconSpacingRight: "gap-2",
+  iconSpacingTop: "gap-2",
+  iconSpacingBottom: "gap-2",
 
   // Variants
   primary:
@@ -55,18 +69,18 @@ const styles = {
     "bg-rose-600 text-white hover:bg-opacity-90 active:bg-opacity-80 dark:bg-rose-600 dark:text-white dark:hover:bg-opacity-90 dark:active:bg-opacity-80",
 
   // Sizes
-  xs: "h-6 px-2 text-xs",
-  sm: "h-8 px-3 text-sm",
-  md: "h-10 px-4 text-base",
-  lg: "h-12 px-6 text-lg",
-  xl: "h-14 px-8 text-xl",
+  xs: "px-2 py-1 text-xs",
+  sm: "px-2 py-2 text-sm",
+  md: "px-3 py-2 text-base",
+  lg: "px-3 py-3 text-lg",
+  xl: "px-3 py-4 text-xl",
 
   // Icon only sizes
-  iconXs: "h-6 w-6",
-  iconSm: "h-8 w-8",
-  iconMd: "h-10 w-10",
-  iconLg: "h-12 w-12",
-  iconXl: "h-14 w-14",
+  iconXs: "size-6",
+  iconSm: "size-8",
+  iconMd: "size-10",
+  iconLg: "size-12",
+  iconXl: "size-14",
 
   // Loading
   loading: "cursor-progress opacity-70",
@@ -74,6 +88,8 @@ const styles = {
 
 const getButtonClasses = () => {
   const baseClasses = styles.base;
+
+  // Get variant classes
   const variantKey = props.inverted
     ? `inverted${
         props.variant.charAt(0).toUpperCase() + props.variant.slice(1)
@@ -81,6 +97,8 @@ const getButtonClasses = () => {
     : props.variant;
   const variantClasses =
     styles[variantKey as keyof typeof styles] || styles[props.variant];
+
+  // Get size classes
   const sizeClasses = props.iconOnly
     ? styles[
         `icon${
@@ -88,9 +106,24 @@ const getButtonClasses = () => {
         }` as keyof typeof styles
       ]
     : styles[props.size];
+
+  // Get icon position classes
+  const iconPositionKey = `icon${
+    props.iconPosition.charAt(0).toUpperCase() + props.iconPosition.slice(1)
+  }`;
+  const iconPositionClasses =
+    styles[iconPositionKey as keyof typeof styles] || styles.iconLeft;
+
+  // Get icon spacing classes
+  const iconSpacingKey = `iconSpacing${
+    props.iconPosition.charAt(0).toUpperCase() + props.iconPosition.slice(1)
+  }`;
+  const iconSpacingClasses =
+    styles[iconSpacingKey as keyof typeof styles] || "";
+
   const loadingClasses = props.loading ? styles.loading : "";
 
-  return `${baseClasses} ${variantClasses} ${sizeClasses} ${loadingClasses}`.trim();
+  return `${baseClasses} ${variantClasses} ${sizeClasses} ${iconPositionClasses} ${iconSpacingClasses} ${loadingClasses}`.trim();
 };
 </script>
 
@@ -103,7 +136,13 @@ const getButtonClasses = () => {
     <!-- Loading spinner -->
     <svg
       v-if="loading"
-      class="animate-spin -ml-1 mr-2 h-4 w-4"
+      class="animate-spin h-4 w-4"
+      :class="{
+        'mr-0': props.iconPosition === 'left',
+        'ml-0': props.iconPosition === 'right',
+        'mb-0': props.iconPosition === 'top',
+        'mt-0': props.iconPosition === 'bottom',
+      }"
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"

@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Copilot Chat config (local only)
+.copilot-commit-message-instructions.md
+copilot-instructions.md
