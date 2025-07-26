@@ -63,7 +63,7 @@ const getVariantStyle = () => {
       </div>
     </div>
     <!-- Actions slot for additional controls -->
-    <div v-if="$slots.actions">
+    <div v-if="$slots.actions" class="flex items-center">
       <slot name="actions" />
     </div>
   </div>

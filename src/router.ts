@@ -2,8 +2,8 @@ import { createRouter, createWebHistory } from "vue-router";
 
 const routes = [
   {
-    path: "/banner",
-    component: () => import("./pages/BannerDoc.vue"),
+    path: "/alert",
+    component: () => import("./pages/AlertDoc.vue"),
   },
   {
     path: "/button",

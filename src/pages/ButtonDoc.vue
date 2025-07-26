@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import Button from "../components/button.vue";
-import { Plus, Trash2 } from "lucide-vue-next";
+import { Plus } from "lucide-vue-next";
 
 const styles = {
   inspectFrame:
@@ -112,51 +112,24 @@ const styles = {
       <h2 class="text-2xl font-semibold text-black dark:text-white">
         Icon button
       </h2>
-      <div class="flex flex-wrap items-center gap-4">
-        <Button variant="primary" icon-only>
-          <template #icon>
-            <Plus class="size-4" />
-          </template>
-        </Button>
-        <Button variant="outlined" icon-only>
-          <template #icon>
-            <Trash2 class="size-4" />
-          </template>
-        </Button>
-      </div>
-    </section>
-
-    <!-- Icon only sizes -->
-    <section class="space-y-4">
-      <h2 class="text-2xl font-semibold text-black dark:text-white">
-        Icon only + Sizes
-      </h2>
-      <div class="flex flex-wrap items-center gap-4">
-        <Button icon-only size="xs">
-          <template #icon>
-            <Plus class="size-5" />
-          </template>
-        </Button>
-        <Button icon-only size="sm">
-          <template #icon>
-            <Plus class="size-5" />
-          </template>
-        </Button>
-        <Button icon-only size="md">
-          <template #icon>
-            <Plus class="size-5" />
-          </template>
-        </Button>
-        <Button icon-only size="lg">
-          <template #icon>
-            <Plus class="size-5" />
-          </template>
-        </Button>
-        <Button icon-only size="xl">
-          <template #icon>
-            <Plus class="size-5" />
-          </template>
-        </Button>
+      <div :class="styles.inspectFrame">
+        <div class="flex flex-col items-start gap-6">
+          <Button variant="primary" icon-only>
+            <template #icon>
+              <Plus class="size-4" />
+            </template>
+          </Button>
+          <Button variant="outlined" icon-only>
+            <template #icon>
+              <Plus class="size-4" />
+            </template>
+          </Button>
+          <Button variant="ghost" icon-only>
+            <template #icon>
+              <Plus class="size-4" />
+            </template>
+          </Button>
+        </div>
       </div>
     </section>
   </div>

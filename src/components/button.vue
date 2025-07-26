@@ -50,7 +50,7 @@ const styles = {
     "border border-black border-opacity-20 bg-transparent text-black hover:bg-black hover:bg-opacity-10 enabled:active:bg-opacity-20 dark:border-white dark:bg-transparent dark:border-opacity-20 dark:text-white dark:hover:bg-white dark:hover:bg-opacity-10 enabled:dark:active:bg-opacity-20",
   ghost:
     "bg-transparent text-black hover:bg-black hover:bg-opacity-10 enabled:active:bg-opacity-20 dark:text-white dark:hover:bg-white dark:hover:bg-opacity-10 dark:active:bg-opacity-20",
-  link: "bg-transparent text-black underline-offset-4 hover:underline p-0 dark:text-white",
+  link: "bg-transparent text-black underline-offset-4 hover:underline p-0 active:text-black/70 dark:text-white dark:active:text-white/70",
   destructive:
     "bg-rose-600 text-white hover:bg-opacity-90 enabled:active:bg-opacity-80 dark:bg-rose-600 dark:text-white dark:hover:bg-opacity-90 enabled:dark:active:bg-opacity-80",
 
@@ -62,7 +62,7 @@ const styles = {
   invertedOutlined:
     "border border-white border-opacity-20 bg-transparent text-white hover:bg-white hover:bg-opacity-10 active:bg-opacity-20 dark:border-black dark:bg-transparent dark:border-opacity-20 dark:text-black dark:hover:bg-black dark:hover:bg-opacity-10 dark:active:bg-opacity-20",
   invertedGhost:
-    "bg-transparent text-white hover:bg-white hover:bg-opacity-10 active:bg-opacity-20 dark:text-black dark:hover:bg-black dark:hover:bg-opacity-10 dark:active:bg-opacity-20",
+    "bg-transparent text-white hover:bg-white/10 active:bg-opacity-20 dark:text-black dark:hover:bg-black dark:hover:bg-opacity-10 dark:active:bg-opacity-20",
   invertedLink:
     "bg-transparent text-white underline-offset-4 hover:underline p-0 dark:text-black",
   invertedDestructive:

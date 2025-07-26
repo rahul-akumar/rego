@@ -1,7 +1,35 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, onMounted, onUnmounted } from "vue";
 import Button from "./components/button.vue";
 import { RouterView, RouterLink } from "vue-router";
+import Alert from "./components/alert.vue";
+import { X } from "lucide-vue-next";
+import { Transition } from "vue"; // Add if not using global registration
+// Alert visibility state
+const showAlert = ref(false);
+
+// Function to toggle alert visibility
+function toggleAlert() {
+  showAlert.value = !showAlert.value;
+}
+
+onMounted(() => {
+  // Always ensure alert starts hidden
+  showAlert.value = false;
+  localStorage.setItem("showREGOAlert", "false");
+
+  // Listen for toggle events
+  window.addEventListener("toggle-rego-alert", ((
+    event: CustomEvent<{ visible: boolean }>
+  ) => {
+    showAlert.value = event.detail.visible;
+  }) as EventListener);
+});
+
+// Cleanup event listener
+onUnmounted(() => {
+  window.removeEventListener("toggle-rego-alert", () => {});
+});
 
 const isDark = ref(false);
 function toggleTheme() {
@@ -11,17 +39,18 @@ function toggleTheme() {
 
 // List your component pages here
 const components = [
-  { name: "Banner", path: "/banner" },
+  { name: "Alert", path: "/alert" },
   { name: "Button", path: "/button" },
   { name: "Input", path: "/input" },
   // Add more components as needed
 ];
 
 const styles = {
-  appContainer: "w-full h-full bg-white dark:bg-black",
+  appContainer: "w-full h-screen bg-white dark:bg-black",
   appHeader:
     "sticky top-0 w-full flex items-center justify-between px-8 py-4 bg-white dark:bg-black z-50",
-  navBar: "flex-col sticky top-20 w-40 h-full bg-white dark:bg-black px-6 z-30",
+  navBar:
+    "flex-col sticky pt-6 top-20 w-40 h-full bg-white dark:bg-black px-6 z-30",
   mainArea: "flex bg-white dark:bg-black",
   navLink:
     "flex px-2 py-1 rounded hover:bg-black hover:bg-opacity-10 dark:hover:bg-white dark:hover:bg-opacity-10 text-black dark:text-white",
@@ -39,7 +68,39 @@ const styles = {
         <template v-else>Switch to dark mode</template>
       </Button>
     </header>
+    <!-- Application Alert - Controlled from AlertDoc page -->
+    <Transition
+      enter-active-class="transition duration-300 ease-out"
+      enter-from-class="transform -translate-y-full opacity-0"
+      enter-to-class="transform translate-y-0 opacity-100"
+      leave-active-class="transition duration-200 ease-in"
+      leave-from-class="transform translate-y-0 opacity-100"
+      leave-to-class="transform -translate-y-full opacity-0"
+    >
+      <div v-if="showAlert" class="fixed w-full px-6 z-40">
+        <Alert
+          important
+          class="rounded-b-lg"
+          message="This alert is controlled from the Alert documentation page!"
+        >
+          <template #actions>
+            <Button
+              @click="toggleAlert"
+              size="xs"
+              variant="ghost"
+              iconOnly
+              inverted
+            >
+              <template #icon>
+                <X class="size-4" />
+              </template>
+            </Button>
+          </template>
+        </Alert>
+      </div>
+    </Transition>
 
+    <!-- Main Content Area -->
     <div :class="styles.mainArea">
       <!-- Left Nav Bar -->
       <nav :class="styles.navBar">
