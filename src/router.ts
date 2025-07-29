@@ -2,6 +2,10 @@ import { createRouter, createWebHistory } from "vue-router";
 
 const routes = [
   {
+    path: "/",
+    component: () => import("./pages/Introduction.vue"),
+  },
+  {
     path: "/alert",
     component: () => import("./pages/AlertDoc.vue"),
   },
@@ -13,13 +17,9 @@ const routes = [
     path: "/input",
     component: () => import("./pages/InputDoc.vue"),
   },
-  {
-    path: "/",
-    redirect: "/button", // or whichever should be the default
-  },
 ];
 
 export const router = createRouter({
-  history: createWebHistory("/REGO/"),
+  history: createWebHistory("/"),
   routes,
 });

@@ -37,7 +37,13 @@ function toggleTheme() {
   document.documentElement.classList.toggle("dark", isDark.value);
 }
 
-// List your component pages here
+// Introduction/Guide pages section
+const introPages = [
+  { name: "Introduction", path: "/" },
+  // Future intro pages can be added here
+];
+
+// Components documentation section
 const components = [
   { name: "Alert", path: "/alert" },
   { name: "Button", path: "/button" },
@@ -62,7 +68,12 @@ const styles = {
   <div :class="styles.appContainer">
     <!-- Top Bar -->
     <header :class="styles.appHeader">
-      <h1 class="text-2xl font-bold text-black dark:text-white">REGO</h1>
+      <RouterLink
+        to="/"
+        class="text-2xl font-bold text-black dark:text-white hover:text-neutral-600 dark:hover:text-neutral-300 transition-colors"
+      >
+        REGO
+      </RouterLink>
       <Button @click="toggleTheme" size="sm" variant="secondary">
         <template v-if="isDark"> Switch to light mode</template>
         <template v-else>Switch to dark mode</template>
@@ -104,17 +115,45 @@ const styles = {
     <div :class="styles.mainArea">
       <!-- Left Nav Bar -->
       <nav :class="styles.navBar">
-        <ul class="space-y-0">
-          <li v-for="comp in components" :key="comp.path">
-            <RouterLink
-              :to="comp.path"
-              :class="styles.navLink"
-              active-class="bg-black/10 dark:bg-white/10 font-semibold"
-            >
-              {{ comp.name }}
-            </RouterLink>
-          </li>
-        </ul>
+        <!-- Introduction Section -->
+        <div class="mb-6">
+          <h3
+            class="text-xs font-semibold text-neutral-400 dark:text-neutral-500 uppercase tracking-wider mb-2 px-2"
+          >
+            Get started
+          </h3>
+          <ul class="space-y-0">
+            <li v-for="page in introPages" :key="page.path">
+              <RouterLink
+                :to="page.path"
+                :class="styles.navLink"
+                active-class="bg-black/10 dark:bg-white/10 font-semibold"
+              >
+                {{ page.name }}
+              </RouterLink>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Components Section -->
+        <div>
+          <h3
+            class="text-xs font-semibold text-neutral-400 dark:text-neutral-500 uppercase tracking-wider mb-2 px-2"
+          >
+            Components
+          </h3>
+          <ul class="space-y-0">
+            <li v-for="comp in components" :key="comp.path">
+              <RouterLink
+                :to="comp.path"
+                :class="styles.navLink"
+                active-class="bg-black/10 dark:bg-white/10 font-semibold"
+              >
+                {{ comp.name }}
+              </RouterLink>
+            </li>
+          </ul>
+        </div>
       </nav>
 
       <!-- Main Content Area -->
