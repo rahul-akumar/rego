@@ -16,6 +16,7 @@ export default withNuxt(
         quotes: "double",
       },
       ignores: [
+        ".github/workflows/**/*",
         ".github/copilot-instructions.md",
         ".github/vuejs3.instructions.md",
         ".copilot-commit-message-instructions.md",
