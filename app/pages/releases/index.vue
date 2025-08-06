@@ -25,25 +25,25 @@ const { data: releases } = await useAsyncData(route.path, () => {
     <div v-else class="space-y-6">
       <article
         v-for="release in releases"
-        :key="releases.path"
+        :key="release.path"
         class="border rounded-lg p-6 hover:shadow-lg transition-shadow"
       >
-        <NuxtLink :to="releases.path" class="block group">
+        <NuxtLink :to="release.path" class="block group">
           <div class="flex justify-between items-start mb-3">
             <h2 class="text-2xl font-semibold group-hover:text-blue-600 transition-colors">
-              {{ releases.title }}
+              {{ release.title }}
             </h2>
             <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
-              {{ releases.version }}
+              {{ release.version }}
             </span>
           </div>
 
           <p class="text-gray-600 mb-4">
-            Released on {{ new Date(releases.date).toLocaleDateString() }}
+            Released on {{ new Date(release.date).toLocaleDateString() }}
           </p>
 
-          <div v-if="releases.description" class="text-gray-700 mb-4">
-            {{ releases.description }}
+          <div v-if="release.description" class="text-gray-700 mb-4">
+            {{ release.description }}
           </div>
 
           <p class="text-blue-600 group-hover:text-blue-800 font-medium">
