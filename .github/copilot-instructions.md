@@ -25,7 +25,7 @@ Components follow a consistent structure:
 Example from `button.vue`:
 
 ```typescript
-type Props {
+type Props = {
   variant?:
     | "primary"
     | "secondary"
@@ -35,7 +35,7 @@ type Props {
     | "destructive";
   size?: "xs" | "sm" | "md" | "lg" | "xl";
   // other props...
-}
+};
 
 const styles = {
   base: "inline-flex items-center justify-center rounded-md...",
@@ -43,9 +43,9 @@ const styles = {
   // other styles...
 };
 
-const getButtonClasses = () => {
+function getButtonClasses() {
   // Dynamic class composition logic
-};
+}
 ```
 
 ### Dark Mode Implementation

@@ -15,6 +15,16 @@ export default withNuxt(
         semi: true,
         quotes: "double",
       },
+      ignores: [
+        ".github/copilot-instructions.md",
+        ".github/vuejs3.instructions.md",
+        ".copilot-commit-message-instructions.md",
+        "*.md",
+        ".nuxt/**/*",
+        "dist/**/*",
+        ".output/**/*",
+        "node_modules/**/*",
+      ],
     },
     {
       rules: {
