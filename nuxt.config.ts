@@ -12,6 +12,20 @@ export default defineNuxtConfig({
     "@nuxt/ui",
   ],
 
+  // GitHub Pages configuration
+  app: {
+    baseURL: "/REGO/",
+  },
+
+  nitro: {
+    prerender: {
+      routes: ["/"],
+    },
+  },
+
+  // Enable static site generation for GitHub Pages
+  ssr: false,
+
   content: {},
 
   css: ["./app/assets/css/main.css"],
