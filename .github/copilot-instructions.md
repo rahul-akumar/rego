@@ -25,7 +25,7 @@ Components follow a consistent structure:
 Example from `button.vue`:
 
 ```typescript
-interface Props {
+type Props {
   variant?:
     | "primary"
     | "secondary"
