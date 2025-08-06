@@ -24,7 +24,7 @@ const { data: releases } = await useAsyncData(route.path, () => {
 
     <div v-else class="space-y-6">
       <article
-        v-for="releases in releases"
+        v-for="release in releases"
         :key="releases.path"
         class="border rounded-lg p-6 hover:shadow-lg transition-shadow"
       >
