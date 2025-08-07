@@ -8,7 +8,7 @@ const introPages = [
 
 const styles = {
   navBar: "flex-col sticky pt-6 top-20 w-40 h-full bg-white dark:bg-black px-6 z-30",
-  navLink: "flex px-2 py-1 rounded hover:bg-black hover:bg-opacity-10 dark:hover:bg-white dark:hover:bg-opacity-10 text-black dark:text-white",
+  navLink: "flex px-2 py-1 rounded hover:bg-black hover:bg-white/10 dark:hover:bg-opacity-10 text-black dark:text-white",
 };
 </script>
 
@@ -35,7 +35,7 @@ const styles = {
     <!-- Components Section -->
     <div>
       <h3 class="text-xs font-semibold text-neutral-400 dark:text-neutral-500 uppercase tracking-wider mb-2 px-2">
-        Components
+        Basic components
       </h3>
       <ul class="space-y-0">
         <li v-for="comp in components" :key="comp.path">
@@ -50,7 +50,7 @@ const styles = {
             <DsBadge
               v-if="comp.isNew"
               size="xs"
-              variant="primary"
+              variant="outlined"
             >
               New
             </DsBadge>

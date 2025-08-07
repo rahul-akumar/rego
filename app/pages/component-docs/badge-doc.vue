@@ -23,7 +23,7 @@ const styles = {
       </h2>
       <div class="flex flex-wrap gap-8">
         <div :class="styles.inspectFrame">
-          <DsBadge variant="primary">
+          <DsBadge>
             Primary
           </DsBadge>
         </div>

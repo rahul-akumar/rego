@@ -7,23 +7,25 @@ function toggleAlert() {
   showAlert.value = !showAlert.value;
 }
 
+// NEW: stable handler reference
+const onToggleAlert = ((event: CustomEvent<{ visible: boolean }>) => {
+  showAlert.value = event.detail.visible;
+}) as EventListener;
+
 onMounted(() => {
   // Always ensure alert starts hidden
   showAlert.value = false;
   localStorage.setItem("showREGOAlert", "false");
 
-  // Listen for toggle events
-  window.addEventListener("toggle-rego-alert", ((
-    event: CustomEvent<{ visible: boolean }>,
-  ) => {
-    showAlert.value = event.detail.visible;
-  }) as EventListener);
+  // Listen for toggle events with a stable reference
+  window.addEventListener("toggle-rego-alert", onToggleAlert);
 });
 
-// Cleanup event listener
+// Cleanup event listener using the same reference
 onUnmounted(() => {
-  window.removeEventListener("toggle-rego-alert", () => {});
+  window.removeEventListener("toggle-rego-alert", onToggleAlert);
 });
+
 const styles = {
   appContainer: "w-full min-h-screen bg-white dark:bg-black",
   appHeader:

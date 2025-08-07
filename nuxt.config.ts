@@ -20,6 +20,7 @@ export default defineNuxtConfig({
   nitro: {
     prerender: {
       routes: ["/"],
+      crawlLinks: true, // discover internal links for static generation
     },
   },
 

@@ -15,7 +15,7 @@ const props = withDefaults(defineProps<Props>(), {
 });
 
 const styles = {
-  base: "inline-flex items-center justify-center font-medium rounded-full whitespace-nowrap",
+  base: "inline-flex items-center justify-center font-medium rounded-xs whitespace-nowrap",
 
   // Variants
   primary:
@@ -28,7 +28,7 @@ const styles = {
     "bg-rose-600 text-white",
 
   // Sizes
-  xs: "px-1.5 py-0.5 text-xs gap-1",
+  xs: "px-1 py-0.5 text-xs gap-1",
   sm: "px-2 py-1 text-xs gap-1",
   md: "px-2.5 py-1 text-sm gap-1.5",
   lg: "px-3 py-1.5 text-sm gap-2",
