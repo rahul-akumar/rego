@@ -25,3 +25,4 @@ logs
 
 # Or ignore all VS Code files
 .vscode/
+.vscode/settings.json
