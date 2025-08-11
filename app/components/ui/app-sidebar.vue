@@ -1,10 +1,20 @@
 <script setup lang="ts">
-const { components } = useComponents();
+const { componentsByCategory } = useComponents();
 
 // Introduction pages (could also be config-driven)
 const introPages = [
   { name: "Introduction", path: "/" },
 ];
+
+// Category display configuration
+const categoryConfig: Record<string, { name: string; order: number }> = {
+  "form": { name: "Form components", order: 1 },
+  "feedback": { name: "Feedback components", order: 2 },
+  "data-display": { name: "Data display", order: 3 },
+  "navigation": { name: "Navigation", order: 4 },
+  "chart": { name: "Chart components", order: 5 },
+  "other": { name: "Other components", order: 999 },
+};
 
 const styles = {
   navBar: "flex-col sticky pt-6 top-20 w-40 h-full bg-white dark:bg-black px-6 z-30",
@@ -33,9 +43,15 @@ const styles = {
     </div>
 
     <!-- Components Section -->
-    <div>
+    <div
+      v-for="[categoryKey, components] in Object.entries(componentsByCategory).sort(([a], [b]) =>
+        (categoryConfig[a]?.order || 999) - (categoryConfig[b]?.order || 999),
+      )"
+      :key="categoryKey"
+      class="mb-6"
+    >
       <h3 class="text-xs font-semibold text-neutral-400 dark:text-neutral-500 uppercase tracking-wider mb-2 px-2">
-        Basic components
+        {{ categoryConfig[categoryKey]?.name || categoryKey }}
       </h3>
       <ul class="space-y-0">
         <li v-for="comp in components" :key="comp.path">

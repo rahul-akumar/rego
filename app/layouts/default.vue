@@ -63,7 +63,7 @@ const styles = {
               @click="toggleAlert"
             >
               <template #icon>
-                <X class="size-4" />
+                <Icon name="material-symbols:close" />
               </template>
             </DsButton>
           </template>

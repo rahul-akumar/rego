@@ -1,9 +1,16 @@
 <script lang="ts" setup>
+// Add layout definition
+definePageMeta({
+  layout: "fullwidth",
+});
+
 const route = useRoute();
 const { data: releases } = await useAsyncData(route.path, () => {
   return queryCollection("releases").order("date", "DESC").all();
 });
 </script>
+
+// ...existing template...
 
 <template>
   <div class="container mx-auto px-4 py-8">

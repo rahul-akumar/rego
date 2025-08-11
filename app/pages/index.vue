@@ -40,6 +40,10 @@ const techStack = [
     icon: "✨",
   },
 ];
+
+definePageMeta({
+  layout: "fullwidth",
+});
 </script>
 
 <template>

@@ -4,33 +4,40 @@ export type ComponentMeta = {
   path?: string; // Optional override
   dateAdded?: string;
   isNew?: boolean;
-  category?: "form" | "feedback" | "data-display" | "navigation";
+  category?: "form" | "feedback" | "data-display" | "navigation" | "chart";
 };
 
 export const componentsConfig: Record<string, ComponentMeta> = {
-  alert: {
+  "alert": {
     name: "Alert",
     description: "Display important messages and notifications",
     dateAdded: "2025-01-01",
     category: "feedback",
   },
-  badge: {
+  "badge": {
     name: "Badge",
     description: "Small status descriptors with icons and text support",
     dateAdded: "2025-01-06",
     isNew: true,
     category: "data-display",
   },
-  button: {
+  "button": {
     name: "Button",
     description: "Clickable elements with multiple variants and states",
     dateAdded: "2025-01-01",
     category: "form",
   },
-  input: {
+  "input": {
     name: "Input",
     description: "Form input elements with validation support",
     dateAdded: "2025-01-01",
     category: "form",
+  },
+  "line-chart": {
+    name: "Line Chart",
+    description: "Interactive line chart for data visualization",
+    dateAdded: "2025-08-11",
+    isNew: true,
+    category: "chart",
   },
 };

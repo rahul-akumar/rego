@@ -1,5 +1,30 @@
 <script setup lang="ts">
 const { isDark, toggleTheme } = useTheme();
+const route = useRoute();
+
+// Navigation items with active state logic
+const navigationItems = [
+  {
+    name: "Playground",
+    path: "/playground",
+    isActive: () => route.path === "/playground",
+  },
+  {
+    name: "Components",
+    path: "/components",
+    isActive: () => route.path.startsWith("/components"),
+  },
+  {
+    name: "Releases",
+    path: "/releases",
+    isActive: () => route.path.startsWith("/releases"),
+  },
+];
+
+// Function to get the correct variant based on active state
+function getButtonVariant(item: typeof navigationItems[0]) {
+  return item.isActive() ? "secondary" : "ghost";
+}
 </script>
 
 <template>
@@ -11,19 +36,13 @@ const { isDark, toggleTheme } = useTheme();
       REGO
     </NuxtLink>
     <section class="flex gap-4">
-      <NuxtLink to="/about">
-        <DsButton variant="ghost">
-          Playground
-        </DsButton>
-      </NuxtLink>
-      <NuxtLink to="/">
-        <DsButton variant="ghost">
-          Components
-        </DsButton>
-      </NuxtLink>
-      <NuxtLink to="/releases">
-        <DsButton variant="ghost">
-          Releases
+      <NuxtLink
+        v-for="item in navigationItems"
+        :key="item.path"
+        :to="item.path"
+      >
+        <DsButton :variant="getButtonVariant(item)">
+          {{ item.name }}
         </DsButton>
       </NuxtLink>
     </section>

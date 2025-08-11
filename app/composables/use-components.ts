@@ -16,7 +16,7 @@ export function useComponents() {
     if (meta.path) {
       return meta.path;
     }
-    return `/component-docs/${componentKey}-doc`; // New convention: /component-docs/badge-doc
+    return `/components/${componentKey}-doc`; // New convention: /component-docs/badge-doc
   };
 
   // Check if component is "new" (within last 3 months)

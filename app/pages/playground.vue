@@ -1,15 +1,11 @@
 <script setup>
 definePageMeta({
-  layout: "admin",
+  layout: "fullwidth",
 });
 </script>
 
 <template>
   <div class="flex flex-col items-center p-8 gap-12">
-    <h2>About Page</h2>
-    <NuxtLink to="/">
-      Go to Home
-    </NuxtLink>
     <h1 class="text-4xl font-bold">
       Hello World
     </h1>
