@@ -27,3 +27,4 @@ logs
 .vscode/
 .vscode/settings.json
 copilot-instructions.md
+copilot-commit-message-instructions.md

@@ -47,7 +47,7 @@ definePageMeta({
 </script>
 
 <template>
-  <div class="flex flex-col p-10 gap-10 bg-transparent">
+  <div class="flex flex-col pt-6 gap-10 w-2xl mx-auto bg-transparent">
     <!-- Header Section -->
     <section class="flex-col">
       <h1 class="text-4xl pb-1 font-bold text-black dark:text-white">
@@ -117,7 +117,7 @@ definePageMeta({
               <h3 class="font-semibold text-black dark:text-white">
                 {{ component.name }}
               </h3>
-              <DsBadge v-if="component.isNew" size="xs" variant="primary">
+              <DsBadge v-if="component.isNew" size="xs">
                 New
               </DsBadge>
             </div>
