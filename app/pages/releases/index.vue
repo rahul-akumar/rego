@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 // Add layout definition
 definePageMeta({
-  layout: "fullwidth",
+  layout: "full-width",
 });
 
 const route = useRoute();

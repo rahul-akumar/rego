@@ -42,7 +42,7 @@ const techStack = [
 ];
 
 definePageMeta({
-  layout: "fullwidth",
+  layout: "full-width",
 });
 </script>
 

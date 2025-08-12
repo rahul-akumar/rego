@@ -40,4 +40,11 @@ export const componentsConfig: Record<string, ComponentMeta> = {
     isNew: true,
     category: "chart",
   },
+  "breadcrumb": {
+    name: "Breadcrumb",
+    description: "Displays the path to the current resource using a hierarchy of links.",
+    dateAdded: "2025-08-12",
+    isNew: true,
+    category: "navigation",
+  },
 };

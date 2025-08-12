@@ -8,5 +8,6 @@
     "javascript",
     "typescript",
     "vue"
-  ]
+  ],
+  "cSpell.words": ["nuxt", "vite", "vitejs", "lucide", "REGO"]
 }

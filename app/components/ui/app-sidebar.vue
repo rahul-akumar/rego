@@ -17,7 +17,7 @@ const categoryConfig: Record<string, { name: string; order: number }> = {
 };
 
 const styles = {
-  navBar: "flex-col sticky pt-6 top-20 w-40 h-full bg-white dark:bg-black px-6 z-30",
+  navBar: "flex-col sticky pt-6 top-20 w-60 h-full bg-white dark:bg-black px-6 z-30",
   navLink: "flex px-2 py-1 rounded hover:bg-black hover:bg-white/10 dark:hover:bg-opacity-10 text-black dark:text-white",
 };
 </script>
@@ -66,7 +66,6 @@ const styles = {
             <DsBadge
               v-if="comp.isNew"
               size="xs"
-              variant="outlined"
             >
               New
             </DsBadge>
