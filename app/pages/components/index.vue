@@ -13,16 +13,10 @@ const categoryConfig: Record<string, { name: string; order: number }> = {
 </script>
 
 <template>
-  <div class="container mx-auto px-4 py-8">
-    <div class="mb-8">
-      <h1 class="text-4xl font-bold mb-4">
-        Components
-      </h1>
-      <p class="text-gray-600 dark:text-gray-400 text-lg">
-        Browse and explore all available REGO components organized by category.
-      </p>
-    </div>
-
+  <UiDocs
+    title="Components"
+    description="Entire list of components available on REGO."
+  >
     <div
       v-for="[categoryKey, components] in Object.entries(componentsByCategory).sort(([a], [b]) =>
         (categoryConfig[a]?.order || 999) - (categoryConfig[b]?.order || 999),
@@ -34,18 +28,18 @@ const categoryConfig: Record<string, { name: string; order: number }> = {
         {{ categoryConfig[categoryKey]?.name || categoryKey }}
       </h2>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="flex flex-wrap gap-6">
         <NuxtLink
           v-for="comp in components"
           :key="comp.path"
           :to="comp.path"
-          class="border rounded-lg p-6 hover:shadow-lg transition-shadow dark:border-gray-700 dark:hover:border-gray-600"
+          class="w-full border rounded p-4 hover:bg-card/50 transition-shadow dark:border-gray-700 dark:hover:border-gray-600"
         >
           <div class="flex justify-between items-start mb-3">
             <h3 class="text-xl font-semibold">
               {{ comp.name }}
             </h3>
-            <DsBadge v-if="comp.isNew" variant="outlined">
+            <DsBadge v-if="comp.isNew">
               New
             </DsBadge>
           </div>
@@ -55,5 +49,5 @@ const categoryConfig: Record<string, { name: string; order: number }> = {
         </NuxtLink>
       </div>
     </div>
-  </div>
+  </UiDocs>
 </template>

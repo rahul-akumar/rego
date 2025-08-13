@@ -3,7 +3,7 @@ const { componentsByCategory } = useComponents();
 
 // Introduction pages (could also be config-driven)
 const introPages = [
-  { name: "Introduction", path: "/" },
+  { name: "Introduction", path: "/components" },
 ];
 
 // Category display configuration
@@ -65,7 +65,6 @@ const styles = {
             <!-- New Badge -->
             <DsBadge
               v-if="comp.isNew"
-              size="xs"
             >
               New
             </DsBadge>

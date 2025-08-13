@@ -1,22 +1,11 @@
 <script setup lang="ts">
-type Props = {
-  label?: string;
-  variant?:
-    | "primary"
-    | "secondary"
-    | "outlined"
-    | "ghost"
-    | "link"
-    | "destructive";
-  size?: "xs" | "sm" | "md" | "lg" | "xl";
-  disabled?: boolean;
-  loading?: boolean;
-  iconOnly?: boolean;
-  inverted?: boolean;
-  iconPosition?: "left" | "right" | "top" | "bottom";
-};
+import { computed } from "vue";
 
-const props = withDefaults(defineProps<Props>(), {
+import type { ButtonEmits, ButtonProps } from "../../../src/types/button";
+
+import { buttonVariants } from "../../../src/styles/variants/button";
+
+const props = withDefaults(defineProps<ButtonProps>(), {
   variant: "primary",
   size: "md",
   disabled: false,
@@ -24,125 +13,57 @@ const props = withDefaults(defineProps<Props>(), {
   iconOnly: false,
   inverted: false,
   iconPosition: "left",
+  asChild: false,
 });
 
-const styles = {
-  base: "inline-flex justify-center font-medium rounded transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-blue-500 disabled:cursor-no-drop disabled:opacity-50",
+const emit = defineEmits<ButtonEmits>();
 
-  // Icon Positions
-  iconLeft: "flex-row items-center",
-  iconRight: "flex-row-reverse items-center",
-  iconTop: "flex-col items-center",
-  iconBottom: "flex-col-reverse items-center",
+const buttonClasses = computed(() => {
+  return cn(
+    buttonVariants({
+      variant: props.variant,
+      size: props.size,
+      iconPosition: props.iconPosition,
+      iconOnly: props.iconOnly,
+      inverted: props.inverted,
+      loading: props.loading,
+      disabled: props.disabled,
+    }),
+    props.class,
+  );
+});
 
-  // Icon Spacing
-  iconSpacingLeft: "gap-2",
-  iconSpacingRight: "gap-2",
-  iconSpacingTop: "gap-2",
-  iconSpacingBottom: "gap-2",
+function handleClick(event: MouseEvent) {
+  if (!props.disabled && !props.loading) {
+    emit("click", event);
+  }
+}
 
-  // Variants
-  primary:
-    "bg-black text-white hover:bg-black/80 enabled:active:bg-black/70 dark:bg-white dark:text-black dark:hover:bg-white/80 enabled:dark:active:bg-white/70",
-  secondary:
-    "bg-black/10 text-black hover:bg-black/20 enabled:active:bg-black/30 dark:bg-white/10 dark:text-white dark:hover:bg-white/20 enabled:dark:active:bg-white/30",
-  outlined:
-    "border bg-transparent border-black/20 text-black hover:bg-black/10 enabled:active:bg-black/20 dark:border-white/20 dark:text-white dark:hover:bg-white/10 enabled:dark:active:bg-white/20",
-  ghost:
-    "bg-transparent text-black hover:bg-black/10 enabled:active:bg-black/20 dark:text-white dark:hover:bg-white/10 dark:enabled:active:bg-white/20",
-  link: "bg-transparent text-black underline-offset-4 hover:underline p-0 active:text-black/70 dark:text-white dark:active:text-white/70",
-  destructive:
-    "bg-rose-600 text-white hover:bg-rose-600/90 enabled:active:bg-rose-600/80",
+function handleFocus(event: FocusEvent) {
+  emit("focus", event);
+}
 
-  // Inverted Variants
-  invertedPrimary:
-    "bg-white text-black hover:bg-opacity-80 enabled:active:bg-opacity-70 dark:bg-black dark:text-white dark:hover:bg-opacity-80 enabled:dark:active:bg-opacity-70",
-  invertedSecondary:
-    "bg-white text-white bg-opacity-10 hover:bg-opacity-20 active:bg-opacity-30 dark:bg-black dark:bg-opacity-10 dark:text-black dark:hover:bg-opacity-20 dark:active:bg-opacity-30",
-  invertedOutlined:
-    "border border-white border-opacity-20 bg-transparent text-white hover:bg-white hover:bg-opacity-10 active:bg-opacity-20 dark:border-black dark:bg-transparent dark:border-opacity-20 dark:text-black dark:hover:bg-black dark:hover:bg-opacity-10 dark:active:bg-opacity-20",
-  invertedGhost:
-    "text-white hover:bg-white/10 active:bg-white/20 dark:text-black  dark:hover:bg-black/10 dark:active:bg-black-20",
-  invertedLink:
-    "bg-transparent text-white underline-offset-4 hover:underline p-0 dark:text-black",
-  invertedDestructive:
-    "bg-rose-600 text-white hover:bg-opacity-90 active:bg-opacity-80 dark:bg-rose-600 dark:text-white dark:hover:bg-opacity-90 dark:active:bg-opacity-80",
-
-  // Sizes
-  xs: "px-2 py-1 text-xs",
-  sm: "px-2 py-2 text-sm",
-  md: "px-3 py-2 text-base",
-  lg: "px-3 py-3 text-lg",
-  xl: "px-3 py-4 text-xl",
-
-  // Icon only sizes
-  iconXs: "size-6",
-  iconSm: "size-8",
-  iconMd: "size-10",
-  iconLg: "size-12",
-  iconXl: "size-14",
-
-  // Loading
-  loading: "cursor-progress opacity-70",
-};
-
-function getButtonClasses() {
-  const baseClasses = styles.base;
-
-  // Get variant classes
-  const variantKey = props.inverted
-    ? `inverted${
-      props.variant.charAt(0).toUpperCase() + props.variant.slice(1)
-    }`
-    : props.variant;
-  const variantClasses
-    = styles[variantKey as keyof typeof styles] || styles[props.variant];
-
-  // Get size classes
-  const sizeClasses = props.iconOnly
-    ? styles[
-      `icon${
-        props.size.charAt(0).toUpperCase() + props.size.slice(1)
-      }` as keyof typeof styles
-    ]
-    : styles[props.size];
-
-  // Get icon position classes
-  const iconPositionKey = `icon${
-    props.iconPosition.charAt(0).toUpperCase() + props.iconPosition.slice(1)
-  }`;
-  const iconPositionClasses
-    = styles[iconPositionKey as keyof typeof styles] || styles.iconLeft;
-
-  // Get icon spacing classes
-  const iconSpacingKey = `iconSpacing${
-    props.iconPosition.charAt(0).toUpperCase() + props.iconPosition.slice(1)
-  }`;
-  const iconSpacingClasses
-    = styles[iconSpacingKey as keyof typeof styles] || "";
-
-  const loadingClasses = props.loading ? styles.loading : "";
-
-  return `${baseClasses} ${variantClasses} ${sizeClasses} ${iconPositionClasses} ${iconSpacingClasses} ${loadingClasses}`.trim();
+function handleBlur(event: FocusEvent) {
+  emit("blur", event);
 }
 </script>
 
 <template>
+  <slot v-if="asChild" :class="buttonClasses" />
   <button
-    :class="getButtonClasses()"
+    v-else
+    :class="buttonClasses"
     :disabled="disabled || loading"
     type="button"
+    v-bind="$attrs"
+    @click="handleClick"
+    @focus="handleFocus"
+    @blur="handleBlur"
   >
     <!-- Loading spinner -->
     <svg
       v-if="loading"
       class="animate-spin h-4 w-4"
-      :class="{
-        'mr-0': props.iconPosition === 'left',
-        'ml-0': props.iconPosition === 'right',
-        'mb-0': props.iconPosition === 'top',
-        'mt-0': props.iconPosition === 'bottom',
-      }"
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
@@ -163,11 +84,18 @@ function getButtonClasses() {
     </svg>
 
     <!-- Icon slot for button with icon -->
-    <slot name="icon" />
+    <template v-if="iconOnly">
+      <slot />
+    </template>
 
-    <!-- Content slot or label -->
-    <slot v-if="!iconOnly">
-      {{ label || "Button" }}
-    </slot>
+    <!-- For buttons with both icon and text -->
+    <template v-else>
+      <!-- Icon slot for button with icon -->
+      <slot name="icon" />
+      <!-- Content slot or label -->
+      <slot>
+        {{ label || "Button" }}
+      </slot>
+    </template>
   </button>
 </template>

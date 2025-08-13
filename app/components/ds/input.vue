@@ -1,54 +1,78 @@
 <script setup lang="ts">
-type Props = {
-  modelValue?: string;
-  placeholder?: string;
-  type?: string;
-  disabled?: boolean;
-  size?: "xs" | "sm" | "md" | "lg" | "xl";
-  variant?: "primary" | "secondary" | "outlined" | "ghost" | "link" | "destructive";
-};
+import { computed } from "vue";
 
-const props = withDefaults(defineProps<Props>(), {
+import type { InputEmits, InputProps } from "../../../src/types/input";
+
+import { inputVariants } from "../../../src/styles/variants/input";
+
+const props = withDefaults(defineProps<InputProps>(), {
   type: "text",
   disabled: false,
-  size: "md",
-  variant: "primary",
+  size: "default",
 });
 
-const emit = defineEmits<{
-  (e: "update:modelValue", value: string): void;
-}>();
+const emit = defineEmits<InputEmits>();
 
-function getInputClasses() {
-  const base = "border rounded focus:outline-none focus:ring-2 focus:ring-ring disabled:opacity-50 disabled:cursor-not-allowed";
-  const variantMap = {
-    primary: "bg-white text-black border-gray-300",
-    secondary: "bg-gray-100 text-gray-800 border-gray-400",
-    outlined: "border-2 border-gray-500 bg-transparent",
-    ghost: "bg-transparent text-gray-700",
-    link: "bg-transparent text-blue-600 underline",
-    destructive: "bg-rose-600 text-white",
-  };
-  const sizeMap = {
-    xs: "px-2 py-1 text-xs",
-    sm: "px-2 py-2 text-sm",
-    md: "px-3 py-2 text-base",
-    lg: "px-3 py-3 text-lg",
-    xl: "px-4 py-3 text-xl",
-  };
-  const variantClasses = (variantMap as any)[props.variant] || "";
-  const sizeClasses = (sizeMap as any)[props.size] || "";
-  return `${base} ${variantClasses} ${sizeClasses}`.trim();
+const inputClasses = computed(() => {
+  return cn(
+    inputVariants({
+      size: props.size,
+    }),
+    props.class,
+  );
+});
+
+function handleInput(event: Event) {
+  const target = event.target as HTMLInputElement;
+  const value = props.type === "number" ? Number(target.value) : target.value;
+  emit("update:modelValue", value);
+  emit("input", event);
+}
+function handleChange(event: Event) {
+  emit("change", event);
+}
+
+function handleFocus(event: FocusEvent) {
+  emit("focus", event);
+}
+
+function handleBlur(event: FocusEvent) {
+  emit("blur", event);
+}
+
+function handleKeydown(event: KeyboardEvent) {
+  emit("keydown", event);
+}
+
+function handleKeyup(event: KeyboardEvent) {
+  emit("keyup", event);
 }
 </script>
 
 <template>
   <input
+    :id="id"
+    :name="name"
     :value="modelValue"
     :placeholder="placeholder"
     :type="type"
     :disabled="disabled"
-    :class="getInputClasses()"
-    @input="e => emit('update:modelValue', (e.target as HTMLInputElement).value)"
+    :required="required"
+    :readonly="readonly"
+    :autocomplete="autocomplete"
+    :min="min"
+    :max="max"
+    :step="step"
+    :pattern="pattern"
+    :maxlength="maxlength"
+    :minlength="minlength"
+    :class="inputClasses"
+    v-bind="$attrs"
+    @input="handleInput"
+    @change="handleChange"
+    @focus="handleFocus"
+    @blur="handleBlur"
+    @keydown="handleKeydown"
+    @keyup="handleKeyup"
   >
 </template>

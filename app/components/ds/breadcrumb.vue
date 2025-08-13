@@ -1,31 +1,30 @@
-<!-- filepath: app/components/ds/breadcrumb.vue -->
 <script setup lang="ts">
 import { ChevronRight, MoreHorizontal } from "lucide-vue-next";
+import { computed } from "vue";
 
-type BreadcrumbItem = {
-  label: string;
-  href?: string;
-  current?: boolean;
-  isEllipsis?: boolean;
-};
+import type { BreadcrumbEmits, BreadcrumbItem, BreadcrumbProps } from "../../../src/types/breadcrumb";
 
-type Props = {
-  class?: string;
-  items?: BreadcrumbItem[];
-  separator?: "chevron" | "slash" | "custom";
-  showEllipsis?: boolean;
-  ellipsisPosition?: number;
-  maxItems?: number;
-  customSeparator?: string;
-};
+import {
+  breadcrumbEllipsisVariants,
+  breadcrumbItemVariants,
+  breadcrumbLinkVariants,
+  breadcrumbListVariants,
+  breadcrumbPageVariants,
+  breadcrumbSeparatorVariants,
+  breadcrumbVariants,
+} from "../../../src/styles/variants/breadcrumb";
 
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<BreadcrumbProps>(), {
   separator: "chevron",
   showEllipsis: false,
   ellipsisPosition: 1,
   maxItems: 5,
   customSeparator: "/",
+  size: "default",
+  variant: "default",
 });
+
+const emit = defineEmits<BreadcrumbEmits>();
 
 const processedItems = computed(() => {
   if (!props.items)
@@ -48,31 +47,66 @@ const processedItems = computed(() => {
   return items;
 });
 
-const breadcrumbClasses = computed(() => cn(props.class));
+const breadcrumbClasses = computed(() => {
+  return cn(
+    breadcrumbVariants({
+      size: props.size,
+    }),
+    props.class,
+  );
+});
 
-const listClasses = computed(() => cn(
-  "text-muted-foreground flex flex-wrap items-center gap-1.5 text-sm break-words sm:gap-2.5",
-));
+const listClasses = computed(() => {
+  return cn(
+    breadcrumbListVariants({
+      size: props.size,
+    }),
+  );
+});
 
-const itemClasses = computed(() => cn(
-  "inline-flex items-center gap-1.5",
-));
+const itemClasses = computed(() => {
+  return cn(
+    breadcrumbItemVariants({
+      size: props.size,
+    }),
+  );
+});
 
-const linkClasses = computed(() => cn(
-  "hover:text-foreground transition-colors",
-));
+const linkClasses = computed(() => {
+  return cn(
+    breadcrumbLinkVariants({
+      variant: props.variant,
+    }),
+  );
+});
 
-const pageClasses = computed(() => cn(
-  "font-normal text-foreground",
-));
+const pageClasses = computed(() => {
+  return cn(
+    breadcrumbPageVariants({
+      variant: props.variant,
+    }),
+  );
+});
 
-const separatorClasses = computed(() => cn(
-  "[&>svg]:size-3.5",
-));
+const separatorClasses = computed(() => {
+  return cn(
+    breadcrumbSeparatorVariants({
+      size: props.size,
+    }),
+  );
+});
 
-const ellipsisClasses = computed(() => cn(
-  "flex h-9 w-9 items-center justify-center",
-));
+const ellipsisClasses = computed(() => {
+  return cn(
+    breadcrumbEllipsisVariants({
+      size: props.size,
+    }),
+  );
+});
+
+function handleItemClick(item: BreadcrumbItem, event: MouseEvent) {
+  emit("itemClick", item, event);
+}
 </script>
 
 <template>
@@ -113,13 +147,14 @@ const ellipsisClasses = computed(() => cn(
           </span>
 
           <!-- Link item -->
-          <a
+          <NuxtLink
             v-else-if="item.href"
-            :href="item.href"
+            :to="item.href"
             :class="linkClasses"
+            @click="handleItemClick(item, $event)"
           >
             {{ item.label }}
-          </a>
+          </NuxtLink>
 
           <!-- Text item -->
           <span v-else :class="linkClasses">
@@ -127,7 +162,7 @@ const ellipsisClasses = computed(() => cn(
           </span>
         </li>
 
-        <!-- Separator - FIXED -->
+        <!-- Separator -->
         <li
           v-if="index < processedItems.length - 1"
           :class="separatorClasses"

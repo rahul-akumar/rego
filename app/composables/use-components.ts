@@ -59,3 +59,21 @@ export function useComponents() {
     componentsByCategory,
   };
 }
+export function useComponent(componentKey: string) {
+  const meta = componentsConfig[componentKey];
+
+  if (!meta) {
+    console.warn(`Component "${componentKey}" not found in components config`);
+    return {
+      name: componentKey,
+      description: `${componentKey} component`,
+      category: undefined,
+    };
+  }
+
+  return {
+    name: meta.name,
+    description: meta.description,
+    category: meta.category,
+  };
+}

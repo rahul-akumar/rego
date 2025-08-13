@@ -31,7 +31,7 @@ const styles = {
   appHeader:
     "sticky top-0 w-full flex items-center justify-between px-8 py-4 bg-white dark:bg-black z-50",
   mainArea: "flex bg-white dark:bg-black",
-  inspectView: "flex mx-auto max-w-3xl overflow-auto min-h-0",
+  inspectView: "flex mx-auto min-h-0",
 };
 </script>
 

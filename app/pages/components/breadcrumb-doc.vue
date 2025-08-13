@@ -1,260 +1,271 @@
-<!-- filepath: app/pages/components/breadcrumb.vue -->
 <script setup lang="ts">
+import { ChevronRight } from "lucide-vue-next";
+
+const { name, description, category } = useComponent("breadcrumb");
+
 definePageMeta({
-  title: "Breadcrumb",
-  description: "Displays the path to the current resource using a hierarchy of links.",
+  title: name,
+  description,
 });
-</script>
 
-<template>
-  <div class="space-y-8">
-    <div>
-      <h1 class="text-3xl font-bold mb-2">
-        Breadcrumb
-      </h1>
-      <p class="text-muted-foreground">
-        Displays the path to the current resource using a hierarchy of links.
-      </p>
-    </div>
-
-    <!-- Default (Props-based) -->
-    <section class="space-y-4">
-      <h2 class="text-xl font-semibold">
-        Default
-      </h2>
-      <div class="p-6 border rounded-lg bg-card">
-        <DsBreadcrumb
-          :items="[
-            { label: 'Home', href: '/' },
-            { label: 'Components', href: '/components' },
-            { label: 'Breadcrumb', current: true },
-          ]"
-        />
-      </div>
-      <div class="bg-gray-50 dark:bg-gray-900 p-4 rounded-lg">
-        <pre class="text-sm"><code>&lt;DsBreadcrumb
+// Code examples
+const defaultCode = `<DsBreadcrumb
   :items="[
     { label: 'Home', href: '/' },
     { label: 'Components', href: '/components' },
-    { label: 'Breadcrumb', current: true }
+    { label: 'Breadcrumb', current: true },
   ]"
-/&gt;</code></pre>
-      </div>
-    </section>
+/>`;
 
-    <!-- With Ellipsis -->
-    <section class="space-y-4">
-      <h2 class="text-xl font-semibold">
-        With Ellipsis
-      </h2>
-      <div class="p-6 border rounded-lg bg-card">
-        <DsBreadcrumb
-          :items="[
-            { label: 'Home', href: '/' },
-            { label: 'Products', href: '/products' },
-            { label: 'Category', href: '/products/category' },
-            { label: 'Subcategory', href: '/products/category/sub' },
-            { label: 'Item', href: '/products/category/sub/item' },
-            { label: 'Current Page', current: true },
-          ]"
-          show-ellipsis
-          :max-items="4"
-          :ellipsis-position="1"
-        />
-      </div>
-      <div class="bg-gray-50 dark:bg-gray-900 p-4 rounded-lg">
-        <pre class="text-sm"><code>&lt;DsBreadcrumb
-  :items="longItems"
+const ellipsisCode = `<DsBreadcrumb
+  :items="[
+    { label: 'Home', href: '/' },
+    { label: 'Products', href: '/products' },
+    { label: 'Category', href: '/products/category' },
+    { label: 'Subcategory', href: '/products/category/sub' },
+    { label: 'Item', href: '/products/category/sub/item' },
+    { label: 'Current Page', current: true },
+  ]"
   show-ellipsis
   :max-items="4"
   :ellipsis-position="1"
-/&gt;</code></pre>
-      </div>
-    </section>
+/>`;
 
-    <!-- Custom Separator - Slash -->
-    <section class="space-y-4">
-      <h2 class="text-xl font-semibold">
-        Slash Separator
-      </h2>
-      <div class="p-6 border rounded-lg bg-card">
-        <DsBreadcrumb
-          :items="[
-            { label: 'Home', href: '/' },
-            { label: 'Components', href: '/components' },
-            { label: 'Breadcrumb', current: true },
-          ]"
-          separator="slash"
-        />
-      </div>
-      <div class="bg-gray-50 dark:bg-gray-900 p-4 rounded-lg">
-        <pre class="text-sm"><code>&lt;DsBreadcrumb
-  :items="items"
+const slashSeparatorCode = `<DsBreadcrumb
+  :items="[
+    { label: 'Home', href: '/' },
+    { label: 'Components', href: '/components' },
+    { label: 'Breadcrumb', current: true },
+  ]"
   separator="slash"
-/&gt;</code></pre>
-      </div>
-    </section>
+/>`;
 
-    <!-- Custom Separator - Custom -->
-    <section class="space-y-4">
-      <h2 class="text-xl font-semibold">
-        Custom Separator
-      </h2>
-      <div class="p-6 border rounded-lg bg-card">
-        <DsBreadcrumb
-          :items="[
-            { label: 'Home', href: '/' },
-            { label: 'Components', href: '/components' },
-            { label: 'Breadcrumb', current: true },
-          ]"
-          separator="custom"
-          custom-separator=" → "
-        />
-      </div>
-      <div class="bg-gray-50 dark:bg-gray-900 p-4 rounded-lg">
-        <pre class="text-sm"><code>&lt;DsBreadcrumb
-  :items="items"
+const customSeparatorCode = `<DsBreadcrumb
+  :items="[
+    { label: 'Home', href: '/' },
+    { label: 'Components', href: '/components' },
+    { label: 'Breadcrumb', current: true },
+  ]"
   separator="custom"
   custom-separator=" → "
-/&gt;</code></pre>
-      </div>
-    </section>
+/>`;
 
-    <!-- Manual Structure (Slot-based) -->
-    <section class="space-y-4">
-      <h2 class="text-xl font-semibold">
-        Manual Structure (Advanced)
-      </h2>
-      <div class="p-6 border rounded-lg bg-card">
-        <DsBreadcrumb>
-          <ol class="text-muted-foreground flex flex-wrap items-center gap-1.5 text-sm break-words sm:gap-2.5">
-            <li class="inline-flex items-center gap-1.5">
-              <a href="/" class="hover:text-foreground transition-colors">
-                Home
-              </a>
-            </li>
-            <li class="[&>svg]:size-3.5" role="presentation" aria-hidden="true">
-              <ChevronRight />
-            </li>
-            <li class="inline-flex items-center gap-1.5">
-              <a href="/components" class="hover:text-foreground transition-colors">
-                Components
-              </a>
-            </li>
-            <li class="[&>svg]:size-3.5" role="presentation" aria-hidden="true">
-              <ChevronRight />
-            </li>
-            <li class="inline-flex items-center gap-1.5">
-              <span class="font-normal text-foreground" aria-current="page">
-                Breadcrumb
-              </span>
-            </li>
-          </ol>
-        </DsBreadcrumb>
-      </div>
-      <div class="bg-gray-50 dark:bg-gray-900 p-4 rounded-lg">
-        <pre class="text-sm"><code>&lt;DsBreadcrumb&gt;
-  &lt;ol class="text-muted-foreground flex flex-wrap items-center gap-1.5 text-sm"&gt;
-    &lt;li class="inline-flex items-center gap-1.5"&gt;
-      &lt;a href="/" class="hover:text-foreground transition-colors"&gt;Home&lt;/a&gt;
-    &lt;/li&gt;
-    &lt;li class="[&amp;>svg]:size-3.5" role="presentation"&gt;
-      &lt;ChevronRight /&gt;
-    &lt;/li&gt;
-    &lt;li class="inline-flex items-center gap-1.5"&gt;
-      &lt;span class="font-normal text-foreground" aria-current="page"&gt;
-        Current
-      &lt;/span&gt;
-    &lt;/li&gt;
-  &lt;/ol&gt;
-&lt;/DsBreadcrumb&gt;</code></pre>
-      </div>
-    </section>
+const sizesCode = `<div class="space-y-4">
+  <DsBreadcrumb
+    :items="[
+      { label: 'Home', href: '/' },
+      { label: 'Components', href: '/components' },
+      { label: 'Breadcrumb', current: true },
+    ]"
+    size="sm"
+  />
+  <DsBreadcrumb
+    :items="[
+      { label: 'Home', href: '/' },
+      { label: 'Components', href: '/components' },
+      { label: 'Breadcrumb', current: true },
+    ]"
+    size="default"
+  />
+  <DsBreadcrumb
+    :items="[
+      { label: 'Home', href: '/' },
+      { label: 'Components', href: '/components' },
+      { label: 'Breadcrumb', current: true },
+    ]"
+    size="lg"
+  />
+</div>`;
 
-    <!-- API Reference -->
-    <section class="space-y-4">
-      <h2 class="text-xl font-semibold">
-        API Reference
-      </h2>
-      <div class="border rounded-lg">
-        <div class="p-4 border-b bg-gray-50 dark:bg-gray-900">
-          <h3 class="font-semibold">
-            Props
-          </h3>
-        </div>
-        <div class="p-4 space-y-4">
-          <div class="grid grid-cols-4 gap-4 text-sm font-medium border-b pb-2">
-            <div>Prop</div>
-            <div>Type</div>
-            <div>Default</div>
-            <div>Description</div>
+const manualCode = `<DsBreadcrumb>
+  <ol class="text-muted-foreground flex flex-wrap items-center gap-1.5 text-sm break-words sm:gap-2.5">
+    <li class="inline-flex items-center gap-1.5">
+      <NuxtLink to="/" class="hover:text-foreground transition-colors">
+        Home
+      </NuxtLink>
+    </li>
+    <li class="[&>svg]:size-3.5" role="presentation" aria-hidden="true">
+      <ChevronRight />
+    </li>
+    <li class="inline-flex items-center gap-1.5">
+      <NuxtLink to="/components" class="hover:text-foreground transition-colors">
+        Components
+      </NuxtLink>
+    </li>
+    <li class="[&>svg]:size-3.5" role="presentation" aria-hidden="true">
+      <ChevronRight />
+    </li>
+    <li class="inline-flex items-center gap-1.5">
+      <span class="font-normal text-foreground" aria-current="page">
+        Breadcrumb
+      </span>
+    </li>
+  </ol>
+</DsBreadcrumb>`;
+
+// Data for examples
+const basicItems = [
+  { label: "Home", href: "/" },
+  { label: "Components", href: "/components" },
+  { label: "Breadcrumb", current: true },
+];
+
+const longItems = [
+  { label: "Home", href: "/" },
+  { label: "Products", href: "/products" },
+  { label: "Category", href: "/products/category" },
+  { label: "Subcategory", href: "/products/category/sub" },
+  { label: "Item", href: "/products/category/sub/item" },
+  { label: "Current Page", current: true },
+];
+</script>
+
+<template>
+  <UiDocs
+    :title="name"
+    :description="description"
+    :category="category"
+  >
+    <div class="space-y-8">
+      <!-- Default -->
+      <section class="space-y-4">
+        <h2 class="text-2xl font-medium text-black dark:text-white">
+          Default
+        </h2>
+        <UiComponentPreviewTabs
+          title="Default"
+          description="The default breadcrumb component with chevron separators."
+          :code="defaultCode"
+        >
+          <DsBreadcrumb :items="basicItems" />
+        </UiComponentPreviewTabs>
+      </section>
+
+      <!-- With Ellipsis -->
+      <section class="space-y-4">
+        <h2 class="text-2xl font-medium text-black dark:text-white">
+          With Ellipsis
+        </h2>
+        <UiComponentPreviewTabs
+          title="With Ellipsis"
+          description="Breadcrumb with ellipsis for long navigation paths."
+          :code="ellipsisCode"
+        >
+          <DsBreadcrumb
+            :items="longItems"
+            show-ellipsis
+            :max-items="4"
+            :ellipsis-position="1"
+          />
+        </UiComponentPreviewTabs>
+      </section>
+
+      <!-- Slash Separator -->
+      <section class="space-y-4">
+        <h2 class="text-2xl font-medium text-black dark:text-white">
+          Slash Separator
+        </h2>
+        <UiComponentPreviewTabs
+          title="Slash Separator"
+          description="Breadcrumb using slash separators instead of chevrons."
+          :code="slashSeparatorCode"
+        >
+          <DsBreadcrumb
+            :items="basicItems"
+            separator="slash"
+          />
+        </UiComponentPreviewTabs>
+      </section>
+
+      <!-- Custom Separator -->
+      <section class="space-y-4">
+        <h2 class="text-2xl font-medium text-black dark:text-white">
+          Custom Separator
+        </h2>
+        <UiComponentPreviewTabs
+          title="Custom Separator"
+          description="Breadcrumb with custom separator text."
+          :code="customSeparatorCode"
+        >
+          <DsBreadcrumb
+            :items="basicItems"
+            separator="custom"
+            custom-separator=" → "
+          />
+        </UiComponentPreviewTabs>
+      </section>
+
+      <!-- Sizes -->
+      <section class="space-y-4">
+        <h2 class="text-2xl font-medium text-black dark:text-white">
+          Sizes
+        </h2>
+        <UiComponentPreviewTabs
+          title="Sizes"
+          description="Different sizes for the breadcrumb component."
+          :code="sizesCode"
+          class-name="space-y-4 p-6"
+        >
+          <div class="space-y-4">
+            <div>
+              <p class="text-sm text-muted-foreground mb-2">
+                Small
+              </p>
+              <DsBreadcrumb :items="basicItems" size="sm" />
+            </div>
+            <div>
+              <p class="text-sm text-muted-foreground mb-2">
+                Default
+              </p>
+              <DsBreadcrumb :items="basicItems" size="default" />
+            </div>
+            <div>
+              <p class="text-sm text-muted-foreground mb-2">
+                Large
+              </p>
+              <DsBreadcrumb :items="basicItems" size="lg" />
+            </div>
           </div>
+        </UiComponentPreviewTabs>
+      </section>
 
-          <div class="grid grid-cols-4 gap-4 text-sm">
-            <div><code>items</code></div>
-            <div><code>BreadcrumbItem[]</code></div>
-            <div><code>undefined</code></div>
-            <div>Array of breadcrumb items</div>
-          </div>
-
-          <div class="grid grid-cols-4 gap-4 text-sm">
-            <div><code>separator</code></div>
-            <div><code>'chevron' | 'slash' | 'custom'</code></div>
-            <div><code>'chevron'</code></div>
-            <div>Type of separator to use</div>
-          </div>
-
-          <div class="grid grid-cols-4 gap-4 text-sm">
-            <div><code>customSeparator</code></div>
-            <div><code>string</code></div>
-            <div><code>'/'</code></div>
-            <div>Custom separator text</div>
-          </div>
-
-          <div class="grid grid-cols-4 gap-4 text-sm">
-            <div><code>showEllipsis</code></div>
-            <div><code>boolean</code></div>
-            <div><code>false</code></div>
-            <div>Show ellipsis for long breadcrumbs</div>
-          </div>
-
-          <div class="grid grid-cols-4 gap-4 text-sm">
-            <div><code>maxItems</code></div>
-            <div><code>number</code></div>
-            <div><code>5</code></div>
-            <div>Maximum items before ellipsis</div>
-          </div>
-
-          <div class="grid grid-cols-4 gap-4 text-sm">
-            <div><code>ellipsisPosition</code></div>
-            <div><code>number</code></div>
-            <div><code>1</code></div>
-            <div>Position to insert ellipsis</div>
-          </div>
-
-          <div class="grid grid-cols-4 gap-4 text-sm">
-            <div><code>class</code></div>
-            <div><code>string</code></div>
-            <div><code>undefined</code></div>
-            <div>Additional CSS classes</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- BreadcrumbItem Type -->
-    <section class="space-y-4">
-      <h2 class="text-xl font-semibold">
-        BreadcrumbItem Type
-      </h2>
-      <div class="bg-gray-50 dark:bg-gray-900 p-4 rounded-lg">
-        <pre class="text-sm"><code>type BreadcrumbItem = {
-  label: string
-  href?: string
-  current?: boolean
-  isEllipsis?: boolean
-}</code></pre>
-      </div>
-    </section>
-  </div>
+      <!-- Manual Structure -->
+      <section class="space-y-4">
+        <h2 class="text-2xl font-medium text-black dark:text-white">
+          Manual Structure
+        </h2>
+        <UiComponentPreviewTabs
+          title="Manual Structure"
+          description="Advanced usage with manual breadcrumb structure using slots."
+          :code="manualCode"
+        >
+          <DsBreadcrumb>
+            <ol class="text-muted-foreground flex flex-wrap items-center gap-1.5 text-sm break-words sm:gap-2.5">
+              <li class="inline-flex items-center gap-1.5">
+                <NuxtLink to="/" class="hover:text-foreground transition-colors">
+                  Home
+                </NuxtLink>
+              </li>
+              <li class="[&>svg]:size-3.5" role="presentation" aria-hidden="true">
+                <ChevronRight />
+              </li>
+              <li class="inline-flex items-center gap-1.5">
+                <NuxtLink to="/components" class="hover:text-foreground transition-colors">
+                  Components
+                </NuxtLink>
+              </li>
+              <li class="[&>svg]:size-3.5" role="presentation" aria-hidden="true">
+                <ChevronRight />
+              </li>
+              <li class="inline-flex items-center gap-1.5">
+                <span class="font-normal text-foreground" aria-current="page">
+                  Breadcrumb
+                </span>
+              </li>
+            </ol>
+          </DsBreadcrumb>
+        </UiComponentPreviewTabs>
+      </section>
+    </div>
+  </UiDocs>
 </template>

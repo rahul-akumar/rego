@@ -1,7 +1,8 @@
 {
-  "name": "nuxt-app",
+  "name": "ui",
   "type": "module",
   "private": true,
+  "license": "MIT",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
@@ -17,8 +18,7 @@
     "@nuxt/eslint": "1.7.1",
     "@nuxt/image": "1.11.0",
     "@nuxt/scripts": "0.11.10",
-    "@nuxt/ui": "3.3.0",
-    "@unhead/vue": "^2.0.13",
+    "@nuxt/ui": "^3.3.0",
     "better-sqlite3": "^12.2.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",

@@ -26,7 +26,7 @@ const alignmentClasses = computed(() => {
 });
 
 const previewClasses = computed(() => cn(
-  "preview flex h-[450px] w-full justify-center p-10",
+  "preview flex h-[450px] w-full justify-center p-10 gap-4",
   alignmentClasses.value,
 ));
 
