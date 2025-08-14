@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-screen bg-white dark:bg-black">
     <UiAppHeader />
-    <main class="container mx-auto">
+    <main class="w-2xl mx-auto">
       <slot />
     </main>
   </div>

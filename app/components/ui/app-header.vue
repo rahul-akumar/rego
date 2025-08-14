@@ -5,11 +5,6 @@ const route = useRoute();
 // Navigation items with active state logic
 const navigationItems = [
   {
-    name: "Playground",
-    path: "/playground",
-    isActive: () => route.path === "/playground",
-  },
-  {
     name: "Components",
     path: "/components",
     isActive: () => route.path.startsWith("/components"),
