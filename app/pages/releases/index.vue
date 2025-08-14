@@ -33,16 +33,16 @@ const { data: releases } = await useAsyncData(route.path, () => {
       <article
         v-for="release in releases"
         :key="release.path"
-        class="border rounded-lg p-6 hover:shadow-lg transition-shadow"
+        class="border rounded-lg p-4 hover:bg-card"
       >
         <NuxtLink :to="release.path" class="block group">
           <div class="flex justify-between items-start mb-3">
-            <h2 class="text-2xl font-semibold group-hover:text-blue-600 transition-colors">
+            <h2 class="text-2xl font-semibold group-hover:text-blue-600  transition-colors">
               {{ release.title }}
             </h2>
-            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
+            <DsBadge>
               {{ release.version }}
-            </span>
+            </DsBadge>
           </div>
 
           <p class="text-gray-600 mb-4">
@@ -53,9 +53,9 @@ const { data: releases } = await useAsyncData(route.path, () => {
             {{ release.description }}
           </div>
 
-          <p class="text-blue-600 group-hover:text-blue-800 font-medium">
+          <DsButton variant="link" size="sm">
             Read release notes →
-          </p>
+          </DsButton>
         </NuxtLink>
       </article>
     </div>
