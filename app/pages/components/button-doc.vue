@@ -105,7 +105,9 @@ const invertedCode = `<div class="bg-black p-6 rounded-lg space-y-4">
           description="The default button component."
           :code="defaultButtonCode"
         >
-          <DsButton>Button</DsButton>
+          <DsButton>
+            Button
+          </DsButton>
         </UiComponentPreviewTabs>
       </section>
 
@@ -120,13 +122,13 @@ const invertedCode = `<div class="bg-black p-6 rounded-lg space-y-4">
           :code="variantsCode"
           class-name="flex flex-wrap gap-4 p-6"
         >
-          <DsButton variant="primary">
+          <DsButton>
             Primary
           </DsButton>
           <DsButton variant="secondary">
             Secondary
           </DsButton>
-          <DsButton variant="outlined">
+          <DsButton variant="outline">
             Outlined
           </DsButton>
           <DsButton variant="ghost">
@@ -152,20 +154,14 @@ const invertedCode = `<div class="bg-black p-6 rounded-lg space-y-4">
           :code="sizesCode"
           class-name="flex items-center gap-4 p-6"
         >
-          <DsButton size="xs">
-            XS
-          </DsButton>
           <DsButton size="sm">
             Small
           </DsButton>
-          <DsButton size="md">
+          <DsButton>
             Medium
           </DsButton>
           <DsButton size="lg">
             Large
-          </DsButton>
-          <DsButton size="xl">
-            XL
           </DsButton>
         </UiComponentPreviewTabs>
       </section>
@@ -184,7 +180,7 @@ const invertedCode = `<div class="bg-black p-6 rounded-lg space-y-4">
           <DsButton size="sm" icon-only>
             <Star class="size-4" />
           </DsButton>
-          <DsButton size="md" icon-only>
+          <DsButton icon-only>
             <Mail class="size-4" />
           </DsButton>
           <DsButton size="lg" icon-only>
@@ -212,7 +208,7 @@ const invertedCode = `<div class="bg-black p-6 rounded-lg space-y-4">
                 </template>
                 Send Email
               </DsButton>
-              <DsButton icon-position="right" variant="outlined">
+              <DsButton icon-position="right" variant="outline">
                 <template #icon>
                   <ChevronRight class="size-4" />
                 </template>
@@ -248,13 +244,13 @@ const invertedCode = `<div class="bg-black p-6 rounded-lg space-y-4">
           :code="loadingCode"
           class-name="flex gap-4 p-6"
         >
-          <DsButton loading>
+          <DsButton :loading="true">
             Loading
           </DsButton>
-          <DsButton variant="outlined" loading>
+          <DsButton variant="outline" :loading="true">
             Please wait
           </DsButton>
-          <DsButton variant="ghost" loading size="sm">
+          <DsButton variant="ghost" :loading="true">
             Processing
           </DsButton>
         </UiComponentPreviewTabs>
@@ -271,13 +267,13 @@ const invertedCode = `<div class="bg-black p-6 rounded-lg space-y-4">
           :code="disabledCode"
           class-name="flex gap-4 p-6"
         >
-          <DsButton disabled>
+          <DsButton :disabled="true">
             Disabled
           </DsButton>
-          <DsButton variant="outlined" disabled>
+          <DsButton variant="outline" :disabled="true">
             Disabled
           </DsButton>
-          <DsButton variant="ghost" disabled>
+          <DsButton variant="ghost" :disabled="true">
             Disabled
           </DsButton>
         </UiComponentPreviewTabs>
@@ -295,8 +291,8 @@ const invertedCode = `<div class="bg-black p-6 rounded-lg space-y-4">
           class="[&_.preview]:rounded-lg [&_.preview]:bg-black [&_.preview]:text-white dark:[&_.preview]:bg-white dark:[&_.preview]:text-black"
         >
           <div>
-            <DsButton inverted>
-              Inverted Primary
+            <DsButton :inverted="true">
+              Inverted button
             </DsButton>
           </div>
         </UiComponentPreviewTabs>
