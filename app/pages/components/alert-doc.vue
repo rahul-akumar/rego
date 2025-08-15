@@ -49,7 +49,7 @@ const styles = {
         Click the button below to toggle the alert in the application header.
       </p>
       <div :class="styles.inspectFrame">
-        <DsButton size="md" variant="primary" @click="toggleAppAlert">
+        <DsButton @click="toggleAppAlert">
           {{ showAppAlert ? "Hide alert" : "Show alert" }}
         </DsButton>
       </div>

@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-white dark:bg-black">
+  <div class="min-h-screen bg-background">
     <UiAppHeader />
     <main class="w-2xl mx-auto">
       <slot />

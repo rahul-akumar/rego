@@ -47,7 +47,7 @@ definePageMeta({
 </script>
 
 <template>
-  <div class="flex flex-col pt-6 gap-10 w-2xl mx-auto bg-transparent">
+  <div class="flex flex-col pt-8 gap-10">
     <!-- Header Section -->
     <section class="flex-col">
       <h1 class="text-4xl pb-1 font-bold text-black dark:text-white">

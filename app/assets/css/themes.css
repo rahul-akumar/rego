@@ -1,4 +1,4 @@
-.theme-default .theme-container {
+:root.theme-default {
   --chart-1: var(--color-blue-300);
   --chart-2: var(--color-blue-500);
   --chart-3: var(--color-blue-600);
@@ -6,31 +6,40 @@
   --chart-5: var(--color-blue-800);
 }
 
-.theme-blue .theme-container {
-  --primary: var(--color-blue-600);
+:root.theme-sapphire {
+  --primary: var(--color-teal-600);
+  --primary-foreground: var(--color-teal-50);
+  --background: var(--color-teal-50);
+  --foreground: var(--color-teal-950);
+  --card: var(--color-teal-900);
+  --ring: var(--color-teal-400);
+  --sidebar-primary: var(--color-teal-600);
+  --sidebar-primary-foreground: var(--color-teal-50);
+  --sidebar-ring: var(--color-teal-400);
+  --chart-1: var(--color-teal-300);
+  --chart-2: var(--color-teal-500);
+  --chart-3: var(--color-teal-600);
+  --chart-4: var(--color-teal-700);
+  --chart-5: var(--color-teal-800);
+  --scroll: var(--color-teal-600);
+}
+
+:root.theme-sapphire.dark {
+  --primary: var(--color-blue-500);
+  --background: var(--color-blue-950);
+  --foreground: var(--color-blue-100);
   --primary-foreground: var(--color-blue-50);
-  --ring: var(--color-blue-400);
-  --sidebar-primary: var(--color-blue-600);
+  --ring: var(--color-blue-900);
+  --sidebar-primary: var(--color-blue-500);
   --sidebar-primary-foreground: var(--color-blue-50);
-  --sidebar-ring: var(--color-blue-400);
-  --chart-1: var(--color-blue-300);
-  --chart-2: var(--color-blue-500);
-  --chart-3: var(--color-blue-600);
-  --chart-4: var(--color-blue-700);
-  --chart-5: var(--color-blue-800);
-
-  @variant dark {
-    --primary: var(--color-blue-500);
-    --primary-foreground: var(--color-blue-50);
-    --ring: var(--color-blue-900);
-    --sidebar-primary: var(--color-blue-500);
-    --sidebar-primary-foreground: var(--color-blue-50);
-    --sidebar-ring: var(--color-blue-900);
-  }
+  --sidebar-ring: var(--color-blue-900);
+  --scroll: var(--color-blue-100);
 }
 
-.theme-green .theme-container {
-  --primary: var(--color-lime-600);
+:root.theme-emerald {
+  --primary: var(--color-green-500);
+  --background: var(--color-green-50);
+  --foreground: var(--color-green-950);
   --primary-foreground: var(--color-lime-50);
   --ring: var(--color-lime-400);
   --chart-1: var(--color-green-300);
@@ -41,19 +50,41 @@
   --sidebar-primary: var(--color-lime-600);
   --sidebar-primary-foreground: var(--color-lime-50);
   --sidebar-ring: var(--color-lime-400);
-
-  @variant dark {
-    --primary: var(--color-lime-600);
-    --primary-foreground: var(--color-lime-50);
-    --ring: var(--color-lime-900);
-    --sidebar-primary: var(--color-lime-500);
-    --sidebar-primary-foreground: var(--color-lime-50);
-    --sidebar-ring: var(--color-lime-900);
-  }
 }
 
-.theme-amber .theme-container {
-  --primary: var(--color-amber-600);
+:root.theme-emerald.dark {
+  /* Essential colors */
+  --primary: var(--color-green-500);
+  --primary-foreground: var(--color-green-50);
+  /* UI elements */
+  --background: var(--color-green-950);
+  --foreground: var(--color-green-100);
+  --card: var(--color-green-900);
+  --card-foreground: var(--color-green-200);
+  /* Interactive states */
+  --muted: var(--color-green-700);
+  --muted-foreground: var(--color-green-400);
+  --accent: var(--color-green-600);
+  --accent-foreground: var(--color-green-100);
+  /* Borders and inputs */
+  --border: var(--color-green-600);
+  --input: var(--color-green-500);
+  --ring: var(--color-green-800);
+  /* Charts */
+  --chart-1: var(--color-green-800);
+  --chart-2: var(--color-green-700);
+  --chart-3: var(--color-green-600);
+  --chart-4: var(--color-green-500);
+  --chart-5: var(--color-green-400);
+  /* Sidebar */
+  --sidebar-primary: var(--color-green-950);
+  --sidebar-primary-foreground: var(--color-green-300);
+}
+
+:root.theme-topaz {
+  --primary: var(--color-amber-500);
+  --background: var(--color-amber-50);
+  --foreground: var(--color-amber-950);
   --primary-foreground: var(--color-amber-50);
   --ring: var(--color-amber-400);
   --chart-1: var(--color-amber-300);
@@ -64,19 +95,23 @@
   --sidebar-primary: var(--color-amber-600);
   --sidebar-primary-foreground: var(--color-amber-50);
   --sidebar-ring: var(--color-amber-400);
-
-  @variant dark {
-    --primary: var(--color-amber-500);
-    --primary-foreground: var(--color-amber-50);
-    --ring: var(--color-amber-900);
-    --sidebar-primary: var(--color-amber-500);
-    --sidebar-primary-foreground: var(--color-amber-50);
-    --sidebar-ring: var(--color-amber-900);
-  }
 }
 
-.theme-rose .theme-container {
-  --primary: var(--color-rose-600);
+:root.theme-topaz.dark {
+  --primary: var(--color-amber-500);
+  --background: var(--color-amber-950);
+  --foreground: var(--color-amber-50);
+  --card: color-mix(in srgb, var(--color-amber-900) 25%, transparent);
+  --primary-foreground: var(--color-amber-950);
+  --ring: var(--color-amber-900);
+  --sidebar-primary: var(--color-amber-500);
+  --sidebar-primary-foreground: var(--color-amber-50);
+  --sidebar-ring: var(--color-amber-900);
+}
+
+:root.theme-ruby {
+  --primary: var(--color-rose-500);
+  --background: var(--color-rose-50);
   --primary-foreground: var(--color-rose-50);
   --ring: var(--color-rose-400);
   --chart-1: var(--color-rose-300);
@@ -87,20 +122,24 @@
   --sidebar-primary: var(--color-rose-600);
   --sidebar-primary-foreground: var(--color-rose-50);
   --sidebar-ring: var(--color-rose-400);
-
-  @variant dark {
-    --primary: var(--color-rose-500);
-    --primary-foreground: var(--color-rose-50);
-    --ring: var(--color-rose-900);
-    --sidebar-primary: var(--color-rose-500);
-    --sidebar-primary-foreground: var(--color-rose-50);
-    --sidebar-ring: var(--color-rose-900);
-  }
 }
 
-.theme-purple .theme-container {
-  --primary: var(--color-purple-600);
+:root.theme-ruby.dark {
+  --primary: var(--color-rose-500);
+  --background: var(--color-rose-950);
+  --primary-foreground: var(--color-rose-50);
+  --card: color-mix(in srgb, var(--color-rose-900) 25%, transparent);
+  --ring: var(--color-rose-900);
+  --sidebar-primary: var(--color-rose-500);
+  --sidebar-primary-foreground: var(--color-rose-50);
+  --sidebar-ring: var(--color-rose-900);
+}
+
+:root.theme-amethyst {
+  --primary: var(--color-purple-500);
   --primary-foreground: var(--color-purple-50);
+  --background: var(--color-purple-100);
+  --foreground: var(--color-purple-950);
   --ring: var(--color-purple-400);
   --chart-1: var(--color-purple-300);
   --chart-2: var(--color-purple-500);
@@ -110,19 +149,23 @@
   --sidebar-primary: var(--color-purple-600);
   --sidebar-primary-foreground: var(--color-purple-50);
   --sidebar-ring: var(--color-purple-400);
-
-  @variant dark {
-    --primary: var(--color-purple-500);
-    --primary-foreground: var(--color-purple-50);
-    --ring: var(--color-purple-900);
-    --sidebar-primary: var(--color-purple-500);
-    --sidebar-primary-foreground: var(--color-purple-50);
-    --sidebar-ring: var(--color-purple-900);
-  }
 }
 
-.theme-orange .theme-container {
-  --primary: var(--color-orange-600);
+:root.theme-amethyst.dark {
+  --primary: var(--color-purple-500);
+  --background: var(--color-purple-950);
+  --foreground: var(--color-purple-100);
+  --primary-foreground: var(--color-purple-50);
+  --card: color-mix(in srgb, var(--color-purple-900) 25%, transparent);
+  --ring: var(--color-purple-900);
+  --sidebar-primary: var(--color-purple-500);
+  --sidebar-primary-foreground: var(--color-purple-50);
+  --sidebar-ring: var(--color-purple-900);
+}
+
+:root.theme-orange {
+  --primary: var(--color-orange-500);
+  --background: var(--color-orange-50);
   --primary-foreground: var(--color-orange-50);
   --ring: var(--color-orange-400);
   --chart-1: var(--color-orange-300);
@@ -133,20 +176,22 @@
   --sidebar-primary: var(--color-orange-600);
   --sidebar-primary-foreground: var(--color-orange-50);
   --sidebar-ring: var(--color-orange-400);
-
-  @variant dark {
-    --primary: var(--color-orange-500);
-    --primary-foreground: var(--color-orange-50);
-    --ring: var(--color-orange-900);
-    --sidebar-primary: var(--color-orange-500);
-    --sidebar-primary-foreground: var(--color-orange-50);
-    --sidebar-ring: var(--color-orange-900);
-  }
 }
 
-.theme-teal .theme-container {
-  --primary: var(--color-teal-600);
+:root.theme-orange.dark {
+  --primary: var(--color-orange-500);
+  --background: var(--color-orange-950);
+  --primary-foreground: var(--color-orange-50);
+  --ring: var(--color-orange-900);
+  --sidebar-primary: var(--color-orange-500);
+  --sidebar-primary-foreground: var(--color-orange-50);
+  --sidebar-ring: var(--color-orange-900);
+}
+
+:root.theme-teal {
+  --primary: var(--color-teal-500);
   --primary-foreground: var(--color-teal-50);
+  --background: var(--color-teal-50);
   --chart-1: var(--color-teal-300);
   --chart-2: var(--color-teal-500);
   --chart-3: var(--color-teal-600);
@@ -155,17 +200,18 @@
   --sidebar-primary: var(--color-teal-600);
   --sidebar-primary-foreground: var(--color-teal-50);
   --sidebar-ring: var(--color-teal-400);
-
-  @variant dark {
-    --primary: var(--color-teal-500);
-    --primary-foreground: var(--color-teal-50);
-    --sidebar-primary: var(--color-teal-500);
-    --sidebar-primary-foreground: var(--color-teal-50);
-    --sidebar-ring: var(--color-teal-900);
-  }
 }
 
-.theme-mono .theme-container {
+:root.theme-teal.dark {
+  --primary: var(--color-teal-500);
+  --background: var(--color-teal-950);
+  --primary-foreground: var(--color-teal-50);
+  --sidebar-primary: var(--color-teal-500);
+  --sidebar-primary-foreground: var(--color-teal-50);
+  --sidebar-ring: var(--color-teal-900);
+}
+
+:root.theme-mono {
   --font-sans: var(--font-mono);
   --primary: var(--color-stone-600);
   --primary-foreground: var(--color-stone-50);
@@ -177,14 +223,14 @@
   --sidebar-primary: var(--color-stone-600);
   --sidebar-primary-foreground: var(--color-stone-50);
   --sidebar-ring: var(--color-stone-400);
+}
 
-  @variant dark {
-    --primary: var(--color-stone-500);
-    --primary-foreground: var(--color-stone-50);
-    --sidebar-primary: var(--color-stone-500);
-    --sidebar-primary-foreground: var(--color-stone-50);
-    --sidebar-ring: var(--color-stone-900);
-  }
+:root.theme-mono.dark {
+  --primary: var(--color-stone-500);
+  --primary-foreground: var(--color-stone-50);
+  --sidebar-primary: var(--color-stone-500);
+  --sidebar-primary-foreground: var(--color-stone-50);
+  --sidebar-ring: var(--color-stone-900);
 
   @media (min-width: 1024px) {
     --font-sans: var(--font-mono);
@@ -225,7 +271,7 @@
   }
 }
 
-.theme-scaled .theme-container {
+:root.theme-scaled {
   --chart-1: var(--color-blue-300);
   --chart-2: var(--color-blue-500);
   --chart-3: var(--color-blue-600);
@@ -264,9 +310,11 @@
   }
 }
 
-.theme-red .theme-container {
-  --primary: var(--color-red-600);
+:root.theme-red {
+  --primary: var(--color-red-500);
   --primary-foreground: var(--color-red-50);
+  --background: var(--color-red-50);
+  --card: var(--color-stone-800);
   --ring: var(--color-red-400);
   --chart-1: var(--color-red-300);
   --chart-2: var(--color-red-500);
@@ -276,43 +324,22 @@
   --sidebar-primary: var(--color-red-600);
   --sidebar-primary-foreground: var(--color-red-50);
   --sidebar-ring: var(--color-red-400);
-
-  @variant dark {
-    --primary: var(--color-red-500);
-    --primary-foreground: var(--color-red-50);
-    --ring: var(--color-red-900);
-    --sidebar-primary: var(--color-red-500);
-    --sidebar-primary-foreground: var(--color-red-50);
-    --sidebar-ring: var(--color-red-900);
-  }
 }
 
-.theme-yellow .theme-container {
-  --primary: var(--color-yellow-400);
-  --primary-foreground: var(--color-yellow-900);
-  --ring: var(--color-yellow-400);
-  --chart-1: var(--color-yellow-300);
-  --chart-2: var(--color-yellow-500);
-  --chart-3: var(--color-yellow-600);
-  --chart-4: var(--color-yellow-700);
-  --chart-5: var(--color-yellow-800);
-  --sidebar-primary: var(--color-yellow-600);
-  --sidebar-primary-foreground: var(--color-yellow-50);
-  --sidebar-ring: var(--color-yellow-400);
-
-  @variant dark {
-    --primary: var(--color-yellow-500);
-    --primary-foreground: var(--color-yellow-900);
-    --ring: var(--color-yellow-900);
-    --sidebar-primary: var(--color-yellow-500);
-    --sidebar-primary-foreground: var(--color-yellow-50);
-    --sidebar-ring: var(--color-yellow-900);
-  }
+:root.theme-red.dark {
+  --primary: var(--color-red-500);
+  --primary-foreground: var(--color-red-50);
+  --background: var(--color-red-950);
+  --ring: var(--color-red-900);
+  --sidebar-primary: var(--color-red-500);
+  --sidebar-primary-foreground: var(--color-red-50);
+  --sidebar-ring: var(--color-red-900);
 }
 
-.theme-violet .theme-container {
-  --primary: var(--color-violet-600);
+:root.theme-violet {
+  --primary: var(--color-violet-500);
   --primary-foreground: var(--color-violet-50);
+  --background: var(--color-violet-50);
   --ring: var(--color-violet-400);
   --chart-1: var(--color-violet-300);
   --chart-2: var(--color-violet-500);
@@ -322,13 +349,14 @@
   --sidebar-primary: var(--color-violet-600);
   --sidebar-primary-foreground: var(--color-violet-50);
   --sidebar-ring: var(--color-violet-400);
+}
 
-  @variant dark {
-    --primary: var(--color-violet-500);
-    --primary-foreground: var(--color-violet-50);
-    --ring: var(--color-violet-900);
-    --sidebar-primary: var(--color-violet-500);
-    --sidebar-primary-foreground: var(--color-violet-50);
-    --sidebar-ring: var(--color-violet-900);
-  }
+:root.theme-violet.dark {
+  --primary: var(--color-violet-500);
+  --primary-foreground: var(--color-violet-50);
+  --background: var(--color-violet-950);
+  --ring: var(--color-violet-900);
+  --sidebar-primary: var(--color-violet-500);
+  --sidebar-primary-foreground: var(--color-violet-50);
+  --sidebar-ring: var(--color-violet-900);
 }

@@ -1,4 +1,13 @@
 <script setup lang="ts">
+import { onMounted } from "vue";
+
+import { useTheme } from "~/composables/use-theme";
+
+const { initTheme } = useTheme();
+
+onMounted(() => {
+  initTheme();
+});
 // Alert visibility state
 const showAlert = ref(false);
 
@@ -27,10 +36,8 @@ onUnmounted(() => {
 });
 
 const styles = {
-  appContainer: "w-full min-h-screen bg-white dark:bg-black",
-  appHeader:
-    "sticky top-0 w-full flex items-center justify-between px-8 py-4 bg-white dark:bg-black z-50",
-  mainArea: "flex bg-white dark:bg-black",
+  appContainer: "w-full min-h-screen bg-background",
+  mainArea: "flex",
   inspectView: "flex mx-auto min-h-0",
 };
 </script>
@@ -72,7 +79,7 @@ const styles = {
     </Transition>
 
     <!-- Main Content Area -->
-    <div :class="styles.mainArea">
+    <main :class="styles.mainArea">
       <!-- Use the new sidebar component -->
       <UiAppSidebar />
 
@@ -80,6 +87,6 @@ const styles = {
       <main :class="styles.inspectView">
         <slot />
       </main>
-    </div>
+    </main>
   </div>
 </template>

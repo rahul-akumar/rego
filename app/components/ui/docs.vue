@@ -75,7 +75,7 @@ const menuItems = [
         <div class="mb-10 space-y-4">
           <DsBreadcrumb :items="breadcrumbItems" />
           <div class="space-y-2">
-            <h1 class="text-3xl font-bold tracking-tight">
+            <h1 class="text-3xl font-bold tracking-tight text-foreground">
               {{ title }}
             </h1>
             <p v-if="description" class="text text-muted-foreground">

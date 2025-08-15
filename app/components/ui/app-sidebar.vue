@@ -17,8 +17,8 @@ const categoryConfig: Record<string, { name: string; order: number }> = {
 };
 
 const styles = {
-  navBar: "flex-col sticky pt-6 top-20 w-60 h-full bg-white dark:bg-black px-6 z-30",
-  navLink: "flex px-2 py-1 rounded hover:bg-black hover:bg-white/10 dark:hover:bg-opacity-10 text-black dark:text-white",
+  navBar: "flex-col sticky pt-6 top-20 w-60 h-full px-6 z-30",
+  navLink: "flex px-2 py-1 rounded-sm hover:bg-primary/10 text-foreground",
 };
 </script>
 
@@ -34,7 +34,7 @@ const styles = {
           <NuxtLink
             :to="page.path"
             :class="styles.navLink"
-            active-class="bg-black/10 dark:bg-white/10 font-semibold"
+            active-class="bg-primary/20 font-semibold"
           >
             {{ page.name }}
           </NuxtLink>
@@ -58,7 +58,7 @@ const styles = {
           <NuxtLink
             :to="comp.path"
             :class="styles.navLink"
-            active-class="bg-black/10 dark:bg-white/10 font-semibold"
+            active-class="bg-primary/20 font-semibold"
             class="relative justify-between"
           >
             <span>{{ comp.name }}</span>

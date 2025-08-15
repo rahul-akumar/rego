@@ -1,5 +1,7 @@
 <script setup lang="ts">
-const { isDark, toggleTheme } = useTheme();
+import { SunMoon } from "lucide-vue-next";
+
+const { colorTheme, cycleTheme, toggleMode } = useTheme();
 const route = useRoute();
 
 // Navigation items with active state logic
@@ -8,6 +10,11 @@ const navigationItems = [
     name: "Components",
     path: "/components",
     isActive: () => route.path.startsWith("/components"),
+  },
+  {
+    name: "Themes",
+    path: "/themes",
+    isActive: () => route.path.startsWith("/themes"),
   },
   {
     name: "Releases",
@@ -23,7 +30,7 @@ function getButtonVariant(item: typeof navigationItems[0]) {
 </script>
 
 <template>
-  <main class="sticky top-0 flex justify-between items-center min-w-full bg-white dark:bg-black px-8 py-4 z-50">
+  <main class="sticky top-0 flex justify-between items-center min-w-full bg-background px-8 py-4 z-50">
     <NuxtLink
       to="/"
       class="text-2xl font-bold text-black dark:text-white hover:text-neutral-600 dark:hover:text-neutral-300 transition-colors"
@@ -41,13 +48,16 @@ function getButtonVariant(item: typeof navigationItems[0]) {
         </DsButton>
       </NuxtLink>
     </section>
-    <DsButton size="sm" @click="toggleTheme">
-      <template v-if="isDark">
-        Switch to light mode
-      </template>
-      <template v-else>
-        Switch to dark mode
-      </template>
-    </DsButton>
+    <div class="flex gap-2">
+      <!-- Theme Cycle Button -->
+      <DsButton size="sm" title="Cycle through color themes" @click="cycleTheme">
+        {{ colorTheme }}
+      </DsButton>
+
+      <!-- Dark Mode Toggle Button -->
+      <DsButton size="sm" title="Toggle mode" @click="toggleMode">
+        <SunMoon class="size-4" />
+      </DsButton>
+    </div>
   </main>
 </template>
