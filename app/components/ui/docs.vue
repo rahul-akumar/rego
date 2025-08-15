@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { ChevronDown, Copy } from "lucide-vue-next";
+
 type Props = {
   title: string;
   description?: string;
@@ -95,9 +97,9 @@ const menuItems = [
               size="sm"
               class="h-8 gap-1 text-xs"
             >
-              <Icon name="heroicons:clipboard-document" class="h-4 w-4" />
+              <Copy class="size-4" />
               {{ copied ? 'Copied!' : 'Copy Page' }}
-              <Icon name="heroicons:chevron-down" class="h-3 w-3" />
+              <ChevronDown class="size-4" />
             </DsButton>
           </DsDropdownMenuTrigger>
           <DsDropdownMenuContent align="end" class="w-48">

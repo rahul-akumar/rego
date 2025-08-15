@@ -15,6 +15,11 @@ export default defineNuxtConfig({
   // GitHub Pages configuration
   app: {
     baseURL: "/REGO/",
+    head: {
+      link: [
+        { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
+      ],
+    },
   },
 
   nitro: {
