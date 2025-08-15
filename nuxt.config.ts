@@ -10,8 +10,12 @@ export default defineNuxtConfig({
     "@nuxt/scripts",
     "@nuxt/test-utils",
     "@nuxt/ui",
+    "nuxt-gtag",
   ],
-
+  // Google analytics configuration
+  gtag: {
+    id: "G-BTK3F566MW",
+  },
   // GitHub Pages configuration
   app: {
     baseURL: "/REGO/",
