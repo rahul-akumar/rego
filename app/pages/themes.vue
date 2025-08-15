@@ -1,4 +1,8 @@
 <script setup lang="ts">
+useHead({
+  title: "Themes -",
+});
+
 const styles = {
   inspectFrame:
     "flex flex-col gap-6 w-full h-80 p-6 flex items-center justify-center rounded border bg-neutral-500/10 border-neutral-100 dark:border-neutral-900",
