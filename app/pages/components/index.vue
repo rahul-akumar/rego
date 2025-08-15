@@ -1,6 +1,11 @@
 <script setup lang="ts">
 const { componentsByCategory } = useComponents();
 
+// Set page title
+useHead({
+  title: "Components -",
+});
+
 // Category display configuration
 const categoryConfig: Record<string, { name: string; order: number }> = {
   "form": { name: "Form components", order: 1 },

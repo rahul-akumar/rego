@@ -16,6 +16,7 @@ export default defineNuxtConfig({
   app: {
     baseURL: "/REGO/",
     head: {
+      titleTemplate: "%s REGO",
       link: [
         { rel: "icon", type: "image/svg+xml", href: "/REGO/favicon.svg" },
       ],

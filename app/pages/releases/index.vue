@@ -4,6 +4,11 @@ definePageMeta({
   layout: "full-width",
 });
 
+// Set page title
+useHead({
+  title: "Releases -",
+});
+
 const route = useRoute();
 const { data: releases } = await useAsyncData(route.path, () => {
   return queryCollection("releases").order("date", "DESC").all();
