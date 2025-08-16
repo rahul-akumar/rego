@@ -35,11 +35,11 @@ function getButtonVariant(item: typeof navigationItems[0]) {
       to="/"
       class="text-2xl flex gap-2 font-bold text-black dark:text-white hover:text-neutral-600 dark:hover:text-neutral-300 transition-colors"
     >
-      <NuxtImg
+      <img
         src="/logo.svg"
         alt="Logo"
         class="size-8"
-      />
+      >
       REGO
     </NuxtLink>
     <section class="flex gap-4">
