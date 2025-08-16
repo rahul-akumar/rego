@@ -60,9 +60,9 @@ async function copyCode() {
         >
           <button
             :class="cn(
-              'text-muted-foreground px-0 text-base transition-colors',
+              'text-foreground px-0 text-base transition-colors',
               activeTab === 'preview'
-                ? 'text-foreground'
+                ? 'text-primary font-bold'
                 : 'hover:text-foreground',
             )"
             @click="activeTab = 'preview'"
@@ -71,9 +71,9 @@ async function copyCode() {
           </button>
           <button
             :class="cn(
-              'text-muted-foreground px-0 text-base transition-colors',
+              'text-foreground px-0 text-base transition-colors',
               activeTab === 'code'
-                ? 'text-foreground'
+                ? 'text-primary font-bold'
                 : 'hover:text-foreground',
             )"
             @click="activeTab = 'code'"

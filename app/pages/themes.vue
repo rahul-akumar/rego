@@ -12,25 +12,25 @@ const {
   toggleMode,
   colorTheme,
   isDark,
-  getCurrentThemeDefinition,
+  // getCurrentThemeDefinition,
 } = useTheme();
 
 const themeDefinitions = getAllThemeDefinitions();
-const currentTheme = getCurrentThemeDefinition();
+// const currentTheme = getCurrentThemeDefinition();
 
 const styles = {
   inspectFrame:
     "flex flex-col gap-6 w-full h-80 p-6 flex items-center justify-center rounded border bg-neutral-500/10 border-neutral-100 dark:border-neutral-900",
   themeCard:
-    "group relative overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 transition-all duration-300 hover:shadow-xl hover:border-neutral-300 dark:hover:border-neutral-700",
+    "group relative overflow-hidden rounded-xl bg-white dark:bg-neutral-900 transition-all duration-300 hover:border-neutral-300 dark:hover:border-neutral-700",
   themeHeader:
-    "flex justify-between items-center p-6 border-b border-primary",
+    "flex justify-between items-center p-6 border-b border-primary/10 bg-primary/50",
   themeContent:
     "p-6",
   colorSwatch:
-    "size-12 rounded-md border border-primary/10 flex-shrink-0 shadow-sm",
+    "size-12 rounded-md border border-primary/10 flex",
   colorCard:
-    "p-3 rounded-lg border bg-neutral-50 dark:bg-neutral-800/50 border-neutral-200 dark:border-neutral-700 transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-800",
+    "",
   activeTheme:
     "ring-1 ring-primary",
 };
@@ -69,37 +69,12 @@ definePageMeta({
     <section class="flex-col">
       <div class="flex items-center justify-between mb-4">
         <div>
-          <h1 class="text-4xl font-bold text-neutral-900 dark:text-neutral-100 mb-2">
+          <h1 class="text-3xl font-bold text-foreground mb-2">
             Theme library
           </h1>
-          <p class="text-neutral-600 dark:text-neutral-400 text-lg">
+          <p class="text-neutral-600 dark:text-neutral-400 text-md">
             Explore REGO's comprehensive theming system with light and dark mode support
           </p>
-        </div>
-
-        <!-- Mode Toggle -->
-        <DsButton
-          @click="toggleMode()"
-        >
-          Switch mode
-        </DsButton>
-      </div>
-
-      <!-- Current Theme Display -->
-      <div v-if="currentTheme" class="p-4 rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-800">
-        <div class="flex items-center gap-3">
-          <div
-            :class="styles.colorSwatch"
-            :style="{ backgroundColor: isDark ? currentTheme.primary.dark : currentTheme.primary.light }"
-          />
-          <div>
-            <p class="font-semibold text-blue-900 dark:text-blue-100">
-              Currently Active: {{ currentTheme.name }}
-            </p>
-            <p class="text-sm text-blue-700 dark:text-blue-300">
-              {{ currentTheme.description }}
-            </p>
-          </div>
         </div>
       </div>
     </section>
@@ -118,7 +93,7 @@ definePageMeta({
           <!-- Theme Header -->
           <div :class="styles.themeHeader">
             <div class="">
-              <h3 class="text-xl font-bold text-neutral-900 dark:text-neutral-100 mb-1">
+              <h3 class="text-xl font-bold text-foreground mb-1">
                 {{ theme.name }}
               </h3>
               <p class="text-neutral-600 dark:text-neutral-400 text-sm">
@@ -176,7 +151,7 @@ definePageMeta({
                 {{ isDark ? 'Dark' : 'Light' }} Mode Palette
               </h4>
 
-              <div class="grid grid-cols-1 gap-3">
+              <div class="flex flex-wrap gap-4">
                 <div
                   v-for="color in isDark ? theme.palette.dark : theme.palette.light"
                   :key="color.name"

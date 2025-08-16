@@ -78,7 +78,7 @@ const menuItems = [
             <h1 class="text-3xl font-bold tracking-tight text-foreground">
               {{ title }}
             </h1>
-            <p v-if="description" class="text text-muted-foreground">
+            <p class="text-md text-foreground-secondary">
               {{ description }}
             </p>
           </div>
