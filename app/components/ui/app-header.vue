@@ -30,7 +30,7 @@ function getButtonVariant(item: typeof navigationItems[0]) {
 </script>
 
 <template>
-  <main class="sticky top-0 flex justify-between items-center min-w-full bg-background px-8 py-4 z-50">
+  <main class="sticky top-0 flex justify-between items-center min-w-full bg-background/10 backdrop-blur-md px-8 py-4 z-50">
     <NuxtLink
       to="/"
       class="text-2xl font-bold text-black dark:text-white hover:text-neutral-600 dark:hover:text-neutral-300 transition-colors"
