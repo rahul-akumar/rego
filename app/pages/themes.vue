@@ -3,46 +3,42 @@ useHead({
   title: "Themes -",
 });
 
+const {
+  getAllThemeDefinitions,
+  setColorTheme,
+  toggleMode,
+  colorTheme,
+  isDark,
+  getCurrentThemeDefinition,
+} = useTheme();
+
+const themeDefinitions = getAllThemeDefinitions();
+const currentTheme = getCurrentThemeDefinition();
+
 const styles = {
   inspectFrame:
     "flex flex-col gap-6 w-full h-80 p-6 flex items-center justify-center rounded border bg-neutral-500/10 border-neutral-100 dark:border-neutral-900",
-  techCard:
-    "p-4 rounded border bg-black/5 dark:bg-white/5 border-black/5 dark:border-white/5 hover:border-black/10 dark:hover:border-white/10 transition-colors",
+  themeCard:
+    "group relative overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 transition-all duration-300 hover:shadow-xl hover:border-neutral-300 dark:hover:border-neutral-700",
+  themeHeader:
+    "flex justify-between items-center p-6 border-b border-primary",
+  themeContent:
+    "p-6",
   colorSwatch:
-    "size-14 rounded-lg border border-black/10 dark:border-white/10 flex-shrink-0",
-  themePreview:
-    "p-6 rounded-lg border space-y-4 transition-colors duration-200",
+    "size-12 rounded-md border border-primary/10 flex-shrink-0 shadow-sm",
+  colorCard:
+    "p-3 rounded-lg border bg-neutral-50 dark:bg-neutral-800/50 border-neutral-200 dark:border-neutral-700 transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-800",
+  activeTheme:
+    "ring-2 ring-blue-500 dark:ring-blue-400 shadow-lg",
 };
 
-const colorPalette = [
-  {
-    name: "Neutral Scale",
-    description: "Primary grayscale colors for backgrounds, text, and borders",
-    colors: [
-      { name: "neutral-50", light: "#fafafa", dark: "#0a0a0a" },
-      { name: "neutral-100", light: "#f5f5f5", dark: "#171717" },
-      { name: "neutral-200", light: "#e5e5e5", dark: "#262626" },
-      { name: "neutral-300", light: "#d4d4d4", dark: "#404040" },
-      { name: "neutral-400", light: "#a3a3a3", dark: "#525252" },
-      { name: "neutral-500", light: "#737373", dark: "#737373" },
-      { name: "neutral-600", light: "#525252", dark: "#a3a3a3" },
-      { name: "neutral-700", light: "#404040", dark: "#d4d4d4" },
-      { name: "neutral-800", light: "#262626", dark: "#e5e5e5" },
-      { name: "neutral-900", light: "#171717", dark: "#f5f5f5" },
-    ],
-  },
-  {
-    name: "Brand & Accent Colors",
-    description: "Semantic colors for actions, states, and branding",
-    colors: [
-      { name: "blue-500", light: "#3b82f6", dark: "#60a5fa", usage: "Primary actions" },
-      { name: "purple-500", light: "#8b5cf6", dark: "#a78bfa", usage: "Secondary features" },
-      { name: "green-500", light: "#22c55e", dark: "#4ade80", usage: "Success states" },
-      { name: "yellow-500", light: "#eab308", dark: "#facc15", usage: "Warnings" },
-      { name: "red-500", light: "#ef4444", dark: "#f87171", usage: "Errors" },
-    ],
-  },
-];
+function previewTheme(themeId: string) {
+  setColorTheme(themeId as any);
+}
+
+function copyToClipboard(text: string) {
+  navigator.clipboard.writeText(text);
+}
 
 definePageMeta({
   layout: "full-width",
@@ -50,89 +46,189 @@ definePageMeta({
 </script>
 
 <template>
-  <div class="flex flex-col pt-8 gap-10">
+  <div class="flex flex-col pt-8 gap-10 max-w-7xl mx-auto px-4">
     <!-- Header Section -->
     <section class="flex-col">
-      <h1 class="text-3xl pb-1 font-bold text-foreground">
-        Themes
-      </h1>
-      <p class="text-neutral-300 text-md">
-        Explore REGO's comprehensive theming system with light and dark mode support
-      </p>
-    </section>
+      <div class="flex items-center justify-between mb-4">
+        <div>
+          <h1 class="text-4xl font-bold text-neutral-900 dark:text-neutral-100 mb-2">
+            Theme library
+          </h1>
+          <p class="text-neutral-600 dark:text-neutral-400 text-lg">
+            Explore REGO's comprehensive theming system with light and dark mode support
+          </p>
+        </div>
 
-    <!-- Theme Overview -->
-    <section class="space-y-4">
-      <!-- Color Palette -->
-      <section class="space-y-6">
-        <div
-          v-for="palette in colorPalette"
-          :key="palette.name"
-          class="space-y-4"
+        <!-- Mode Toggle -->
+        <DsButton
+          @click="toggleMode()"
         >
+          Switch mode
+        </DsButton>
+      </div>
+
+      <!-- Current Theme Display -->
+      <div v-if="currentTheme" class="p-4 rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-800">
+        <div class="flex items-center gap-3">
+          <div
+            :class="styles.colorSwatch"
+            :style="{ backgroundColor: isDark ? currentTheme.primary.dark : currentTheme.primary.light }"
+          />
           <div>
-            <h3 class="text-lg font-semibold text-black dark:text-white mb-1">
-              {{ palette.name }}
-            </h3>
-            <p class="text-sm text-neutral-600 dark:text-neutral-400">
-              {{ palette.description }}
+            <p class="font-semibold text-blue-900 dark:text-blue-100">
+              Currently Active: {{ currentTheme.name }}
+            </p>
+            <p class="text-sm text-blue-700 dark:text-blue-300">
+              {{ currentTheme.description }}
             </p>
           </div>
+        </div>
+      </div>
+    </section>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
-            <div
-              v-for="color in palette.colors"
-              :key="color.name"
-              :class="styles.techCard"
-            >
-              <div class="flex items-center gap-3 mb-3">
-                <div class="flex gap-1">
+    <!-- Themes Grid -->
+    <section class="space-y-8">
+      <div class="flex flex-col gap-4">
+        <div
+          v-for="theme in themeDefinitions"
+          :key="theme.id"
+          :class="[
+            styles.themeCard,
+            colorTheme === theme.id ? styles.activeTheme : '',
+          ]"
+        >
+          <!-- Theme Header -->
+          <div :class="styles.themeHeader">
+            <div class="">
+              <h3 class="text-xl font-bold text-neutral-900 dark:text-neutral-100 mb-1">
+                {{ theme.name }}
+              </h3>
+              <p class="text-neutral-600 dark:text-neutral-400 text-sm">
+                {{ theme.description }}
+              </p>
+            </div>
+            <div class="flex gap-2">
+              <DsButton
+                size="sm"
+                @click="previewTheme(theme.id)"
+              >
+                {{ colorTheme === theme.id ? 'Active theme' : 'Preview theme' }}
+              </DsButton>
+              <DsButton
+                size="sm"
+                @click="toggleMode()"
+              >
+                Switch mode
+              </DsButton>
+            </div>
+          </div>
+
+          <!-- Theme Content -->
+          <div :class="styles.themeContent">
+            <!-- Primary Colors Preview -->
+            <div class="mb-6">
+              <h4 class="text-sm font-semibold text-foreground mb-3">
+                Primary Colors
+              </h4>
+              <div class="flex gap-3">
+                <div class="flex flex-col items-center">
                   <div
                     :class="styles.colorSwatch"
-                    :style="{ backgroundColor: color.light }"
-                    :title="`Light: ${color.light}`"
+                    :style="{ backgroundColor: theme.primary.light }"
+                    :title="`Light: ${theme.primary.light}`"
                   />
-                  <div
-                    v-if="color.dark"
-                    :class="styles.colorSwatch"
-                    :style="{ backgroundColor: color.dark }"
-                    :title="`Dark: ${color.dark}`"
-                  />
+                  <span class="text-xs text-neutral-500 dark:text-neutral-400 mt-1">Light</span>
                 </div>
-                <div class="min-w-0 flex-1">
-                  <h4 class="font-medium text-sm text-black dark:text-white">
-                    {{ color.name }}
-                  </h4>
-                  <p class="text-xs text-neutral-500 font-mono">
-                    {{ color.light }}
-                  </p>
-                  <p v-if="color.dark" class="text-xs text-neutral-500 font-mono">
-                    {{ color.dark }}
-                  </p>
+                <div class="flex flex-col items-center">
+                  <div
+                    :class="styles.colorSwatch"
+                    :style="{ backgroundColor: theme.primary.dark }"
+                    :title="`Dark: ${theme.primary.dark}`"
+                  />
+                  <span class="text-xs text-foreground mt-1">Dark</span>
                 </div>
               </div>
-              <p v-if="color.usage" class="text-xs text-neutral-600 dark:text-neutral-400">
-                {{ color.usage }}
-              </p>
+            </div>
+
+            <!-- Color Palette -->
+            <div>
+              <h4 class="text-sm font-semibold text-neutral-700 dark:text-neutral-300 mb-3">
+                {{ isDark ? 'Dark' : 'Light' }} Mode Palette
+              </h4>
+
+              <div class="grid grid-cols-1 gap-3">
+                <div
+                  v-for="color in isDark ? theme.palette.dark : theme.palette.light"
+                  :key="color.name"
+                  :class="styles.colorCard"
+                  class="cursor-pointer"
+                  :title="`Click to copy: ${color.value}`"
+                  @click="copyToClipboard(color.value)"
+                >
+                  <div class="flex items-center gap-3">
+                    <div
+                      :class="styles.colorSwatch"
+                      :style="{ backgroundColor: color.value }"
+                      class="!size-8"
+                    />
+                    <div class="flex-1 min-w-0">
+                      <div class="flex items-center gap-2 mb-1">
+                        <span class="font-medium text-neutral-900 dark:text-neutral-100 text-sm">
+                          {{ color.name }}
+                        </span>
+                        <span class="text-xs px-2 py-1 rounded bg-neutral-200 dark:bg-neutral-700 text-neutral-600 dark:text-neutral-300 font-mono">
+                          {{ color.tailwindClass }}
+                        </span>
+                      </div>
+                      <div class="flex flex-col gap-1">
+                        <span class="text-xs font-mono text-neutral-600 dark:text-neutral-400">
+                          {{ color.value }}
+                        </span>
+                        <span v-if="color.oklch" class="text-xs font-mono text-neutral-500 dark:text-neutral-500">
+                          {{ color.oklch }}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- Component Showcase -->
-      <section class="space-y-4">
-        <h2 class="text-2xl font-medium text-black dark:text-white">
-          Component Examples
+    <!-- Component Showcase -->
+    <section class="space-y-6">
+      <div>
+        <h2 class="text-2xl font-bold text-neutral-900 dark:text-neutral-100 mb-2">
+          Component Preview
         </h2>
-        <p class="text-neutral-600 dark:text-neutral-400 max-w-2xl">
-          See how your components look across different themes. Toggle your system theme to see the automatic adaptation.
+        <p class="text-neutral-600 dark:text-neutral-400">
+          See how components look with the current theme. Switch themes above to see the changes.
         </p>
+      </div>
 
-        <div :class="styles.inspectFrame">
-          <DsButton>Inspect</DsButton>
-          <DsInput placeholder="Placeholder" />
+      <div :class="styles.inspectFrame">
+        <div class="flex flex-col items-center gap-4">
+          <DsButton>Primary Button</DsButton>
+          <DsInput placeholder="Sample input field" class="w-64" />
+          <div class="flex gap-2">
+            <div class="px-4 py-2 rounded bg-primary text-primary-foreground">
+              Primary Card
+            </div>
+            <div class="px-4 py-2 rounded border border-neutral-300 dark:border-neutral-700 bg-background">
+              Secondary Card
+            </div>
+          </div>
         </div>
-      </section>
+      </div>
     </section>
   </div>
 </template>
+
+<style scoped>
+.theme-preview-gradient {
+  background: linear-gradient(135deg, var(--primary), var(--background));
+}
+</style>
