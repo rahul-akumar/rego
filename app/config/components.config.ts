@@ -47,4 +47,11 @@ export const componentsConfig: Record<string, ComponentMeta> = {
     isNew: true,
     category: "navigation",
   },
+  "loader": {
+    name: "Loader",
+    description: "Animated spinner to indicate background processing",
+    dateAdded: "2025-08-16",
+    isNew: true,
+    category: "feedback",
+  },
 };
