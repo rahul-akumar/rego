@@ -1,5 +1,5 @@
 // app/composables/use-theme.ts
-import { readonly, ref, watch } from "vue";
+import { readonly, watch } from "vue";
 
 export type ColorTheme
   = | "default"
@@ -38,8 +38,8 @@ type ThemeDefinition = {
 };
 
 export function useTheme() {
-  const colorTheme = ref<ColorTheme>("default");
-  const isDark = ref(true); // Default to dark mode
+  const colorTheme = useState<ColorTheme>("color-theme", () => "default");
+  const isDark = useState<boolean>("is-dark", () => true); // Default to dark mode
 
   // Define theme data with their color palettes
   const themeDefinitions: ThemeDefinition[] = [
@@ -217,6 +217,8 @@ export function useTheme() {
 
   // Initialize theme from localStorage or defaults
   function initTheme() {
+    if (typeof window === "undefined")
+      return;
     // Load saved preferences
     const savedColorTheme = localStorage.getItem("color-theme") as ColorTheme;
     const savedIsDark = localStorage.getItem("is-dark");
@@ -238,6 +240,8 @@ export function useTheme() {
 
   // Apply theme to DOM
   function applyTheme() {
+    if (typeof window === "undefined")
+      return;
     const root = document.documentElement;
 
     // Remove all theme classes

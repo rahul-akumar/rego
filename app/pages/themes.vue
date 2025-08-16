@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { Eye, EyeOff } from "lucide-vue-next";
+import { ref } from "vue";
+
 useHead({
   title: "Themes -",
 });
@@ -29,11 +32,26 @@ const styles = {
   colorCard:
     "p-3 rounded-lg border bg-neutral-50 dark:bg-neutral-800/50 border-neutral-200 dark:border-neutral-700 transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-800",
   activeTheme:
-    "ring-2 ring-blue-500 dark:ring-blue-400 shadow-lg",
+    "ring-1 ring-primary",
 };
 
+const previousThemeId = ref<string | null>(null);
+
 function previewTheme(themeId: string) {
-  setColorTheme(themeId as any);
+  // Toggle preview:
+  // - If this theme is active, restore the previous theme (or "default" if none)
+  // - If this theme is not active, remember the current theme on first preview and switch to the selected theme
+  if (colorTheme.value === themeId) {
+    const fallback = previousThemeId.value ?? "default";
+    setColorTheme(fallback as any);
+    previousThemeId.value = null;
+  }
+  else {
+    if (previousThemeId.value === null) {
+      previousThemeId.value = colorTheme.value as any;
+    }
+    setColorTheme(themeId as any);
+  }
 }
 
 function copyToClipboard(text: string) {
@@ -112,7 +130,9 @@ definePageMeta({
                 size="sm"
                 @click="previewTheme(theme.id)"
               >
-                {{ colorTheme === theme.id ? 'Active theme' : 'Preview theme' }}
+                <Eye v-if="colorTheme !== theme.id" class="size-4" />
+                <EyeOff v-else class="size-4" />
+                {{ colorTheme === theme.id ? 'Hide' : 'Preview' }}
               </DsButton>
               <DsButton
                 size="sm"
