@@ -29,7 +29,7 @@ const categoryConfig: Record<string, { name: string; order: number }> = {
       :key="categoryKey"
       class="mb-12"
     >
-      <h2 class="text-2xl font-semibold mb-6">
+      <h2 class="text-2xl font-semibold mb-6 text-black dark:text-white/80">
         {{ categoryConfig[categoryKey]?.name || categoryKey }}
       </h2>
 
@@ -41,14 +41,14 @@ const categoryConfig: Record<string, { name: string; order: number }> = {
           class="w-full border rounded p-4 hover:bg-card/50 transition-shadow dark:border-gray-700 dark:hover:border-gray-600"
         >
           <div class="flex justify-between items-start mb-3">
-            <h3 class="text-xl font-semibold">
+            <h3 class="text-xl font-semibold text-black dark:text-white">
               {{ comp.name }}
             </h3>
             <DsBadge v-if="comp.isNew">
               New
             </DsBadge>
           </div>
-          <p class="text-gray-600 dark:text-gray-400">
+          <p class="text-gray-600 dark:text-gray-400 text-black dark:text-white/70">
             {{ comp.description || `${comp.name} component documentation and examples.` }}
           </p>
         </NuxtLink>

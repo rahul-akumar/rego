@@ -68,7 +68,7 @@ const menuItems = [
 </script>
 
 <template>
-  <div class="w-2xl min-w-0">
+  <div>
     <!-- Header with copy actions -->
     <div class="flex items-center justify-between">
       <div class="flex items-center gap-4">

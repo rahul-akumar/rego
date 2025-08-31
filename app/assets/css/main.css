@@ -1,6 +1,2 @@
 @import "tailwindcss";
-@import "@nuxt/ui";
 @import "./global.css";
-@import "tailwindcss";
-@plugin "@tailwindcss/typography";
-@import "@nuxt/ui";

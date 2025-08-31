@@ -1,4 +1,3 @@
-@import "tailwindcss";
 @import "./themes.css";
 
 @custom-variant dark (&:is(.dark *));
@@ -60,7 +59,7 @@
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
-  --foreground-secondary: var(--muted-foreground);
+  --foreground-secondary: var(--color-neutral-400);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
@@ -103,7 +102,7 @@
 .dark {
   --background: var(--color-neutral-950);
   --foreground: var(--color-neutral-50);
-  --foreground-secondary: var(--muted-foreground);
+  --foreground-secondary: var(--color-neutral-400);
   --card: var(--color-neutral-900);
   --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.269 0 0);
@@ -147,12 +146,15 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   ::selection {
     @apply bg-selection text-selection-foreground;
   }
+
   html {
     @apply scroll-smooth;
   }
+
   body {
     font-synthesis-weight: none;
     text-rendering: optimizeLegibility;
@@ -221,6 +223,7 @@ html {
 ::-webkit-scrollbar {
   width: 4px;
 }
+
 ::-webkit-scrollbar-thumb {
   background-color: var(--scroll);
   border-radius: 2px;

@@ -23,8 +23,8 @@ const buttonVariants = cva(
         default: "bg-primary text-primary-foreground hover:bg-primary/90 active:bg-primary/80",
         destructive: "bg-destructive text-white hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60",
         outline: "border bg-transparent hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50",
-        secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-        ghost: "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
+        secondary: "bg-secondary text-foreground-secondary hover:bg-secondary/80",
+        ghost: "hover:bg-accent text-foreground-secondary dark:hover:bg-accent/50",
         link: "text-primary underline-offset-4 hover:underline",
       },
       size: {
@@ -82,7 +82,7 @@ const buttonVariants = cva(
       {
         variant: "secondary",
         inverted: true,
-        class: "bg-secondary-foreground text-secondary hover:bg-secondary-foreground/90 active:bg-secondary-foreground/80 dark:bg-secondary dark:text-secondary-foreground dark:hover:bg-secondary/90 dark:active:bg-secondary/80",
+        class: "bg-secondary-foreground text-foreground-secondary hover:bg-secondary-foreground/90 active:bg-secondary-foreground/80 dark:bg-secondary dark:text-secondary-foreground dark:hover:bg-secondary/90 dark:active:bg-secondary/80",
       },
       {
         variant: "outline",
@@ -92,7 +92,7 @@ const buttonVariants = cva(
       {
         variant: "ghost",
         inverted: true,
-        class: "text-accent-foreground hover:bg-accent-foreground hover:text-accent active:bg-accent-foreground/50",
+        class: "text-foreground-secondary hover:bg-accent-foreground hover:text-accent active:bg-accent-foreground/50",
       },
       {
         variant: "link",

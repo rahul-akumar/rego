@@ -38,7 +38,7 @@ onUnmounted(() => {
 const styles = {
   appContainer: "w-full min-h-screen bg-background",
   mainArea: "flex",
-  inspectView: "flex mx-auto min-h-0",
+  inspectView: "flex mx-auto w-2xl",
 };
 </script>
 
@@ -63,7 +63,7 @@ const styles = {
         >
           <template #actions>
             <DsButton
-              size="xs"
+              size="sm"
               variant="ghost"
               icon-only
               inverted
@@ -82,11 +82,10 @@ const styles = {
     <main :class="styles.mainArea">
       <!-- Use the new sidebar component -->
       <UiAppSidebar />
-
       <!-- Main Content Area -->
-      <main :class="styles.inspectView">
+      <section :class="styles.inspectView">
         <slot />
-      </main>
+      </section>
     </main>
   </div>
 </template>

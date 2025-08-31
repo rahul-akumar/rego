@@ -1,4 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import tailwindcss from "@tailwindcss/vite";
+
 export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
   devtools: { enabled: true },
@@ -9,7 +11,6 @@ export default defineNuxtConfig({
     "@nuxt/image",
     "@nuxt/scripts",
     "@nuxt/test-utils",
-    "@nuxt/ui",
     "nuxt-gtag",
   ],
   // Google analytics configuration
@@ -21,6 +22,9 @@ export default defineNuxtConfig({
     baseURL: "/REGO/",
     head: {
       titleTemplate: "%s REGO",
+      htmlAttrs: {
+        class: "dark",
+      },
       link: [
         { rel: "icon", type: "image/svg+xml", href: "/REGO/favicon.svg" },
       ],
@@ -44,5 +48,8 @@ export default defineNuxtConfig({
     config: {
       standalone: false,
     },
+  },
+  vite: {
+    plugins: [tailwindcss()],
   },
 });

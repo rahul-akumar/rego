@@ -33,6 +33,13 @@ export const componentsConfig: Record<string, ComponentMeta> = {
     dateAdded: "2025-01-01",
     category: "form",
   },
+  "pin-input": {
+    name: "Pin Input",
+    description: "Multi-cell input for PIN/OTP codes with paste and masking",
+    dateAdded: "2025-08-31",
+    isNew: true,
+    category: "form",
+  },
   "line-chart": {
     name: "Line Chart",
     description: "Interactive line chart for data visualization",

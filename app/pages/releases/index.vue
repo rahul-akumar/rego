@@ -20,10 +20,10 @@ const { data: releases } = await useAsyncData(route.path, () => {
 <template>
   <div class="">
     <div class="mb-8">
-      <h1 class="text-4xl font-bold mb-4">
+      <h1 class="text-primary text-4xl font-bold mb-4">
         Release Notes
       </h1>
-      <p class="text-gray-600 text-lg">
+      <p class="text-foreground-secondary text-lg">
         Stay up to date with the latest features, improvements, and bug fixes.
       </p>
     </div>
@@ -42,7 +42,7 @@ const { data: releases } = await useAsyncData(route.path, () => {
       >
         <NuxtLink :to="release.path" class="block group">
           <div class="flex justify-between items-start mb-3">
-            <h2 class="text-2xl font-semibold group-hover:text-blue-600  transition-colors">
+            <h2 class="text-primary text-2xl font-semibold group-hover:text-blue-600  transition-colors">
               {{ release.title }}
             </h2>
             <DsBadge>
@@ -50,11 +50,11 @@ const { data: releases } = await useAsyncData(route.path, () => {
             </DsBadge>
           </div>
 
-          <p class="text-gray-600 mb-4">
+          <p class="text-foreground-secondary mb-4">
             Released on {{ new Date(release.date).toLocaleDateString() }}
           </p>
 
-          <div v-if="release.description" class="text-gray-700 mb-4">
+          <div v-if="release.description" class="text-foreground-secondary mb-4">
             {{ release.description }}
           </div>
 

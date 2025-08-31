@@ -1,4 +1,16 @@
 <script setup lang="ts">
+import {
+  Braces,
+  Code,
+  Code2,
+  Package,
+  Palette,
+  Route,
+  Sparkles,
+  Wind,
+  Zap,
+} from "lucide-vue-next";
+
 const { components } = useComponents();
 
 const styles = {
@@ -12,32 +24,32 @@ const techStack = [
   {
     name: "Vue 3",
     description: "Progressive JavaScript framework with Composition API",
-    icon: "logos:vue",
+    icon: Code2,
   },
   {
     name: "TypeScript",
     description: "Type-safe JavaScript development",
-    icon: "logos:typescript-icon",
+    icon: Braces,
   },
   {
     name: "Vite",
     description: "Fast build tool and development server",
-    icon: "logos:vitejs",
+    icon: Zap,
   },
   {
     name: "Tailwind CSS",
     description: "Utility-first CSS framework for styling",
-    icon: "logos:tailwindcss-icon",
+    icon: Wind,
   },
   {
     name: "Vue Router",
     description: "Official routing library for Vue.js",
-    icon: "logos:nuxt-icon",
+    icon: Route,
   },
   {
     name: "Lucide Icons",
     description: "Beautiful & consistent icon library",
-    icon: "✨",
+    icon: Sparkles,
   },
 ];
 
@@ -85,7 +97,7 @@ definePageMeta({
           :class="styles.techCard"
         >
           <div class="flex items-start gap-3">
-            <UIcon :name="tech.icon" class="size-24" />
+            <component :is="tech.icon" class="size-8 text-neutral-700 dark:text-neutral-300" />
             <div>
               <h3 class="font-semibold text-black dark:text-white">
                 {{ tech.name }}
