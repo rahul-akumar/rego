@@ -7,8 +7,7 @@ export type ColorTheme
     | "emerald"
     | "topaz"
     | "ruby"
-    | "amethyst"
-    | "scaled";
+    | "amethyst";
 
 export type ThemeMode = "light" | "dark";
 
@@ -283,7 +282,6 @@ export function useTheme() {
     "topaz",
     "ruby",
     "amethyst",
-    "scaled",
   ] as const;
 
   // Cycle through color themes

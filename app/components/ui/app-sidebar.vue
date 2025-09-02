@@ -17,7 +17,7 @@ const categoryConfig: Record<string, { name: string; order: number }> = {
 };
 
 const styles = {
-  navBar: "flex-col fixed pt-6 top-20 w-60 h-full px-6 z-30",
+  navBar: "flex-col fixed pt-6 top-17 w-60 h-full px-6 z-30 bg-background/10 backdrop-blur-md",
   navLink: "flex px-2 py-1 rounded-sm hover:bg-primary/10 text-foreground",
 };
 </script>

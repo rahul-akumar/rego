@@ -25,7 +25,7 @@ const navigationItems = [
 
 // Function to get the correct variant based on active state
 function getButtonVariant(item: typeof navigationItems[0]) {
-  return item.isActive() ? "secondary" : "ghost";
+  return item.isActive() ? "default" : "ghost";
 }
 </script>
 

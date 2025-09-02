@@ -16,7 +16,7 @@ const styles = {
 
   // Regular variants
   default:
-    "bg-black/10 text-black dark:bg-white/10 dark:text-white",
+    "bg-primary text-black dark:bg-white/10 dark:text-white",
   info: "bg-indigo-500 bg-opacity-20 dark:bg-sky-500 dark:bg-opacity-20 text-indigo-800 dark:text-sky-300",
   success:
     "bg-emerald-500 bg-opacity-20 text-emerald-800 dark:text-emerald-300",

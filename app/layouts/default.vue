@@ -38,7 +38,7 @@ onUnmounted(() => {
 const styles = {
   appContainer: "w-full min-h-screen bg-background",
   mainArea: "flex",
-  inspectView: "flex mx-auto w-2xl",
+  inspectView: "flex mx-auto w-3xl",
 };
 </script>
 
@@ -83,9 +83,9 @@ const styles = {
       <!-- Use the new sidebar component -->
       <UiAppSidebar />
       <!-- Main Content Area -->
-      <section :class="styles.inspectView">
+      <div :class="styles.inspectView">
         <slot />
-      </section>
+      </div>
     </main>
   </div>
 </template>

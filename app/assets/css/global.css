@@ -60,7 +60,7 @@
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --foreground-secondary: var(--color-neutral-400);
-  --card: oklch(1 0 0);
+  --card: color-mix(in srgb, var(--color-black) 9%, transparent);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
@@ -100,7 +100,7 @@
 }
 
 .dark {
-  --background: var(--color-neutral-950);
+  --background: var(--color-black);
   --foreground: var(--color-neutral-50);
   --foreground-secondary: var(--color-neutral-400);
   --card: var(--color-neutral-900);
