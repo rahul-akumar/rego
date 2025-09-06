@@ -18,7 +18,6 @@ export const componentsConfig: Record<string, ComponentMeta> = {
     name: "Badge",
     description: "Small status descriptors with icons and text support",
     dateAdded: "2025-01-06",
-    isNew: true,
     category: "data-display",
   },
   "button": {
@@ -60,5 +59,12 @@ export const componentsConfig: Record<string, ComponentMeta> = {
     dateAdded: "2025-08-16",
     isNew: true,
     category: "feedback",
+  },
+  "dropdown-menu": {
+    name: "Dropdown Menu",
+    description: "Accessible compound dropdown menu with trigger, content, items and keyboard navigation",
+    dateAdded: "2025-01-25",
+    isNew: true,
+    category: "navigation",
   },
 };

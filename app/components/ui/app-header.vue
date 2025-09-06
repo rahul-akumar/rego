@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SunMoon } from "lucide-vue-next";
+import { PaintBucket, SunMoon } from "lucide-vue-next";
 
 const { colorTheme, cycleTheme, toggleMode } = useTheme();
 const route = useRoute();
@@ -55,8 +55,8 @@ function getButtonVariant(item: typeof navigationItems[0]) {
     </section>
     <div class="flex gap-2">
       <!-- Theme Cycle Button -->
-      <DsButton size="sm" title="Cycle through color themes" @click="cycleTheme">
-        {{ colorTheme }}
+      <DsButton size="sm" :title="colorTheme" @click="cycleTheme">
+        <PaintBucket class="size-4" />
       </DsButton>
 
       <!-- Dark Mode Toggle Button -->

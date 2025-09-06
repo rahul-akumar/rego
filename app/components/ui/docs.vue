@@ -36,6 +36,10 @@ async function copyPage() {
   await copy(pageSource.value);
 }
 
+function openUrl(url: string) {
+  window.open(url, "_blank", "noopener,noreferrer");
+}
+
 // Generate prompt URLs for AI assistants
 function getPromptUrl(baseURL: string, url: string) {
   const prompt = `I'm looking at this REGO component documentation: ${url}. Help me understand how to use it. Be ready to explain concepts, give examples, or help debug based on it.`;
@@ -90,44 +94,33 @@ const menuItems = [
 
       <!-- Copy Actions -->
       <div class="flex items-center gap-2 shrink-0">
-        <DsDropdownMenu>
-          <DsDropdownMenuTrigger as-child>
-            <DsButton
-              variant="secondary"
-              size="sm"
-              class="h-8 gap-1 text-xs"
-            >
-              <Copy class="size-4" />
-              {{ copied ? 'Copied!' : 'Copy Page' }}
-              <ChevronDown class="size-4" />
-            </DsButton>
-          </DsDropdownMenuTrigger>
-          <DsDropdownMenuContent align="end" class="w-48">
-            <DsDropdownMenuItem @click="copyPage" />
-            <DsDropdownMenuSeparator />
-            <DsDropdownMenuItem
+        <DropdownMenu>
+          <DropdownMenuTrigger class="inline-flex items-center justify-center gap-1 px-3 py-1.5 text-xs font-medium rounded-md bg-secondary text-foreground-secondary hover:bg-secondary/80 transition-colors">
+            <Copy class="size-4" />
+            {{ copied ? 'Copied!' : 'Copy Page' }}
+            <ChevronDown class="size-4" />
+          </DropdownMenuTrigger>
+          <DropdownMenuContent side="bottom" align="end" class="w-48">
+            <DropdownMenuItem @click="copyPage">
+              Copy Page Link
+            </DropdownMenuItem>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem
               v-for="item in menuItems"
               :key="item.key"
-              as-child
+              @click="openUrl(item.url())"
             >
-              <a
-                :href="item.url()"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="flex items-center"
+              <svg
+                :viewBox="item.viewBox"
+                class="mr-2 h-4 w-4"
+                fill="currentColor"
               >
-                <svg
-                  :viewBox="item.viewBox"
-                  class="mr-2 h-4 w-4"
-                  fill="currentColor"
-                >
-                  <path :d="item.icon" />
-                </svg>
-                {{ item.name }}
-              </a>
-            </DsDropdownMenuItem>
-          </DsDropdownMenuContent>
-        </DsDropdownMenu>
+                <path :d="item.icon" />
+              </svg>
+              {{ item.name }}
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
       </div>
     </div>
 
