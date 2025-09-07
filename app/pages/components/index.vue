@@ -10,7 +10,9 @@ useHead({
 function getIllustrationPath(illustration?: string) {
   if (!illustration)
     return undefined;
-  return `/illustrations/${illustration}`;
+  const { $config } = useNuxtApp();
+  const baseURL = $config.app.baseURL || "/";
+  return `${baseURL}illustrations/${illustration}`;
 }
 
 // Track failed images to show fallback
@@ -38,16 +40,16 @@ function shouldShowFallback(componentName: string) {
         v-for="comp in components"
         :key="comp.path"
         :to="comp.path"
-        class="group relative overflow-hidden rounded-xl border border-gray-200 bg-white transition-all duration-300 hover:border-gray-300 hover:shadow-xl hover:-translate-y-1 dark:border-gray-700 dark:bg-gray-800/50 dark:hover:border-gray-600"
+        class="group relative overflow-hidden rounded-xl border border-primary/20 transition-all duration-300 hover:shadow-xs hover:-translate-y-1"
       >
         <!-- Illustration Container -->
-        <div class="relative aspect-[4/3] overflow-hidden bg-primary">
+        <div class="relative aspect-[4/3] overflow-hidden bg-card">
           <!-- Component illustration -->
           <img
             v-if="getIllustrationPath(comp.illustration)"
             :src="getIllustrationPath(comp.illustration)"
             :alt="`${comp.name} illustration`"
-            class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110 dark:mix-blend-multiply"
+            class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
             @error="onImageError(comp.name, $event)"
           >
 
@@ -85,7 +87,7 @@ function shouldShowFallback(componentName: string) {
         </div>
 
         <!-- Card Content -->
-        <div class="p-6 bg-card">
+        <div class="p-6 bg-card h-full">
           <div class="mb-2">
             <h3 class="text-xl font-semibold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
               {{ comp.name }}
