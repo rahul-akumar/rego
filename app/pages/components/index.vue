@@ -35,7 +35,7 @@ function shouldShowFallback(componentName: string) {
     description="Entire list of components available on REGO."
   >
     <!-- Component Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       <NuxtLink
         v-for="comp in components"
         :key="comp.path"
