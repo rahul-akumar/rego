@@ -82,14 +82,11 @@ const menuItems = [
             <h1 class="text-3xl font-bold tracking-tight text-foreground">
               {{ title }}
             </h1>
-            <p class="text-md text-foreground-secondary">
+            <p class="text-sm text-foreground-secondary">
               {{ description }}
             </p>
           </div>
         </div>
-        <DsBadge v-if="isNew" variant="secondary" class="text-xs">
-          New
-        </DsBadge>
       </div>
 
       <!-- Copy Actions -->
