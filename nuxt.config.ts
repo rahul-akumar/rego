@@ -43,6 +43,25 @@ export default defineNuxtConfig({
 
   content: {},
 
+  // Optimize @nuxt/image for better performance
+  image: {
+    // Global image optimization settings
+    quality: 85,
+    format: ["webp", "png"], // Try WebP first, fallback to PNG
+
+    // Presets for common sizes
+    presets: {
+      illustration: {
+        modifiers: {
+          format: "webp",
+          width: 400,
+          height: 300,
+          quality: 85,
+        },
+      },
+    },
+  },
+
   css: ["./app/assets/css/main.css"],
   eslint: {
     config: {

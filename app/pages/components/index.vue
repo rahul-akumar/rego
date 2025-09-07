@@ -17,16 +17,33 @@ function getIllustrationPath(illustration?: string) {
 
 // Track failed images to show fallback
 const failedImages = ref(new Set<string>());
+const loadingImages = ref(new Set<string>());
 
-function onImageError(componentName: string, event: Event) {
-  const target = event.target as HTMLImageElement;
-  target.style.display = "none";
+function onImageLoad(componentName: string) {
+  loadingImages.value.delete(componentName);
+}
+
+function onImageError(componentName: string) {
   failedImages.value.add(componentName);
+  loadingImages.value.delete(componentName);
 }
 
 function shouldShowFallback(componentName: string) {
   return failedImages.value.has(componentName);
 }
+
+function isImageLoading(componentName: string) {
+  return loadingImages.value.has(componentName);
+}
+
+// Initialize loading states
+onMounted(() => {
+  components.value.forEach((comp) => {
+    if (comp.illustration) {
+      loadingImages.value.add(comp.name);
+    }
+  });
+});
 </script>
 
 <template>
@@ -44,13 +61,27 @@ function shouldShowFallback(componentName: string) {
       >
         <!-- Illustration Container -->
         <div class="relative aspect-[4/3] overflow-hidden bg-card">
-          <!-- Component illustration -->
+          <!-- Loading State -->
+          <div
+            v-if="isImageLoading(comp.name) && getIllustrationPath(comp.illustration)"
+            class="absolute inset-0 flex items-center justify-center bg-gray-100 dark:bg-gray-800 animate-pulse"
+          >
+            <DsLoader
+              size="sm"
+              label="Loading component illustration"
+            />
+          </div>
+
+          <!-- Component illustration (fallback to regular img) -->
           <img
             v-if="getIllustrationPath(comp.illustration)"
             :src="getIllustrationPath(comp.illustration)"
             :alt="`${comp.name} illustration`"
             class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-            @error="onImageError(comp.name, $event)"
+            :class="{ 'opacity-0': isImageLoading(comp.name) }"
+            loading="lazy"
+            @load="onImageLoad(comp.name)"
+            @error="onImageError(comp.name)"
           >
 
           <!-- Fallback when no illustration is available -->
