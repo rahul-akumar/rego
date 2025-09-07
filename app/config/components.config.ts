@@ -77,4 +77,12 @@ export const componentsConfig: Record<string, ComponentMeta> = {
     category: "navigation",
     illustration: "dropdown.png",
   },
+  "skeleton": {
+    name: "Skeleton",
+    description: "Loading placeholders with text, rectangle, circle and image shapes for various layouts",
+    dateAdded: "2025-01-27",
+    isNew: true,
+    category: "feedback",
+    illustration: "skeleton.png",
+  },
 };
