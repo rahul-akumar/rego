@@ -1,20 +1,30 @@
 <script setup lang="ts">
-const { componentsByCategory } = useComponents();
+const { components } = useComponents();
 
 // Set page title
 useHead({
   title: "Components -",
 });
 
-// Category display configuration
-const categoryConfig: Record<string, { name: string; order: number }> = {
-  "form": { name: "Form components", order: 1 },
-  "feedback": { name: "Feedback components", order: 2 },
-  "data-display": { name: "Data display", order: 3 },
-  "navigation": { name: "Navigation", order: 4 },
-  "chart": { name: "Chart components", order: 5 },
-  "other": { name: "Other components", order: 999 },
-};
+// Get illustration path from component configuration
+function getIllustrationPath(illustration?: string) {
+  if (!illustration)
+    return undefined;
+  return `/illustrations/${illustration}`;
+}
+
+// Track failed images to show fallback
+const failedImages = ref(new Set<string>());
+
+function onImageError(componentName: string, event: Event) {
+  const target = event.target as HTMLImageElement;
+  target.style.display = "none";
+  failedImages.value.add(componentName);
+}
+
+function shouldShowFallback(componentName: string) {
+  return failedImages.value.has(componentName);
+}
 </script>
 
 <template>
@@ -22,36 +32,93 @@ const categoryConfig: Record<string, { name: string; order: number }> = {
     title="Components"
     description="Entire list of components available on REGO."
   >
-    <div
-      v-for="[categoryKey, components] in Object.entries(componentsByCategory).sort(([a], [b]) =>
-        (categoryConfig[a]?.order || 999) - (categoryConfig[b]?.order || 999),
-      )"
-      :key="categoryKey"
-      class="mb-12"
-    >
-      <h2 class="text-2xl font-semibold mb-6 text-black dark:text-white/80">
-        {{ categoryConfig[categoryKey]?.name || categoryKey }}
-      </h2>
+    <!-- Component Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <NuxtLink
+        v-for="comp in components"
+        :key="comp.path"
+        :to="comp.path"
+        class="group relative overflow-hidden rounded-xl border border-gray-200 bg-white transition-all duration-300 hover:border-gray-300 hover:shadow-xl hover:-translate-y-1 dark:border-gray-700 dark:bg-gray-800/50 dark:hover:border-gray-600"
+      >
+        <!-- Illustration Container -->
+        <div class="relative aspect-[4/3] overflow-hidden bg-primary">
+          <!-- Component illustration -->
+          <img
+            v-if="getIllustrationPath(comp.illustration)"
+            :src="getIllustrationPath(comp.illustration)"
+            :alt="`${comp.name} illustration`"
+            class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110 dark:mix-blend-multiply"
+            @error="onImageError(comp.name, $event)"
+          >
 
-      <div class="flex flex-wrap gap-6">
-        <NuxtLink
-          v-for="comp in components"
-          :key="comp.path"
-          :to="comp.path"
-          class="w-full border rounded p-4 hover:bg-card/50 transition-shadow dark:border-gray-700 dark:hover:border-gray-600"
-        >
-          <div class="flex justify-between items-start mb-3">
-            <h3 class="text-xl font-semibold text-black dark:text-white">
-              {{ comp.name }}
-            </h3>
-            <DsBadge v-if="comp.isNew">
+          <!-- Fallback when no illustration is available -->
+          <div
+            v-if="shouldShowFallback(comp.name) || !getIllustrationPath(comp.illustration)"
+            class="absolute inset-0 flex items-center justify-center text-4xl text-gray-400 dark:text-gray-500"
+          >
+            <div class="w-16 h-16 rounded-lg bg-gray-200 dark:bg-gray-600 flex items-center justify-center">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect width="18" height="18" x="3" y="3" rx="2" />
+                <path d="M9 9h6v6H9z" />
+              </svg>
+            </div>
+          </div>
+
+          <!-- New Badge -->
+          <div
+            v-if="comp.isNew"
+            class="absolute top-3 right-3"
+          >
+            <DsBadge variant="secondary">
               New
             </DsBadge>
           </div>
-          <p class="text-gray-600 dark:text-gray-400 text-black dark:text-white/70">
+        </div>
+
+        <!-- Card Content -->
+        <div class="p-6 bg-card">
+          <div class="mb-2">
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+              {{ comp.name }}
+            </h3>
+          </div>
+
+          <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
             {{ comp.description || `${comp.name} component documentation and examples.` }}
           </p>
-        </NuxtLink>
+
+          <!-- Category Tag -->
+          <div
+            v-if="comp.category"
+            class="mt-4"
+          >
+            <ds-badge variant="secondary">
+              {{ comp.category }}
+            </ds-badge>
+          </div>
+        </div>
+
+        <!-- Hover Gradient Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-t from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+      </NuxtLink>
+    </div>
+
+    <!-- Empty State (if no components) -->
+    <div
+      v-if="components.length === 0"
+      class="text-center py-12"
+    >
+      <div class="text-gray-400 dark:text-gray-500 text-lg">
+        No components available
       </div>
     </div>
   </UiDocs>

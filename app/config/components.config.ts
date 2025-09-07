@@ -5,6 +5,7 @@ export type ComponentMeta = {
   dateAdded?: string;
   isNew?: boolean;
   category?: "form" | "feedback" | "data-display" | "navigation" | "chart";
+  illustration?: string; // Path to component illustration (e.g., 'button.png')
 };
 
 export const componentsConfig: Record<string, ComponentMeta> = {
@@ -13,24 +14,28 @@ export const componentsConfig: Record<string, ComponentMeta> = {
     description: "Display important messages and notifications",
     dateAdded: "2025-01-01",
     category: "feedback",
+    illustration: "alert.png",
   },
   "badge": {
     name: "Badge",
     description: "Small status descriptors with icons and text support",
     dateAdded: "2025-01-06",
     category: "data-display",
+    illustration: "badge.png",
   },
   "button": {
     name: "Button",
     description: "Clickable elements with multiple variants and states",
     dateAdded: "2025-01-01",
     category: "form",
+    illustration: "button.png",
   },
   "input": {
     name: "Input",
     description: "Form input elements with validation support",
     dateAdded: "2025-01-01",
     category: "form",
+    illustration: "input.png",
   },
   "pin-input": {
     name: "Pin Input",
@@ -38,6 +43,7 @@ export const componentsConfig: Record<string, ComponentMeta> = {
     dateAdded: "2025-08-31",
     isNew: true,
     category: "form",
+    illustration: "pin-input.png",
   },
   "line-chart": {
     name: "Line Chart",
@@ -45,6 +51,7 @@ export const componentsConfig: Record<string, ComponentMeta> = {
     dateAdded: "2025-08-11",
     isNew: true,
     category: "chart",
+    illustration: "line-chart.png",
   },
   "breadcrumb": {
     name: "Breadcrumb",
@@ -52,6 +59,7 @@ export const componentsConfig: Record<string, ComponentMeta> = {
     dateAdded: "2025-08-12",
     isNew: true,
     category: "navigation",
+    illustration: "breadcrumb.png",
   },
   "loader": {
     name: "Loader",
@@ -59,6 +67,7 @@ export const componentsConfig: Record<string, ComponentMeta> = {
     dateAdded: "2025-08-16",
     isNew: true,
     category: "feedback",
+    illustration: "loader.png",
   },
   "dropdown-menu": {
     name: "Dropdown Menu",
@@ -66,5 +75,6 @@ export const componentsConfig: Record<string, ComponentMeta> = {
     dateAdded: "2025-01-25",
     isNew: true,
     category: "navigation",
+    illustration: "dropdown.png",
   },
 };

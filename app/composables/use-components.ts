@@ -8,6 +8,7 @@ export type ComponentItem = {
   description: string;
   isNew: boolean;
   category?: string;
+  illustration?: string;
 };
 
 export function useComponents() {
@@ -40,6 +41,7 @@ export function useComponents() {
       description: meta.description,
       isNew: isComponentNew(meta),
       category: meta.category,
+      illustration: meta.illustration,
     })).sort((a, b) => a.name.localeCompare(b.name));
   });
 
