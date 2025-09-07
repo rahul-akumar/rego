@@ -1,12 +1,15 @@
 <!-- filepath: app/components/ui/component-preview-tabs.vue -->
 <script setup lang="ts">
-import { ref } from "vue";
+import { computed, ref, watch } from "vue";
+
+import type { SupportedLanguage } from "~/composables/use-code-highlighter";
 
 type Props = {
   align?: "center" | "start" | "end";
   hideCode?: boolean;
   class?: string;
   code?: string;
+  language?: SupportedLanguage;
 };
 
 const props = withDefaults(defineProps<Props>(), {
@@ -16,6 +19,8 @@ const props = withDefaults(defineProps<Props>(), {
 
 const activeTab = ref("preview");
 
+const { highlightCode, detectLanguage, isInitialized } = useCodeHighlighter();
+
 const alignmentClasses = computed(() => {
   const alignMap = {
     center: "items-center",
@@ -24,6 +29,24 @@ const alignmentClasses = computed(() => {
   };
   return alignMap[props.align];
 });
+
+// Compute highlighted HTML
+const highlightedCode = ref("");
+
+// Watch for code changes and re-highlight
+watch(
+  [() => props.code, () => props.language, isInitialized],
+  () => {
+    if (props.code) {
+      console.warn("Highlighting code, initialized:", isInitialized.value);
+      const lang = props.language || detectLanguage(props.code);
+      console.warn("Detected language:", lang);
+      highlightedCode.value = highlightCode(props.code, lang);
+      console.warn("Highlighted code length:", highlightedCode.value.length);
+    }
+  },
+  { immediate: true },
+);
 
 const previewClasses = computed(() => cn(
   "preview flex h-[450px] w-full justify-center p-10 gap-4",
@@ -122,7 +145,7 @@ async function copyCode() {
 
             <!-- Code Content -->
             <div class="flex-1 overflow-auto">
-              <pre class="p-4 text-sm h-full"><code>{{ code }}</code></pre>
+              <div class="h-full" v-html="highlightedCode" />
             </div>
           </div>
         </div>
