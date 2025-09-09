@@ -45,13 +45,24 @@ export default defineNuxtConfig({
 
   // Optimize @nuxt/image for better performance
   image: {
+    // Use ipx provider for static site generation
+    provider: "ipx",
+
     // Global image optimization settings
     quality: 85,
     format: ["webp", "png"], // Try WebP first, fallback to PNG
 
+    // IPX-specific configuration for static generation
+    ipx: {
+      modifiers: {
+        quality: 85,
+        format: "webp",
+      },
+    },
+
     // Presets for common sizes
     presets: {
-      illustration: {
+      "illustration": {
         modifiers: {
           format: "webp",
           width: 400,
@@ -59,6 +70,32 @@ export default defineNuxtConfig({
           quality: 85,
         },
       },
+      "illustration-sm": {
+        modifiers: {
+          format: "webp",
+          width: 200,
+          height: 150,
+          quality: 80,
+        },
+      },
+      "illustration-lg": {
+        modifiers: {
+          format: "webp",
+          width: 600,
+          height: 450,
+          quality: 90,
+        },
+      },
+    },
+
+    // Domains for external images (if needed)
+    domains: [],
+
+    // Static generation specific settings
+    pregenerate: {
+      // Pre-generate optimized images during build
+      sizes: [200, 400, 600],
+      formats: ["webp", "png"],
     },
   },
 

@@ -10,9 +10,8 @@ useHead({
 function getIllustrationPath(illustration?: string) {
   if (!illustration)
     return undefined;
-  const { $config } = useNuxtApp();
-  const baseURL = $config.app.baseURL || "/";
-  return `${baseURL}illustrations/${illustration}`;
+  // Return path relative to public directory - NuxtImg will handle optimization
+  return `/illustrations/${illustration}`;
 }
 
 // Track failed images to show fallback
@@ -72,17 +71,25 @@ onMounted(() => {
             />
           </div>
 
-          <!-- Component illustration (fallback to regular img) -->
-          <img
-            v-if="getIllustrationPath(comp.illustration)"
+          <!-- Component illustration with optimization -->
+          <NuxtImg
+            v-if="getIllustrationPath(comp.illustration) && !shouldShowFallback(comp.name)"
             :src="getIllustrationPath(comp.illustration)"
-            :alt="`${comp.name} illustration`"
+            :alt="`${comp.name} component illustration`"
+            preset="illustration"
+            sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
+            width="400"
+            height="300"
+            format="webp"
+            quality="85"
+            placeholder="blur"
             class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
             :class="{ 'opacity-0': isImageLoading(comp.name) }"
             loading="lazy"
+            densities="1x 2x"
             @load="onImageLoad(comp.name)"
             @error="onImageError(comp.name)"
-          >
+          />
 
           <!-- Fallback when no illustration is available -->
           <div

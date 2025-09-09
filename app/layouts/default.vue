@@ -1,13 +1,5 @@
 <script setup lang="ts">
 import { onMounted } from "vue";
-
-import { useTheme } from "~/composables/use-theme";
-
-const { initTheme } = useTheme();
-
-onMounted(() => {
-  initTheme();
-});
 // Alert visibility state
 const showAlert = ref(false);
 
