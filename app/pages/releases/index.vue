@@ -45,9 +45,9 @@ const { data: releases } = await useAsyncData(route.path, () => {
             <h2 class="text-primary text-2xl font-semibold group-hover:text-blue-600  transition-colors">
               {{ release.title }}
             </h2>
-            <DsBadge>
+            <Badge>
               {{ release.version }}
-            </DsBadge>
+            </Badge>
           </div>
 
           <p class="text-foreground-secondary mb-4">

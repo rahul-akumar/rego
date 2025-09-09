@@ -47,11 +47,11 @@ const styles = {
           >
             <span>{{ comp.name }}</span>
             <!-- New Badge -->
-            <DsBadge
+            <Badge
               v-if="comp.isNew"
             >
               New
-            </DsBadge>
+            </Badge>
           </NuxtLink>
         </li>
       </ul>

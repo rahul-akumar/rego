@@ -129,9 +129,9 @@ definePageMeta({
               <h3 class="font-semibold text-black dark:text-white">
                 {{ component.name }}
               </h3>
-              <DsBadge v-if="component.isNew" size="xs">
+              <Badge v-if="component.isNew" size="xs">
                 New
-              </DsBadge>
+              </Badge>
             </div>
             <p class="text-sm text-neutral-600 dark:text-neutral-400">
               {{ component.description }}

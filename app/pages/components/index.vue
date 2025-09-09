@@ -123,9 +123,9 @@ onMounted(() => {
             v-if="comp.isNew"
             class="absolute top-3 right-3"
           >
-            <DsBadge variant="secondary">
+            <Badge variant="secondary">
               New
-            </DsBadge>
+            </Badge>
           </div>
         </div>
 
@@ -146,9 +146,9 @@ onMounted(() => {
             v-if="comp.category"
             class="mt-4"
           >
-            <ds-badge variant="secondary">
+            <Badge variant="secondary">
               {{ comp.category }}
-            </ds-badge>
+            </Badge>
           </div>
         </div>
 

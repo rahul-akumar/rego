@@ -24,18 +24,18 @@ definePageMeta({
 <Badge variant='destructive'>Destructive</Badge>"
         >
           <div class="flex flex-wrap gap-2">
-            <DsBadge>
+            <Badge>
               Primary
-            </DsBadge>
-            <DsBadge variant="secondary">
+            </Badge>
+            <Badge variant="secondary">
               Secondary
-            </DsBadge>
-            <DsBadge variant="outline">
+            </Badge>
+            <Badge variant="outline">
               Outlined
-            </DsBadge>
-            <DsBadge variant="destructive">
+            </Badge>
+            <Badge variant="destructive">
               Destructive
-            </DsBadge>
+            </Badge>
           </div>
         </UiComponentPreviewTabs>
       </section>
@@ -53,21 +53,21 @@ definePageMeta({
 <Badge>∞</Badge>"
         >
           <div class="flex flex-wrap gap-2">
-            <DsBadge>
+            <Badge>
               0
-            </DsBadge>
-            <DsBadge>
+            </Badge>
+            <Badge>
               99+
-            </DsBadge>
-            <DsBadge>
+            </Badge>
+            <Badge>
               999
-            </DsBadge>
-            <DsBadge>
+            </Badge>
+            <Badge>
               9.9k
-            </DsBadge>
-            <DsBadge>
+            </Badge>
+            <Badge>
               ∞
-            </DsBadge>
+            </Badge>
           </div>
         </UiComponentPreviewTabs>
       </section>
@@ -79,22 +79,22 @@ definePageMeta({
         </h2>
         <UiComponentPreviewTabs hide-code>
           <div class="flex flex-wrap gap-2">
-            <DsBadge>
+            <Badge>
               <Star class="w-3 h-3 mr-1" />
               99
-            </DsBadge>
-            <DsBadge variant="secondary">
+            </Badge>
+            <Badge variant="secondary">
               <Star class="w-3 h-3 mr-1" />
               Starred
-            </DsBadge>
-            <DsBadge variant="outline">
+            </Badge>
+            <Badge variant="outline">
               <Star class="w-3 h-3 mr-1" />
               3
-            </DsBadge>
-            <DsBadge variant="destructive">
+            </Badge>
+            <Badge variant="destructive">
               <Star class="w-3 h-3 mr-1" />
               Error
-            </DsBadge>
+            </Badge>
           </div>
         </UiComponentPreviewTabs>
       </section>

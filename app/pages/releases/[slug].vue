@@ -22,7 +22,7 @@ if (!page.value) {
           ← Back to all releases
         </NuxtLink>
         <div class="border-b pb-4 mb-6">
-          <h1 class="text-4xl font-bold mb-2">
+          <h1 class="text-4xl font-bold mb-2 text-primary">
             {{ page.title }}
           </h1>
           <div class="flex gap-4 text-foreground-secondary">
@@ -32,7 +32,7 @@ if (!page.value) {
         </div>
       </div>
 
-      <ContentRenderer :value="page" />
+      <ContentRenderer :value="page" class="text-primary" />
     </div>
   </div>
 </template>
