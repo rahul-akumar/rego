@@ -46,14 +46,14 @@ yarn add @your-org/rego
 
 ```vue
 <script setup lang="ts">
-import { DsButton, DsBadge, DsAlert, DsInput } from '@your-org/rego'
+import { Button, DsBadge, DsAlert, DsInput } from '@your-org/rego'
 </script>
 
 <template>
   <div>
-    <DsButton variant="primary" @click="handleClick">
+    <Button variant="primary" @click="handleClick">
       Click me
-    </DsButton>
+    </Button>
     
     <DsBadge variant="secondary" label="New" />
     
@@ -95,29 +95,29 @@ import { DsButton, DsBadge, DsAlert, DsInput } from '@your-org/rego'
 
 ```vue
 <!-- Primary button -->
-<DsButton variant="primary">Primary</DsButton>
+<Button variant="primary">Primary</Button>
 
 <!-- Secondary with icon -->
-<DsButton variant="secondary">
+<Button variant="secondary">
   <template #icon>
     <PlusIcon />
   </template>
   Add Item
-</DsButton>
+</Button>
 
 <!-- Loading state -->
-<DsButton loading>Processing...</DsButton>
+<Button loading>Processing...</Button>
 
 <!-- Different sizes -->
-<DsButton size="xs">Extra Small</DsButton>
-<DsButton size="lg">Large</DsButton>
+<Button size="xs">Extra Small</Button>
+<Button size="lg">Large</Button>
 
 <!-- Icon only -->
-<DsButton icon-only>
+<Button icon-only>
   <template #icon>
     <SearchIcon />
   </template>
-</DsButton>
+</Button>
 ```
 
 ### Badge Component
@@ -145,7 +145,7 @@ import { DsButton, DsBadge, DsAlert, DsInput } from '@your-org/rego'
 <!-- With custom actions -->
 <DsAlert message="Custom alert">
   <template #actions>
-    <DsButton size="xs" variant="ghost">Dismiss</DsButton>
+    <Button size="xs" variant="ghost">Dismiss</Button>
   </template>
 </DsAlert>
 ```

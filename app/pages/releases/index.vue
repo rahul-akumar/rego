@@ -58,9 +58,9 @@ const { data: releases } = await useAsyncData(route.path, () => {
             {{ release.description }}
           </div>
 
-          <DsButton variant="link" size="sm">
+          <Button variant="link" size="sm">
             Read release notes →
-          </DsButton>
+          </Button>
         </NuxtLink>
       </article>
     </div>

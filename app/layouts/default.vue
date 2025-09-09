@@ -54,7 +54,7 @@ const styles = {
           message="This alert is controlled from the Alert documentation page!"
         >
           <template #actions>
-            <DsButton
+            <Button
               size="sm"
               variant="ghost"
               icon-only
@@ -64,7 +64,7 @@ const styles = {
               <template #icon>
                 <Icon name="material-symbols:close" />
               </template>
-            </DsButton>
+            </Button>
           </template>
         </DsAlert>
       </div>

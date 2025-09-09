@@ -9,82 +9,82 @@ definePageMeta({
 });
 
 // Code examples
-const defaultButtonCode = `<DsButton>Button</DsButton>`;
+const defaultButtonCode = `<Button>Button</Button>`;
 
 const variantsCode = `<div class="flex flex-wrap gap-4">
-  <DsButton variant="primary">Primary</DsButton>
-  <DsButton variant="secondary">Secondary</DsButton>
-  <DsButton variant="outlined">Outlined</DsButton>
-  <DsButton variant="ghost">Ghost</DsButton>
-  <DsButton variant="link">Link</DsButton>
-  <DsButton variant="destructive">Destructive</DsButton>
+  <Button variant="primary">Primary</Button>
+  <Button variant="secondary">Secondary</Button>
+  <Button variant="outlined">Outlined</Button>
+  <Button variant="ghost">Ghost</Button>
+  <Button variant="link">Link</Button>
+  <Button variant="destructive">Destructive</Button>
 </div>`;
 
 const sizesCode = `<div class="flex items-center gap-4">
-  <DsButton size="xs">XS</DsButton>
-  <DsButton size="sm">Small</DsButton>
-  <DsButton size="md">Medium</DsButton>
-  <DsButton size="lg">Large</DsButton>
-  <DsButton size="xl">XL</DsButton>
+  <Button size="xs">XS</Button>
+  <Button size="sm">Small</Button>
+  <Button size="md">Medium</Button>
+  <Button size="lg">Large</Button>
+  <Button size="xl">XL</Button>
 </div>`;
 
 const iconOnlyCode = `<div class="flex items-center gap-4">
-  <DsButton size="sm" icon-only>
+  <Button size="sm" icon-only>
     <Star class="size-4" />
-  </DsButton>
-  <DsButton size="md" icon-only>
+  </Button>
+  <Button size="md" icon-only>
     <Mail class="size-4" />
-  </DsButton>
-  <DsButton size="lg" icon-only>
+  </Button>
+  <Button size="lg" icon-only>
     <Download class="size-5" />
-  </DsButton>
+  </Button>
 </div>`;
 
 const withIconsCode = `<div class="flex flex-col gap-4">
   <div class="flex gap-4">
-    <DsButton icon-position="left">
+    <Button icon-position="left">
       <template #icon>
         <Mail class="size-4" />
       </template>
       Send Email
-    </DsButton>
-    <DsButton icon-position="right" variant="outlined">
+    </Button>
+    <Button icon-position="right" variant="outlined">
       <template #icon>
         <ChevronRight class="size-4" />
       </template>
       Continue
-    </DsButton>
+    </Button>
   </div>
   <div class="flex gap-4">
-    <DsButton icon-position="top" variant="ghost">
+    <Button icon-position="top" variant="ghost">
       <template #icon>
         <Download class="size-4" />
       </template>
       Download
-    </DsButton>
-    <DsButton icon-position="bottom" variant="secondary">
+    </Button>
+    <Button icon-position="bottom" variant="secondary">
       <template #icon>
         <Star class="size-4" />
       </template>
       Favorite
-    </DsButton>
+    </Button>
   </div>
 </div>`;
 
 const loadingCode = `<div class="flex gap-4">
-  <DsButton loading>Loading</DsButton>
-  <DsButton variant="outlined" loading>Please wait</DsButton>
-  <DsButton variant="ghost" loading size="sm">Processing</DsButton>
+  <Button loading>Loading</Button>
+  <Button variant="outlined" loading>Please wait</Button>
+  <Button variant="ghost" loading size="sm">Processing</Button>
 </div>`;
 
 const disabledCode = `<div class="flex gap-4">
-  <DsButton disabled>Disabled</DsButton>
-  <DsButton variant="outlined" disabled>Disabled</DsButton>
-  <DsButton variant="ghost" disabled>Disabled</DsButton>
+  <Button disabled>Disabled</Button>
+  <Button variant="outlined" disabled>Disabled</Button>
+  <Button variant="ghost" disabled>Disabled</Button>
 </div>`;
 
 const invertedCode = `<div class="bg-black p-6 rounded-lg space-y-4">
-    <DsButton inverted>Inverted Primary</DsButton>
+    <Button inverted>Inverted Primary</Button>
 </div>`;
 </script>
 
@@ -105,9 +105,9 @@ const invertedCode = `<div class="bg-black p-6 rounded-lg space-y-4">
           description="The default button component."
           :code="defaultButtonCode"
         >
-          <DsButton>
+          <Button>
             Button
-          </DsButton>
+          </Button>
         </UiComponentPreviewTabs>
       </section>
 
@@ -122,24 +122,24 @@ const invertedCode = `<div class="bg-black p-6 rounded-lg space-y-4">
           :code="variantsCode"
           class-name="flex flex-wrap gap-4 p-6"
         >
-          <DsButton>
+          <Button>
             Primary
-          </DsButton>
-          <DsButton variant="secondary">
+          </Button>
+          <Button variant="secondary">
             Secondary
-          </DsButton>
-          <DsButton variant="outline">
+          </Button>
+          <Button variant="outline">
             Outlined
-          </DsButton>
-          <DsButton variant="ghost">
+          </Button>
+          <Button variant="ghost">
             Ghost
-          </DsButton>
-          <DsButton variant="link">
+          </Button>
+          <Button variant="link">
             Link
-          </DsButton>
-          <DsButton variant="destructive">
+          </Button>
+          <Button variant="destructive">
             Destructive
-          </DsButton>
+          </Button>
         </UiComponentPreviewTabs>
       </section>
 
@@ -154,15 +154,15 @@ const invertedCode = `<div class="bg-black p-6 rounded-lg space-y-4">
           :code="sizesCode"
           class-name="flex items-center gap-4 p-6"
         >
-          <DsButton size="sm">
+          <Button size="sm">
             Small
-          </DsButton>
-          <DsButton>
+          </Button>
+          <Button>
             Medium
-          </DsButton>
-          <DsButton size="lg">
+          </Button>
+          <Button size="lg">
             Large
-          </DsButton>
+          </Button>
         </UiComponentPreviewTabs>
       </section>
 
@@ -177,15 +177,15 @@ const invertedCode = `<div class="bg-black p-6 rounded-lg space-y-4">
           :code="iconOnlyCode"
           class-name="flex items-center gap-4 p-6"
         >
-          <DsButton size="sm" icon-only>
+          <Button size="sm" icon-only>
             <Star class="size-4" />
-          </DsButton>
-          <DsButton icon-only>
+          </Button>
+          <Button icon-only>
             <Mail class="size-4" />
-          </DsButton>
-          <DsButton size="lg" icon-only>
+          </Button>
+          <Button size="lg" icon-only>
             <Download class="size-5" />
-          </DsButton>
+          </Button>
         </UiComponentPreviewTabs>
       </section>
 
@@ -202,32 +202,32 @@ const invertedCode = `<div class="bg-black p-6 rounded-lg space-y-4">
         >
           <div class="flex flex-col gap-4">
             <div class="flex gap-4">
-              <DsButton icon-position="left">
+              <Button icon-position="left">
                 <template #icon>
                   <Mail class="size-4" />
                 </template>
                 Send Email
-              </DsButton>
-              <DsButton icon-position="right" variant="outline">
+              </Button>
+              <Button icon-position="right" variant="outline">
                 <template #icon>
                   <ChevronRight class="size-4" />
                 </template>
                 Continue
-              </DsButton>
+              </Button>
             </div>
             <div class="flex gap-4">
-              <DsButton icon-position="top" variant="ghost">
+              <Button icon-position="top" variant="ghost">
                 <template #icon>
                   <Download class="size-4" />
                 </template>
                 Download
-              </DsButton>
-              <DsButton icon-position="bottom" variant="secondary">
+              </Button>
+              <Button icon-position="bottom" variant="secondary">
                 <template #icon>
                   <Star class="size-4" />
                 </template>
                 Favorite
-              </DsButton>
+              </Button>
             </div>
           </div>
         </UiComponentPreviewTabs>
@@ -244,15 +244,15 @@ const invertedCode = `<div class="bg-black p-6 rounded-lg space-y-4">
           :code="loadingCode"
           class-name="flex gap-4 p-6"
         >
-          <DsButton :loading="true">
+          <Button :loading="true">
             Loading
-          </DsButton>
-          <DsButton variant="outline" :loading="true">
+          </Button>
+          <Button variant="outline" :loading="true">
             Please wait
-          </DsButton>
-          <DsButton variant="ghost" :loading="true">
+          </Button>
+          <Button variant="ghost" :loading="true">
             Processing
-          </DsButton>
+          </Button>
         </UiComponentPreviewTabs>
       </section>
 
@@ -267,15 +267,15 @@ const invertedCode = `<div class="bg-black p-6 rounded-lg space-y-4">
           :code="disabledCode"
           class-name="flex gap-4 p-6"
         >
-          <DsButton :disabled="true">
+          <Button :disabled="true">
             Disabled
-          </DsButton>
-          <DsButton variant="outline" :disabled="true">
+          </Button>
+          <Button variant="outline" :disabled="true">
             Disabled
-          </DsButton>
-          <DsButton variant="ghost" :disabled="true">
+          </Button>
+          <Button variant="ghost" :disabled="true">
             Disabled
-          </DsButton>
+          </Button>
         </UiComponentPreviewTabs>
       </section>
 
@@ -291,9 +291,9 @@ const invertedCode = `<div class="bg-black p-6 rounded-lg space-y-4">
           class="[&_.preview]:rounded-lg [&_.preview]:bg-black [&_.preview]:text-white dark:[&_.preview]:bg-white dark:[&_.preview]:text-black"
         >
           <div>
-            <DsButton :inverted="true">
+            <Button :inverted="true">
               Inverted button
-            </DsButton>
+            </Button>
           </div>
         </UiComponentPreviewTabs>
       </section>

@@ -51,9 +51,9 @@ const styles = {
           Click the button below to toggle the alert in the application header.
         </p>
         <div :class="styles.inspectFrame">
-          <DsButton @click="toggleAppAlert">
+          <Button @click="toggleAppAlert">
             {{ showAppAlert ? "Hide alert" : "Show alert" }}
-          </DsButton>
+          </Button>
         </div>
       </section>
 
@@ -67,9 +67,9 @@ const styles = {
             Click the button below to toggle the alert in the application header.
           </p>
           <div>
-            <DsButton @click="toggleAppAlert">
+            <Button @click="toggleAppAlert">
               {{ showAppAlert ? "Hide App Alert" : "Show App Alert" }}
-            </DsButton>
+            </Button>
           </div>
         </div>
       </section>
@@ -117,16 +117,16 @@ const styles = {
                 </div>
               </template>
               <template #button>
-                <DsButton size="sm" variant="outline">
+                <Button size="sm" variant="outline">
                   Take Action
-                </DsButton>
+                </Button>
               </template>
               <template #actions>
-                <DsButton size="sm" variant="ghost" icon-only inverted>
+                <Button size="sm" variant="ghost" icon-only inverted>
                   <template #icon>
                     <X class="size-5" />
                   </template>
-                </DsButton>
+                </Button>
               </template>
             </DsAlert>
           </div>

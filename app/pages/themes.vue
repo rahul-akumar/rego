@@ -101,20 +101,20 @@ definePageMeta({
               </p>
             </div>
             <div class="flex gap-2">
-              <DsButton
+              <Button
                 size="sm"
                 @click="previewTheme(theme.id)"
               >
                 <Eye v-if="colorTheme !== theme.id" class="size-4" />
                 <EyeOff v-else class="size-4" />
                 {{ colorTheme === theme.id ? 'Hide' : 'Preview' }}
-              </DsButton>
-              <DsButton
+              </Button>
+              <Button
                 size="sm"
                 @click="toggleMode()"
               >
                 Switch mode
-              </DsButton>
+              </Button>
             </div>
           </div>
 
@@ -206,7 +206,7 @@ definePageMeta({
 
       <div :class="styles.inspectFrame">
         <div class="flex flex-col items-center gap-4">
-          <DsButton>Primary Button</DsButton>
+          <Button>Primary Button</Button>
           <DsInput placeholder="Sample input field" class="w-64" />
           <div class="flex gap-2">
             <div class="px-4 py-2 rounded bg-primary text-primary-foreground">

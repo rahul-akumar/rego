@@ -48,21 +48,21 @@ function getButtonVariant(item: typeof navigationItems[0]) {
         :key="item.path"
         :to="item.path"
       >
-        <DsButton :variant="getButtonVariant(item)">
+        <Button :variant="getButtonVariant(item)">
           {{ item.name }}
-        </DsButton>
+        </Button>
       </NuxtLink>
     </section>
     <div class="flex gap-2">
       <!-- Theme Cycle Button -->
-      <DsButton size="sm" :title="colorTheme" @click="cycleTheme">
+      <Button size="sm" :title="colorTheme" @click="cycleTheme">
         <PaintBucket class="size-4" />
-      </DsButton>
+      </Button>
 
       <!-- Dark Mode Toggle Button -->
-      <DsButton size="sm" title="Toggle mode" @click="toggleMode">
+      <Button size="sm" title="Toggle mode" @click="toggleMode">
         <SunMoon class="size-4" />
-      </DsButton>
+      </Button>
     </div>
   </main>
 </template>
