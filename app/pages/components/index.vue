@@ -6,15 +6,21 @@ useHead({
   title: "Components -",
 });
 
-// Get illustration path from component configuration
-function getIllustrationPath(illustration?: string) {
+// Get illustration path from component configuration with size variant
+function getIllustrationPath(illustration?: string, size: "sm" | "default" | "lg" = "default") {
   if (!illustration)
     return undefined;
-  // Return path relative to public directory - NuxtImg will handle optimization
-  return `/illustrations/${illustration}`;
+  const { $config } = useNuxtApp();
+  const baseURL = $config.app.baseURL || "/";
+
+  // Only use optimized WebP images - no fallback to large PNGs
+  const baseName = illustration.replace(".png", "");
+  const suffix = size === "default" ? "" : `-${size}`;
+  return `${baseURL}illustrations/optimized/${baseName}${suffix}.webp`;
 }
 
-// Track failed images to show fallback
+// Track failed images to show fallback icon
+// Note: Images should be optimized using `pnpm optimize:images` before deployment
 const failedImages = ref(new Set<string>());
 const loadingImages = ref(new Set<string>());
 
@@ -23,6 +29,7 @@ function onImageLoad(componentName: string) {
 }
 
 function onImageError(componentName: string) {
+  console.warn(`Failed to load optimized image for ${componentName}. Run 'pnpm optimize:images' to generate WebP versions.`);
   failedImages.value.add(componentName);
   loadingImages.value.delete(componentName);
 }
@@ -71,25 +78,23 @@ onMounted(() => {
             />
           </div>
 
-          <!-- Component illustration with optimization -->
-          <NuxtImg
+          <!-- Component illustration - WebP only (optimized) -->
+          <img
             v-if="getIllustrationPath(comp.illustration) && !shouldShowFallback(comp.name)"
-            :src="getIllustrationPath(comp.illustration)"
+            :src="getIllustrationPath(comp.illustration, 'default')"
+            :srcset="`${getIllustrationPath(comp.illustration, 'sm')} 200w,
+                     ${getIllustrationPath(comp.illustration, 'default')} 400w,
+                     ${getIllustrationPath(comp.illustration, 'lg')} 600w`"
+            sizes="(max-width: 640px) 200px, (max-width: 768px) 400px, 400px"
             :alt="`${comp.name} component illustration`"
-            preset="illustration"
-            sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
             width="400"
             height="300"
-            format="webp"
-            quality="85"
-            placeholder="blur"
             class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
             :class="{ 'opacity-0': isImageLoading(comp.name) }"
             loading="lazy"
-            densities="1x 2x"
             @load="onImageLoad(comp.name)"
             @error="onImageError(comp.name)"
-          />
+          >
 
           <!-- Fallback when no illustration is available -->
           <div

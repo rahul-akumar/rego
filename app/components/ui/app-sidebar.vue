@@ -7,7 +7,7 @@ const introPages = [
 ];
 
 const styles = {
-  navBar: "flex-col fixed pt-6 top-17 w-60 h-full px-6 z-30 bg-background/10 backdrop-blur-md",
+  navBar: "flex-col sticky pt-6 top-17 w-60 h-full px-6 z-30 bg-background/10 backdrop-blur-md",
   navLink: "flex p-2 rounded-sm hover:bg-primary/10 text-foreground text-base",
 };
 </script>

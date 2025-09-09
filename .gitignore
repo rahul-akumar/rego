@@ -29,3 +29,6 @@ logs
 copilot-instructions.md
 copilot-commit-message-instructions.md
 .cursorrules
+
+# Scripts
+scripts/optimize-images.mjs
