@@ -1,37 +1,16 @@
 <script setup lang="ts">
 import { computed } from "vue";
 
-type Props = {
-  /**
-   * Size of the loader
-   */
-  size?: "xs" | "sm" | "default" | "lg" | "xl";
-  /**
-   * Visual variant of the indicator stroke
-   */
-  variant?: "solid" | "dashed" | "dotted";
-  /**
-   * Animation speed
-   */
-  speed?: "default" | "fast" | "slow";
-  /**
-   * Additional class names
-   */
-  class?: string;
-  /**
-   * Accessible label for screen readers
-   */
-  label?: string;
-};
+import type { ThrobberProps } from "./types";
 
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<ThrobberProps>(), {
   size: "default",
   variant: "solid",
   speed: "default",
   label: "Loading",
 });
 
-const sizePxMap: Record<NonNullable<Props["size"]>, number> = {
+const sizePxMap: Record<NonNullable<ThrobberProps["size"]>, number> = {
   xs: 16,
   sm: 20,
   default: 24,
@@ -39,7 +18,7 @@ const sizePxMap: Record<NonNullable<Props["size"]>, number> = {
   xl: 40,
 };
 
-const strokeWidthMap: Record<NonNullable<Props["size"]>, number> = {
+const strokeWidthMap: Record<NonNullable<ThrobberProps["size"]>, number> = {
   xs: 2,
   sm: 2,
   default: 3,
@@ -94,10 +73,10 @@ const rootClasses = computed(() =>
     role="status"
     aria-live="polite"
     :aria-label="label"
-    data-slot="loader"
+    data-slot="throbber"
   >
     <!--
-      SVG-based loader:
+      SVG-based throbber:
       - Track circle uses currentColor with low opacity
       - Arc path uses currentColor
       - The whole SVG spins with Tailwind's animate-spin

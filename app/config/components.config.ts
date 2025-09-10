@@ -61,13 +61,13 @@ export const componentsConfig: Record<string, ComponentMeta> = {
     category: "navigation",
     illustration: "breadcrumb.png",
   },
-  "loader": {
-    name: "Loader",
+  "throbber": {
+    name: "Throbber",
     description: "Animated spinner to indicate background processing",
     dateAdded: "2025-08-16",
     isNew: true,
     category: "feedback",
-    illustration: "loader.png",
+    illustration: "throbber.png",
   },
   "dropdown-menu": {
     name: "Dropdown Menu",

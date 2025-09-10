@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { name, description, category } = useComponent("loader");
+const { name, description, category } = useComponent("throbber");
 
 definePageMeta({
   title: name,
@@ -7,34 +7,34 @@ definePageMeta({
 });
 
 // Code examples
-const defaultCode = `<DsLoader />`;
+const defaultCode = `<Throbber />`;
 
 const sizesCode = `<div class="flex items-center gap-4">
-  <DsLoader size="xs" />
-  <DsLoader size="sm" />
-  <DsLoader />
-  <DsLoader size="lg" />
-  <DsLoader size="xl" />
+  <Throbber size="xs" />
+  <Throbber size="sm" />
+  <Throbber />
+  <Throbber size="lg" />
+  <Throbber size="xl" />
 </div>`;
 
 const variantsCode = `<div class="flex items-center gap-4">
-  <DsLoader variant="solid" />
-  <DsLoader variant="dashed" />
-  <DsLoader variant="dotted" />
+  <Throbber variant="solid" />
+  <Throbber variant="dashed" />
+  <Throbber variant="dotted" />
 </div>`;
 
 const speedsCode = `<div class="flex items-center gap-4">
-  <DsLoader speed="slow" />
-  <DsLoader />
-  <DsLoader speed="fast" />
+  <Throbber speed="slow" />
+  <Throbber />
+  <Throbber speed="fast" />
 </div>`;
 
 const inlineCode = `<span class="inline-flex items-center gap-2 text-sm">
   Loading data
-  <DsLoader size="sm" />
+  <Throbber size="sm" />
 </span>`;
 
-const accessibilityCode = `<DsLoader label="Loading user profile" />`;
+const accessibilityCode = `<Throbber label="Loading user profile" />`;
 </script>
 
 <template>
@@ -51,10 +51,10 @@ const accessibilityCode = `<DsLoader label="Loading user profile" />`;
         </h2>
         <UiComponentPreviewTabs
           title="Default"
-          description="The default loader uses the primary color and spins continuously."
+          description="The default throbber uses the primary color and spins continuously."
           :code="defaultCode"
         >
-          <DsLoader />
+          <Throbber />
         </UiComponentPreviewTabs>
       </section>
 
@@ -65,16 +65,16 @@ const accessibilityCode = `<DsLoader label="Loading user profile" />`;
         </h2>
         <UiComponentPreviewTabs
           title="Sizes"
-          description="Use size to scale the loader for different contexts."
+          description="Use size to scale the throbber for different contexts."
           :code="sizesCode"
           class-name="flex items-center gap-4 p-6"
         >
           <div class="flex items-center gap-8">
-            <DsLoader size="xs" />
-            <DsLoader size="sm" />
-            <DsLoader />
-            <DsLoader size="lg" />
-            <DsLoader size="xl" />
+            <Throbber size="xs" />
+            <Throbber size="sm" />
+            <Throbber />
+            <Throbber size="lg" />
+            <Throbber size="xl" />
           </div>
         </UiComponentPreviewTabs>
       </section>
@@ -91,9 +91,9 @@ const accessibilityCode = `<DsLoader label="Loading user profile" />`;
           class-name="flex items-center gap-4 p-6"
         >
           <div class="flex items-center gap-8">
-            <DsLoader variant="solid" size="xl" />
-            <DsLoader variant="dashed" size="xl" />
-            <DsLoader variant="dotted" size="xl" />
+            <Throbber variant="solid" size="xl" />
+            <Throbber variant="dashed" size="xl" />
+            <Throbber variant="dotted" size="xl" />
           </div>
         </UiComponentPreviewTabs>
       </section>
@@ -110,9 +110,9 @@ const accessibilityCode = `<DsLoader label="Loading user profile" />`;
           class-name="flex items-center gap-4 p-6"
         >
           <div class="flex items-center gap-8">
-            <DsLoader speed="slow" size="xl" />
-            <DsLoader size="xl" />
-            <DsLoader speed="fast" size="xl" />
+            <Throbber speed="slow" size="xl" />
+            <Throbber size="xl" />
+            <Throbber speed="fast" size="xl" />
           </div>
         </UiComponentPreviewTabs>
       </section>
@@ -124,13 +124,13 @@ const accessibilityCode = `<DsLoader label="Loading user profile" />`;
         </h2>
         <UiComponentPreviewTabs
           title="Inline usage"
-          description="Place the loader next to text or other UI to indicate background activity."
+          description="Place the throbber next to text or other UI to indicate background activity."
           :code="inlineCode"
           class-name="p-6"
         >
           <span class="inline-flex items-center gap-2 text-sm">
             Loading data
-            <DsLoader size="sm" />
+            <Throbber size="sm" />
           </span>
         </UiComponentPreviewTabs>
       </section>
@@ -146,7 +146,7 @@ const accessibilityCode = `<DsLoader label="Loading user profile" />`;
           :code="accessibilityCode"
           class-name="p-6"
         >
-          <DsLoader label="Loading user profile" />
+          <Throbber label="Loading user profile" />
         </UiComponentPreviewTabs>
       </section>
     </div>

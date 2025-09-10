@@ -60,7 +60,7 @@ function handleClick(event: MouseEvent) {
     @click="handleClick"
   >
     <!-- Loading spinner -->
-    <DsLoader
+    <Throbber
       v-if="loading"
       size="xs"
       class="!text-current"

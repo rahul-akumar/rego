@@ -72,7 +72,7 @@ onMounted(() => {
             v-if="isImageLoading(comp.name) && getIllustrationPath(comp.illustration)"
             class="absolute inset-0 flex items-center justify-center bg-gray-100 dark:bg-gray-800 animate-pulse"
           >
-            <DsLoader
+            <Throbber
               size="sm"
               label="Loading component illustration"
             />
