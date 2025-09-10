@@ -15,7 +15,6 @@ Files should be named as specified in the component configuration:
 - `button.png` - Button component illustration
 - `dropdown.png` - Dropdown Menu component illustration
 - `input.png` - Input component illustration
-- `line-chart.png` - Line Chart component illustration
 - `loader.png` - Loader component illustration
 - `pin-input.png` - Pin Input component illustration
 - `breadcrumb.png` - Breadcrumb component illustration

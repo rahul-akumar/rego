@@ -36,8 +36,8 @@ const styles = {
         </h2>
         <UiComponentPreviewTabs hide-code>
           <div class="flex flex-col gap-4 max-w-xl">
-            <DsAlert message="This is a default alert." />
-            <DsAlert important message="This is an important alert!" />
+            <Alert message="This is a default alert." />
+            <Alert important message="This is an important alert!" />
           </div>
         </UiComponentPreviewTabs>
       </section>
@@ -81,12 +81,12 @@ const styles = {
         </h2>
         <UiComponentPreviewTabs hide-code>
           <div class="flex flex-col gap-4 max-w-xl">
-            <DsAlert>
+            <Alert>
               <template #default>
                 This alert uses the default slot for custom content.
               </template>
-            </DsAlert>
-            <DsAlert important>
+            </Alert>
+            <Alert important>
               <template #icon>
                 <Plus class="size-5" />
               </template>
@@ -94,7 +94,7 @@ const styles = {
                 <span class="font-bold">Important:</span> This alert uses slots with
                 custom formatting.
               </template>
-            </DsAlert>
+            </Alert>
           </div>
         </UiComponentPreviewTabs>
       </section>
@@ -106,7 +106,7 @@ const styles = {
         </h2>
         <UiComponentPreviewTabs hide-code>
           <div class="flex flex-col gap-4 max-w-xl">
-            <DsAlert important>
+            <Alert important>
               <template #icon>
                 <Bell class="size-4" />
               </template>
@@ -128,7 +128,7 @@ const styles = {
                   </template>
                 </Button>
               </template>
-            </DsAlert>
+            </Alert>
           </div>
         </UiComponentPreviewTabs>
       </section>

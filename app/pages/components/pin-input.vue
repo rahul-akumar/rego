@@ -18,17 +18,17 @@ const sizeLg = ref("");
 const disabledPin = ref("123456");
 
 // Code blocks
-const basicCode = `<DsPinInput v-model="pin" :length="6" />`;
+const basicCode = `<PinInput v-model="pin" :length="6" />`;
 
-const maskCode = `<DsPinInput v-model="pin" :length="6" :mask="true" />`;
+const maskCode = `<PinInput v-model="pin" :length="6" :mask="true" />`;
 
-const lenCode = `<DsPinInput v-model="pin" :length="4" />`;
+const lenCode = `<PinInput v-model="pin" :length="4" />`;
 
-const sizesCode = `<DsPinInput v-model="sm" size="sm" />
-<DsPinInput v-model="df" size="default" />
-<DsPinInput v-model="lg" size="lg" />`;
+const sizesCode = `<PinInput v-model="sm" size="sm" />
+<PinInput v-model="df" size="default" />
+<PinInput v-model="lg" size="lg" />`;
 
-const disabledCode = `<DsPinInput v-model="value" disabled />`;
+const disabledCode = `<PinInput v-model="value" disabled />`;
 
 function onComplete(value: string) {
   // eslint-disable-next-line no-alert
@@ -41,12 +41,12 @@ function onComplete(value: string) {
     <div class="space-y-8">
       <!-- Default -->
       <section class="space-y-4">
-        <h2 class="text-xl font-semibold">
+        <h2 class="text-xl font-semibold text-foreground">
           Default
         </h2>
         <UiComponentPreviewTabs title="Default" description="Basic 6-digit PIN input." :code="basicCode">
           <div class="flex flex-col items-center gap-2">
-            <DsPinInput v-model="pin" :length="6" @complete="onComplete" />
+            <PinInput v-model="pin" :length="6" @complete="onComplete" />
             <div class="text-sm text-muted-foreground">
               Value: {{ pin }}
             </div>
@@ -56,12 +56,12 @@ function onComplete(value: string) {
 
       <!-- Masked -->
       <section class="space-y-4">
-        <h2 class="text-xl font-semibold">
+        <h2 class="text-xl font-semibold text-foreground">
           Masked
         </h2>
         <UiComponentPreviewTabs title="Masked" description="Mask characters with password type." :code="maskCode">
           <div class="flex flex-col items-center gap-2">
-            <DsPinInput v-model="maskedPin" :length="6" :mask="true" />
+            <PinInput v-model="maskedPin" :length="6" :mask="true" />
             <div class="text-sm text-muted-foreground">
               Value: {{ maskedPin }}
             </div>
@@ -71,12 +71,12 @@ function onComplete(value: string) {
 
       <!-- Length -->
       <section class="space-y-4">
-        <h2 class="text-xl font-semibold">
+        <h2 class="text-xl font-semibold text-foreground">
           Length
         </h2>
         <UiComponentPreviewTabs title="Length" description="4-digit configuration." :code="lenCode">
           <div class="flex flex-col items-center gap-2">
-            <DsPinInput v-model="pin4" :length="4" />
+            <PinInput v-model="pin4" :length="4" />
             <div class="text-sm text-muted-foreground">
               Value: {{ pin4 }}
             </div>
@@ -86,25 +86,25 @@ function onComplete(value: string) {
 
       <!-- Sizes -->
       <section class="space-y-4">
-        <h2 class="text-xl font-semibold">
+        <h2 class="text-xl font-semibold text-foreground">
           Sizes
         </h2>
         <UiComponentPreviewTabs title="Sizes" description="Small, default and large cell sizes." :code="sizesCode">
           <div class="flex flex-col items-center gap-4">
-            <DsPinInput v-model="sizeSm" size="sm" />
-            <DsPinInput v-model="sizeDf" size="default" />
-            <DsPinInput v-model="sizeLg" size="lg" />
+            <PinInput v-model="sizeSm" size="sm" />
+            <PinInput v-model="sizeDf" size="default" />
+            <PinInput v-model="sizeLg" size="lg" />
           </div>
         </UiComponentPreviewTabs>
       </section>
 
       <!-- Disabled -->
       <section class="space-y-4">
-        <h2 class="text-xl font-semibold">
+        <h2 class="text-xl font-semibold text-foreground">
           Disabled
         </h2>
         <UiComponentPreviewTabs title="Disabled" description="Non-interactive state." :code="disabledCode">
-          <DsPinInput v-model="disabledPin" disabled />
+          <PinInput v-model="disabledPin" disabled />
         </UiComponentPreviewTabs>
       </section>
     </div>

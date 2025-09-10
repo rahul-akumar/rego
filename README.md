@@ -46,7 +46,7 @@ yarn add @your-org/rego
 
 ```vue
 <script setup lang="ts">
-import { Button, DsBadge, DsAlert, DsInput } from '@your-org/rego'
+import { Button, Alert, DsBadge, DsInput } from '@your-org/rego'
 </script>
 
 <template>
@@ -57,7 +57,7 @@ import { Button, DsBadge, DsAlert, DsInput } from '@your-org/rego'
     
     <DsBadge variant="secondary" label="New" />
     
-    <DsAlert message="Welcome to REGO!" />
+    <Alert message="Welcome to REGO!" />
     
     <DsInput v-model="value" placeholder="Enter text..." />
   </div>
@@ -137,17 +137,17 @@ import { Button, DsBadge, DsAlert, DsInput } from '@your-org/rego'
 
 ```vue
 <!-- Basic alert -->
-<DsAlert message="This is an alert message" />
+<Alert message="This is an alert message" />
 
 <!-- Important alert -->
-<DsAlert important message="Important notification!" />
+<Alert important message="Important notification!" />
 
 <!-- With custom actions -->
-<DsAlert message="Custom alert">
+<Alert message="Custom alert">
   <template #actions>
     <Button size="xs" variant="ghost">Dismiss</Button>
   </template>
-</DsAlert>
+</Alert>
 ```
 
 ## 🛠️ Development

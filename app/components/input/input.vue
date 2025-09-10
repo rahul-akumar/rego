@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { computed } from "vue";
 
-import type { InputEmits, InputProps } from "../../../src/types/input";
+import type { InputEmits, InputProps } from "./types";
 
-import { inputVariants } from "../../../src/styles/variants/input";
+import { inputVariants } from "./variants";
 
 const props = withDefaults(defineProps<InputProps>(), {
   type: "text",
@@ -50,29 +50,34 @@ function handleKeyup(event: KeyboardEvent) {
 </script>
 
 <template>
-  <input
-    :id="id"
-    :name="name"
-    :value="modelValue"
-    :placeholder="placeholder"
-    :type="type"
-    :disabled="disabled"
-    :required="required"
-    :readonly="readonly"
-    :autocomplete="autocomplete"
-    :min="min"
-    :max="max"
-    :step="step"
-    :pattern="pattern"
-    :maxlength="maxlength"
-    :minlength="minlength"
-    :class="inputClasses"
-    v-bind="$attrs"
-    @input="handleInput"
-    @change="handleChange"
-    @focus="handleFocus"
-    @blur="handleBlur"
-    @keydown="handleKeydown"
-    @keyup="handleKeyup"
-  >
+  <div class="flex flex-col gap-1.5">
+    <label v-if="label" :for="id" class="text-sm font-medium text-primary">
+      {{ label }}
+    </label>
+    <input
+      :id="id"
+      :name="name"
+      :value="modelValue"
+      :placeholder="placeholder"
+      :type="type"
+      :disabled="disabled"
+      :required="required"
+      :readonly="readonly"
+      :autocomplete="autocomplete"
+      :min="min"
+      :max="max"
+      :step="step"
+      :pattern="pattern"
+      :maxlength="maxlength"
+      :minlength="minlength"
+      :class="inputClasses"
+      v-bind="$attrs"
+      @input="handleInput"
+      @change="handleChange"
+      @focus="handleFocus"
+      @blur="handleBlur"
+      @keydown="handleKeydown"
+      @keyup="handleKeyup"
+    >
+  </div>
 </template>

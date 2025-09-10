@@ -48,7 +48,7 @@ const styles = {
       leave-to-class="transform -translate-y-full opacity-0"
     >
       <div v-if="showAlert" class="fixed w-full px-6 z-40">
-        <DsAlert
+        <Alert
           important
           class="rounded-b-lg"
           message="This alert is controlled from the Alert documentation page!"
@@ -66,7 +66,7 @@ const styles = {
               </template>
             </Button>
           </template>
-        </DsAlert>
+        </Alert>
       </div>
     </Transition>
 

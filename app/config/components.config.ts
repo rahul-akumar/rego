@@ -45,14 +45,6 @@ export const componentsConfig: Record<string, ComponentMeta> = {
     category: "form",
     illustration: "pin-input.png",
   },
-  "line-chart": {
-    name: "Line Chart",
-    description: "Interactive line chart for data visualization",
-    dateAdded: "2025-08-11",
-    isNew: true,
-    category: "chart",
-    illustration: "line-chart.png",
-  },
   "breadcrumb": {
     name: "Breadcrumb",
     description: "Displays the path to the current resource using a hierarchy of links.",

@@ -22,38 +22,31 @@ const sizeValues = ref({
 });
 
 // Code examples
-const defaultInputCode = `<DsInput v-model="value" placeholder="Email" />`;
+const defaultInputCode = `<Input v-model="value" placeholder="Email" />`;
 
-const typesCode = `<DsInput v-model="email" type="email" placeholder="Email" />
-<DsInput v-model="password" type="password" placeholder="Password" />
-<DsInput v-model="number" type="number" placeholder="Number" />
-<DsInput type="file" />`;
+const typesCode = `<Input v-model="email" type="email" placeholder="Email" />
+<Input v-model="password" type="password" placeholder="Password" />
+<Input v-model="number" type="number" placeholder="Number" />
+<Input type="file" />`;
 
-const sizesCode = `<DsInput v-model="value" size="sm" placeholder="Small" />
-<DsInput v-model="value" size="default" placeholder="Default" />
-<DsInput v-model="value" size="lg" placeholder="Large" />`;
+const sizesCode = `<Input v-model="value" size="sm" placeholder="Small" />
+<Input v-model="value" size="default" placeholder="Default" />
+<Input v-model="value" size="lg" placeholder="Large" />`;
 
-const withLabelCode = `<div class="grid w-full max-w-sm items-center gap-1.5">
-  <label for="email" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-    Email
-  </label>
-  <DsInput id="email" v-model="email" type="email" placeholder="Enter your email" />
-</div>`;
+const withLabelCode = `
+  <Input id="email" v-model="email" type="email" placeholder="Enter your email" label="Email" />`;
 
-const disabledCode = `<DsInput v-model="value" disabled placeholder="Disabled" />`;
+const disabledCode = `<Input v-model="value" disabled placeholder="Disabled" />`;
 
-const fileInputCode = `<div class="grid w-full max-w-sm items-center gap-1.5">
-  <label for="picture" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-    Picture
-  </label>
-  <DsInput id="picture" type="file" />
-</div>`;
+const fileInputCode = `
+  <Input id="picture" type="file" />
+`;
 
 const withTextCode = `<div class="grid w-full max-w-sm items-center gap-1.5">
   <label for="email-2" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
     Email
   </label>
-  <DsInput id="email-2" v-model="email" type="email" placeholder="Email" />
+  <Input id="email-2" v-model="email" type="email" placeholder="Email" />
   <p class="text-sm text-muted-foreground">Enter your email address.</p>
 </div>`;
 </script>
@@ -67,7 +60,7 @@ const withTextCode = `<div class="grid w-full max-w-sm items-center gap-1.5">
     <div class="space-y-8">
       <!-- Default -->
       <section class="space-y-4">
-        <h2 class="text-xl font-semibold">
+        <h2 class="text-xl font-semibold text-primary">
           Default
         </h2>
         <UiComponentPreviewTabs
@@ -75,13 +68,13 @@ const withTextCode = `<div class="grid w-full max-w-sm items-center gap-1.5">
           description="The default input component."
           :code="defaultInputCode"
         >
-          <DsInput v-model="basicValue" placeholder="Email" />
+          <Input v-model="basicValue" placeholder="Email" />
         </UiComponentPreviewTabs>
       </section>
 
       <!-- File -->
       <section class="space-y-4">
-        <h2 class="text-xl font-semibold">
+        <h2 class="text-xl font-semibold text-primary">
           File
         </h2>
         <UiComponentPreviewTabs
@@ -89,18 +82,15 @@ const withTextCode = `<div class="grid w-full max-w-sm items-center gap-1.5">
           description="File input with label."
           :code="fileInputCode"
         >
-          <div class="grid w-full max-w-sm items-center gap-1.5">
-            <label for="picture" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-              Picture
-            </label>
-            <DsInput id="picture" type="file" />
+          <div class="flex w-full justify-center">
+            <Input id="picture" type="file" label="Picture" />
           </div>
         </UiComponentPreviewTabs>
       </section>
 
       <!-- With Label -->
       <section class="space-y-4">
-        <h2 class="text-xl font-semibold">
+        <h2 class="text-xl font-semibold text-primary">
           With Label
         </h2>
         <UiComponentPreviewTabs
@@ -108,18 +98,15 @@ const withTextCode = `<div class="grid w-full max-w-sm items-center gap-1.5">
           description="Input with proper labeling for accessibility."
           :code="withLabelCode"
         >
-          <div class="grid w-full max-w-sm items-center gap-1.5">
-            <label for="email" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-              Email
-            </label>
-            <DsInput id="email" v-model="emailValue" type="email" placeholder="Enter your email" />
+          <div class="flex w-full justify-center">
+            <Input id="email" v-model="emailValue" type="email" placeholder="Enter your email" label="Email" />
           </div>
         </UiComponentPreviewTabs>
       </section>
 
       <!-- With Text -->
       <section class="space-y-4">
-        <h2 class="text-xl font-semibold">
+        <h2 class="text-xl font-semibold text-primary">
           With Text
         </h2>
         <UiComponentPreviewTabs
@@ -127,11 +114,8 @@ const withTextCode = `<div class="grid w-full max-w-sm items-center gap-1.5">
           description="Input with additional descriptive text."
           :code="withTextCode"
         >
-          <div class="grid w-full max-w-sm items-center gap-1.5">
-            <label for="email-2" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-              Email
-            </label>
-            <DsInput id="email-2" v-model="emailValue" type="email" placeholder="Email" />
+          <div class="flex flex-col w-full items-center gap-4">
+            <Input id="email-2" v-model="emailValue" type="email" placeholder="Email" label="Email" />
             <p class="text-sm text-muted-foreground">
               Enter your email address.
             </p>
@@ -141,7 +125,7 @@ const withTextCode = `<div class="grid w-full max-w-sm items-center gap-1.5">
 
       <!-- Types -->
       <section class="space-y-4">
-        <h2 class="text-xl font-semibold">
+        <h2 class="text-xl font-semibold text-primary">
           Types
         </h2>
         <UiComponentPreviewTabs
@@ -149,16 +133,18 @@ const withTextCode = `<div class="grid w-full max-w-sm items-center gap-1.5">
           description="Different input types for various use cases."
           :code="typesCode"
         >
-          <DsInput v-model="emailValue" type="email" placeholder="Email" />
-          <DsInput v-model="passwordValue" type="password" placeholder="Password" />
-          <DsInput v-model="numberValue" type="number" placeholder="Number" />
-          <DsInput type="file" />
+          <div class="flex flex-col w-full items-center gap-4">
+            <Input v-model="emailValue" type="email" placeholder="Email" />
+            <Input v-model="passwordValue" type="password" placeholder="Password" />
+            <Input v-model="numberValue" type="number" placeholder="Number" />
+            <Input type="file" />
+          </div>
         </UiComponentPreviewTabs>
       </section>
 
       <!-- Sizes -->
       <section class="space-y-4">
-        <h2 class="text-xl font-semibold">
+        <h2 class="text-xl font-semibold text-primary">
           Sizes
         </h2>
         <UiComponentPreviewTabs
@@ -166,15 +152,17 @@ const withTextCode = `<div class="grid w-full max-w-sm items-center gap-1.5">
           description="Different sizes for the input component."
           :code="sizesCode"
         >
-          <DsInput v-model="sizeValues.sm" size="sm" placeholder="Small" />
-          <DsInput v-model="sizeValues.default" size="default" placeholder="Default" />
-          <DsInput v-model="sizeValues.lg" size="lg" placeholder="Large" />
+          <div class="flex flex-col w-full items-center gap-4">
+            <Input v-model="sizeValues.sm" size="sm" placeholder="Small" />
+            <Input v-model="sizeValues.default" size="default" placeholder="Default" />
+            <Input v-model="sizeValues.lg" size="lg" placeholder="Large" />
+          </div>
         </UiComponentPreviewTabs>
       </section>
 
       <!-- Disabled -->
       <section class="space-y-4">
-        <h2 class="text-xl font-semibold">
+        <h2 class="text-xl font-semibold text-primary">
           Disabled
         </h2>
         <UiComponentPreviewTabs
@@ -182,8 +170,48 @@ const withTextCode = `<div class="grid w-full max-w-sm items-center gap-1.5">
           description="Disabled input state."
           :code="disabledCode"
         >
-          <DsInput v-model="disabledValue" disabled />
+          <Input v-model="disabledValue" disabled />
         </UiComponentPreviewTabs>
+      </section>
+
+      <!-- API -->
+      <section class="space-y-4">
+        <h2 class="text-xl font-semibold text-primary">
+          API
+        </h2>
+        <div class="grid gap-2 text-sm">
+          <h3 class="font-medium text-primary">
+            Props
+          </h3>
+          <ul class="list-disc ml-5 text-muted-foreground">
+            <li><span class="text-primary font-medium">modelValue</span>: string | number — current value (use v-model)</li>
+            <li><span class="text-primary font-medium">type</span>: string — native input type (e.g., "text", "email", "password", "number", "file")</li>
+            <li><span class="text-primary font-medium">placeholder</span>: string — hint text</li>
+            <li><span class="text-primary font-medium">size</span>: "sm" | "default" | "lg" — control height and paddings</li>
+            <li><span class="text-primary font-medium">disabled</span>: boolean — disables the input</li>
+            <li><span class="text-primary font-medium">id</span>: string — link with a label via for=</li>
+          </ul>
+
+          <h3 class="font-medium text-primary mt-4">
+            Events
+          </h3>
+          <ul class="list-disc ml-5 text-muted-foreground">
+            <li><span class="text-primary font-medium">update:modelValue</span>: (value) — emitted on input for v-model</li>
+            <li>All native input events are forwarded (e.g., focus, blur, keydown)</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Accessibility -->
+      <section class="space-y-4">
+        <h2 class="text-xl font-semibold text-primary">
+          Accessibility
+        </h2>
+        <ul class="list-disc ml-5 text-sm text-muted-foreground">
+          <li>Use a <code>label</code> associated with the input via matching <code>for</code> and <code>id</code>.</li>
+          <li>Describe errors with text and set <code>aria-invalid="true"</code> when applicable.</li>
+          <li>Disabled state uses the native <code>disabled</code> attribute.</li>
+        </ul>
       </section>
     </div>
   </UiDocs>

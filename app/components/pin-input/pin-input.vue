@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import type { VariantProps } from "class-variance-authority";
-
-import { cva } from "class-variance-authority";
 import { computed, nextTick, onMounted, ref, watch } from "vue";
 
-type PinCellVariants = VariantProps<typeof pinCellVariants>;
+import type { PinInputEmits, PinInputProps } from "./types";
+
+import { pinCellVariants } from "./variants";
 
 const props = withDefaults(defineProps<PinInputProps>(), {
   modelValue: "",
@@ -17,41 +16,6 @@ const props = withDefaults(defineProps<PinInputProps>(), {
 });
 
 const emit = defineEmits<PinInputEmits>();
-
-const pinCellVariants = cva(
-  "rounded-md border border-input bg-background text-center outline-none ring-offset-background focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
-  {
-    variants: {
-      size: {
-        sm: "h-9 w-9 text-sm",
-        default: "h-10 w-10 text-base",
-        lg: "h-11 w-11 text-base",
-      },
-    },
-    defaultVariants: {
-      size: "default",
-    },
-  },
-);
-
-type PinInputProps = {
-  modelValue?: string;
-  length?: number;
-  size?: PinCellVariants["size"];
-  mask?: boolean;
-  onlyDigits?: boolean;
-  disabled?: boolean;
-  name?: string;
-  class?: string;
-  autoFocus?: boolean;
-};
-
-type PinInputEmits = {
-  "update:modelValue": [value: string];
-  "complete": [value: string];
-  "focus": [index: number];
-  "blur": [index: number];
-};
 
 const containerClasses = computed(() => {
   return cn("inline-flex items-center gap-2", props.class);

@@ -1,12 +1,13 @@
 import type { VariantProps } from "class-variance-authority";
 
-import type { inputVariants } from "../styles/variants/input";
+import type { inputVariants } from "./variants";
 
 export type InputVariants = VariantProps<typeof inputVariants>;
 
 export type InputProps = {
   modelValue?: string | number;
   placeholder?: string;
+  label?: string;
   type?: "text" | "email" | "password" | "number" | "tel" | "url" | "search" | "file" | "date" | "time" | "datetime-local" | "month" | "week";
   disabled?: boolean;
   size?: InputVariants["size"];
