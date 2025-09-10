@@ -2,7 +2,7 @@
 import { ChevronRight, MoreHorizontal } from "lucide-vue-next";
 import { computed } from "vue";
 
-import type { BreadcrumbEmits, BreadcrumbItem, BreadcrumbProps } from "../../../src/types/breadcrumb";
+import type { BreadcrumbEmits, BreadcrumbItem, BreadcrumbProps } from "./types";
 
 import {
   breadcrumbEllipsisVariants,
@@ -12,8 +12,9 @@ import {
   breadcrumbPageVariants,
   breadcrumbSeparatorVariants,
   breadcrumbVariants,
-} from "../../../src/styles/variants/breadcrumb";
+} from "./variants";
 
+// Props with defaults
 const props = withDefaults(defineProps<BreadcrumbProps>(), {
   separator: "chevron",
   showEllipsis: false,
@@ -24,8 +25,10 @@ const props = withDefaults(defineProps<BreadcrumbProps>(), {
   variant: "default",
 });
 
+// Component emits
 const emit = defineEmits<BreadcrumbEmits>();
 
+// Computed: processed items with ellipsis handling
 const processedItems = computed(() => {
   if (!props.items)
     return [];
@@ -47,6 +50,7 @@ const processedItems = computed(() => {
   return items;
 });
 
+// Computed: breadcrumb wrapper classes
 const breadcrumbClasses = computed(() => {
   return cn(
     breadcrumbVariants({
@@ -56,6 +60,7 @@ const breadcrumbClasses = computed(() => {
   );
 });
 
+// Computed: breadcrumb list classes
 const listClasses = computed(() => {
   return cn(
     breadcrumbListVariants({
@@ -64,6 +69,7 @@ const listClasses = computed(() => {
   );
 });
 
+// Computed: breadcrumb item classes
 const itemClasses = computed(() => {
   return cn(
     breadcrumbItemVariants({
@@ -72,6 +78,7 @@ const itemClasses = computed(() => {
   );
 });
 
+// Computed: breadcrumb link classes
 const linkClasses = computed(() => {
   return cn(
     breadcrumbLinkVariants({
@@ -80,6 +87,7 @@ const linkClasses = computed(() => {
   );
 });
 
+// Computed: breadcrumb current page classes
 const pageClasses = computed(() => {
   return cn(
     breadcrumbPageVariants({
@@ -88,6 +96,7 @@ const pageClasses = computed(() => {
   );
 });
 
+// Computed: breadcrumb separator classes
 const separatorClasses = computed(() => {
   return cn(
     breadcrumbSeparatorVariants({
@@ -96,6 +105,7 @@ const separatorClasses = computed(() => {
   );
 });
 
+// Computed: breadcrumb ellipsis classes
 const ellipsisClasses = computed(() => {
   return cn(
     breadcrumbEllipsisVariants({
@@ -104,6 +114,7 @@ const ellipsisClasses = computed(() => {
   );
 });
 
+// Methods: handle item click
 function handleItemClick(item: BreadcrumbItem, event: MouseEvent) {
   emit("itemClick", item, event);
 }

@@ -9,7 +9,7 @@ definePageMeta({
 });
 
 // Code examples
-const defaultCode = `<DsBreadcrumb
+const defaultCode = `<Breadcrumb
   :items="[
     { label: 'Home', href: '/' },
     { label: 'Components', href: '/components' },
@@ -17,7 +17,7 @@ const defaultCode = `<DsBreadcrumb
   ]"
 />`;
 
-const ellipsisCode = `<DsBreadcrumb
+const ellipsisCode = `<Breadcrumb
   :items="[
     { label: 'Home', href: '/' },
     { label: 'Products', href: '/products' },
@@ -31,7 +31,7 @@ const ellipsisCode = `<DsBreadcrumb
   :ellipsis-position="1"
 />`;
 
-const slashSeparatorCode = `<DsBreadcrumb
+const slashSeparatorCode = `<Breadcrumb
   :items="[
     { label: 'Home', href: '/' },
     { label: 'Components', href: '/components' },
@@ -40,7 +40,7 @@ const slashSeparatorCode = `<DsBreadcrumb
   separator="slash"
 />`;
 
-const customSeparatorCode = `<DsBreadcrumb
+const customSeparatorCode = `<Breadcrumb
   :items="[
     { label: 'Home', href: '/' },
     { label: 'Components', href: '/components' },
@@ -51,7 +51,7 @@ const customSeparatorCode = `<DsBreadcrumb
 />`;
 
 const sizesCode = `<div class="space-y-4">
-  <DsBreadcrumb
+  <Breadcrumb
     :items="[
       { label: 'Home', href: '/' },
       { label: 'Components', href: '/components' },
@@ -59,7 +59,7 @@ const sizesCode = `<div class="space-y-4">
     ]"
     size="sm"
   />
-  <DsBreadcrumb
+  <Breadcrumb
     :items="[
       { label: 'Home', href: '/' },
       { label: 'Components', href: '/components' },
@@ -67,7 +67,7 @@ const sizesCode = `<div class="space-y-4">
     ]"
     size="default"
   />
-  <DsBreadcrumb
+  <Breadcrumb
     :items="[
       { label: 'Home', href: '/' },
       { label: 'Components', href: '/components' },
@@ -77,7 +77,7 @@ const sizesCode = `<div class="space-y-4">
   />
 </div>`;
 
-const manualCode = `<DsBreadcrumb>
+const manualCode = `<Breadcrumb>
   <ol class="text-muted-foreground flex flex-wrap items-center gap-1.5 text-sm break-words sm:gap-2.5">
     <li class="inline-flex items-center gap-1.5">
       <NuxtLink to="/" class="hover:text-foreground transition-colors">
@@ -101,7 +101,7 @@ const manualCode = `<DsBreadcrumb>
       </span>
     </li>
   </ol>
-</DsBreadcrumb>`;
+</Breadcrumb>`;
 
 // Data for examples
 const basicItems = [
@@ -137,7 +137,7 @@ const longItems = [
           description="The default breadcrumb component with chevron separators."
           :code="defaultCode"
         >
-          <DsBreadcrumb :items="basicItems" />
+          <Breadcrumb :items="basicItems" />
         </UiComponentPreviewTabs>
       </section>
 
@@ -151,7 +151,7 @@ const longItems = [
           description="Breadcrumb with ellipsis for long navigation paths."
           :code="ellipsisCode"
         >
-          <DsBreadcrumb
+          <Breadcrumb
             :items="longItems"
             show-ellipsis
             :max-items="4"
@@ -170,7 +170,7 @@ const longItems = [
           description="Breadcrumb using slash separators instead of chevrons."
           :code="slashSeparatorCode"
         >
-          <DsBreadcrumb
+          <Breadcrumb
             :items="basicItems"
             separator="slash"
           />
@@ -187,7 +187,7 @@ const longItems = [
           description="Breadcrumb with custom separator text."
           :code="customSeparatorCode"
         >
-          <DsBreadcrumb
+          <Breadcrumb
             :items="basicItems"
             separator="custom"
             custom-separator=" → "
@@ -211,19 +211,19 @@ const longItems = [
               <p class="text-sm text-muted-foreground mb-2">
                 Small
               </p>
-              <DsBreadcrumb :items="basicItems" size="sm" />
+              <Breadcrumb :items="basicItems" size="sm" />
             </div>
             <div>
               <p class="text-sm text-muted-foreground mb-2">
                 Default
               </p>
-              <DsBreadcrumb :items="basicItems" size="default" />
+              <Breadcrumb :items="basicItems" size="default" />
             </div>
             <div>
               <p class="text-sm text-muted-foreground mb-2">
                 Large
               </p>
-              <DsBreadcrumb :items="basicItems" size="lg" />
+              <Breadcrumb :items="basicItems" size="lg" />
             </div>
           </div>
         </UiComponentPreviewTabs>
@@ -239,7 +239,7 @@ const longItems = [
           description="Advanced usage with manual breadcrumb structure using slots."
           :code="manualCode"
         >
-          <DsBreadcrumb>
+          <Breadcrumb>
             <ol class="text-muted-foreground flex flex-wrap items-center gap-1.5 text-sm break-words sm:gap-2.5">
               <li class="inline-flex items-center gap-1.5">
                 <NuxtLink to="/" class="hover:text-foreground transition-colors">
@@ -263,7 +263,7 @@ const longItems = [
                 </span>
               </li>
             </ol>
-          </DsBreadcrumb>
+          </Breadcrumb>
         </UiComponentPreviewTabs>
       </section>
     </div>

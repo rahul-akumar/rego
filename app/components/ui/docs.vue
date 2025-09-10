@@ -77,7 +77,7 @@ const menuItems = [
     <div class="flex items-center justify-between">
       <div class="flex items-center gap-4">
         <div class="mb-10 space-y-4">
-          <DsBreadcrumb :items="breadcrumbItems" />
+          <Breadcrumb :items="breadcrumbItems" />
           <div class="space-y-2">
             <h1 class="text-3xl font-bold tracking-tight text-foreground">
               {{ title }}
