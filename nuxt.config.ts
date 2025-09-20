@@ -19,14 +19,14 @@ export default defineNuxtConfig({
   },
   // GitHub Pages configuration
   app: {
-    baseURL: "/REGO/",
+    baseURL: "/",
     head: {
       titleTemplate: "%s REGO",
       htmlAttrs: {
         class: "dark",
       },
       link: [
-        { rel: "icon", type: "image/svg+xml", href: "/REGO/favicon.svg" },
+        { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
       ],
     },
   },

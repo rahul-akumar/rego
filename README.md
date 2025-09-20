@@ -10,7 +10,7 @@
 
 A modern, accessible, and customizable component library built with Vue 3, Nuxt 4, and Tailwind CSS. REGO provides beautiful, production-ready components for building exceptional user interfaces.
 
-[Live Demo](https://rahul-akumar.github.io/REGO/) | [Releases](https://rahul-akumar.github.io/REGO/releases) | [Components](https://rahul-akumar.github.io/REGO/components)
+[Live Demo](https://rego.vercel.app/) | [Releases](https://rego.vercel.app/releases) | [Components](https://rego.vercel.app/components)
 
 </div>
 
