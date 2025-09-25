@@ -5,6 +5,7 @@
 .nitro
 .cache
 dist
+prd
 
 # Node dependencies
 node_modules
@@ -32,3 +33,4 @@ copilot-commit-message-instructions.md
 
 # Scripts
 scripts/optimize-images.mjs
+WARP.md

@@ -70,7 +70,7 @@ export const breadcrumbLinkVariants = cva(
 
 // Breadcrumb current page variants
 export const breadcrumbPageVariants = cva(
-  "font-normal text-foreground",
+  "font-medium text-primary",
   {
     variants: {
       variant: {

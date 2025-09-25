@@ -25,12 +25,12 @@ const navigationItems = [
 
 // Function to get the correct variant based on active state
 function getButtonVariant(item: typeof navigationItems[0]) {
-  return item.isActive() ? "default" : "ghost";
+  return item.isActive() ? "secondary" : "ghost";
 }
 </script>
 
 <template>
-  <main class="sticky top-0 flex justify-between items-center min-w-full bg-background/10 backdrop-blur-md px-8 py-4 z-50">
+  <main class="sticky top-0 flex justify-between items-center min-w-full bg-background/10 backdrop-blur-sm px-8 py-4 z-50">
     <NuxtLink
       to="/"
       class="text-2xl flex gap-2 font-bold text-black dark:text-white hover:text-neutral-600 dark:hover:text-neutral-300 transition-colors"
@@ -42,25 +42,25 @@ function getButtonVariant(item: typeof navigationItems[0]) {
       >
       REGO
     </NuxtLink>
-    <section class="flex gap-4">
+    <section class="flex gap-6">
       <NuxtLink
         v-for="item in navigationItems"
         :key="item.path"
         :to="item.path"
       >
-        <Button :variant="getButtonVariant(item)">
+        <Button :variant="getButtonVariant(item)" size="sm">
           {{ item.name }}
         </Button>
       </NuxtLink>
     </section>
     <div class="flex gap-2">
       <!-- Theme Cycle Button -->
-      <Button size="sm" :title="colorTheme" @click="cycleTheme">
+      <Button size="xs" icon-only :title="colorTheme" @click="cycleTheme">
         <PaintBucket class="size-4" />
       </Button>
 
       <!-- Dark Mode Toggle Button -->
-      <Button size="sm" title="Toggle mode" @click="toggleMode">
+      <Button size="xs" icon-only title="Toggle mode" @click="toggleMode">
         <SunMoon class="size-4" />
       </Button>
     </div>

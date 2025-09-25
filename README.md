@@ -74,16 +74,20 @@ import { Button, Alert, DsBadge, DsInput } from '@your-org/rego'
 ## 🧩 Available Components
 
 ### Form Components
+
 - **Button** - Versatile button with multiple variants, sizes, and states
 - **Input** - Form input with validation support and various types
 
 ### Data Display
+
 - **Badge** - Small status indicators with icon support
 
 ### Feedback
+
 - **Alert** - Display important messages and notifications
 
-### More components coming soon!
+### More components coming soon
+
 - Checkbox, Radio, Select, Switch
 - Card, Table, List
 - Modal, Drawer, Tooltip
@@ -154,7 +158,7 @@ import { Button, Alert, DsBadge, DsInput } from '@your-org/rego'
 
 ### Prerequisites
 
-- Node.js 18+ 
+- Node.js 18+
 - pnpm 8+
 
 ### Setup
@@ -244,7 +248,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📮 Support
 
-- 📧 Email: support@your-org.com
+- 📧 Email: <support@your-org.com>
 - 💬 Discord: [Join our community](https://discord.gg/your-invite)
 - 🐛 Issues: [GitHub Issues](https://github.com/yourusername/REGO/issues)
 - 📖 Docs: [Documentation](https://yourusername.github.io/REGO/)

@@ -26,7 +26,8 @@ pnpm lint:fix     # Fix ESLint issues
 REGO is a **Nuxt 4 + Vue 3 + TypeScript + Tailwind CSS 4** component library built for static site generation and deployed to GitHub Pages. It uses a sophisticated component architecture with two distinct patterns:
 
 ### Tech Stack
-- **Framework**: Nuxt 4 (SSG mode, no SSR) 
+
+- **Framework**: Nuxt 4 (SSG mode, no SSR)
 - **Frontend**: Vue 3 Composition API + TypeScript 5.9+
 - **Styling**: Tailwind CSS 4 + class-variance-authority (CVA)
 - **Package Manager**: pnpm
@@ -37,11 +38,13 @@ REGO is a **Nuxt 4 + Vue 3 + TypeScript + Tailwind CSS 4** component library bui
 ### Component Architecture Patterns
 
 **1. Legacy Pattern** (`app/components/ds/`)
+
 - Single-file components with co-located variants and types
 - Used for simple components (button, badge, input, alert)
 - CVA variants defined directly in component files
 
 **2. Modern Pattern** (`app/components/{name}/`)
+
 - Folder-based components with sub-components
 - Used for compound components (dropdown-menu, skeleton)
 - Shared types in `types.ts`, shared variants in `variants.ts`
@@ -49,6 +52,7 @@ REGO is a **Nuxt 4 + Vue 3 + TypeScript + Tailwind CSS 4** component library bui
 - Auto-imported as PascalCase (e.g., `dropdown-menu.vue` → `<DropdownMenu>`)
 
 ### Key Project Structure
+
 ```
 app/
 ├── components/
@@ -72,18 +76,21 @@ content/                      # Content management (releases)
 ### Component Creation
 
 **For Compound Components (Preferred)**:
+
 1. Create folder `app/components/{name}/`
 2. Create main component `{name}.vue` and sub-components `{name}-{part}.vue`
-3. Define shared types in `types.ts` and variants in `variants.ts` 
+3. Define shared types in `types.ts` and variants in `variants.ts`
 4. Register in `app/config/components.config.ts`
 5. Use provide/inject pattern for state sharing
 
 **For Simple Components (Legacy)**:
+
 1. Create `app/components/ds/{name}.vue`
 2. Define types in `src/types/{name}.ts`
 3. Co-locate CVA variants within the component file
 
 ### Styling System
+
 - **Class Variance Authority (CVA)** for component variants
 - Always use `cn()` utility for className merging
 - Support 6 color themes: default, sapphire, emerald, topaz, ruby, amethyst
@@ -91,6 +98,7 @@ content/                      # Content management (releases)
 - Use `data-slot` attributes for component styling targets
 
 ### Code Style (ESLint Enforced)
+
 - Use `type` over `interface`
 - `<script setup lang="ts">` with `withDefaults()` for props
 - Import organization: type imports first, then Vue, third-party, internal
@@ -98,6 +106,7 @@ content/                      # Content management (releases)
 - kebab-case file naming
 
 ### Theme System
+
 - Multi-theme support with light/dark modes
 - Apply theme classes to document root: `theme-{name}` and `dark`
 - Use semantic color tokens in Tailwind classes
@@ -115,6 +124,7 @@ content/                      # Content management (releases)
 ## Component Documentation
 
 Each component requires:
+
 1. Entry in `app/config/components.config.ts` with metadata
 2. Documentation page in `app/pages/components/{name}.vue`
 3. Live examples using `ComponentPreview` components
@@ -130,6 +140,7 @@ Each component requires:
 ## Image Optimization System
 
 ### Static Optimization Approach
+
 - **Provider**: None (GitHub Pages compatible)
 - **Build Tool**: Sharp for PNG → WebP conversion
 - **Formats**: WebP-first with PNG fallback via `<picture>` element
@@ -137,11 +148,13 @@ Each component requires:
 - **Quality**: 80-90% depending on size
 
 ### Commands
+
 ```bash
 pnpm optimize:images    # Generate optimized WebP versions
 ```
 
 ### Usage Pattern
+
 ```vue
 <!-- Component illustrations with responsive WebP + PNG fallback -->
 <picture>
@@ -155,6 +168,7 @@ pnpm optimize:images    # Generate optimized WebP versions
 ```
 
 ### File Structure
+
 ```
 public/illustrations/
 ├── *.png                    # Source images (1-2MB)
@@ -165,6 +179,7 @@ public/illustrations/
 ```
 
 ### Build Process
+
 1. Run `pnpm optimize:images` to generate WebP variants
 2. Commit optimized files to repository
 3. Deploy - GitHub Pages serves static optimized images

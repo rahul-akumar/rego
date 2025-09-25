@@ -11,14 +11,11 @@ definePageMeta({
 // Code examples
 const defaultButtonCode = `<Button>Button</Button>`;
 
-const variantsCode = `<div class="flex flex-wrap gap-4">
-  <Button variant="primary">Primary</Button>
-  <Button variant="secondary">Secondary</Button>
-  <Button variant="outlined">Outlined</Button>
-  <Button variant="ghost">Ghost</Button>
-  <Button variant="link">Link</Button>
-  <Button variant="destructive">Destructive</Button>
-</div>`;
+const secondaryButtonCode = `<Button variant="secondary">Button</Button>`;
+const outlinedButtonCode = `<Button variant="outlined">Button</Button>`;
+const ghostButtonCode = `<Button variant="ghost">Button</Button>`;
+const linkButtonCode = `<Button variant="link">Button</Button>`;
+const destructiveButtonCode = `<Button variant="destructive">Button</Button>`;
 
 const sizesCode = `<div class="flex items-center gap-4">
   <Button size="xs">XS</Button>
@@ -105,39 +102,92 @@ const invertedCode = `<div class="bg-black p-6 rounded-lg space-y-4">
           description="The default button component."
           :code="defaultButtonCode"
         >
-          <Button>
+          <Button size="sm">
             Button
           </Button>
         </UiComponentPreviewTabs>
       </section>
 
-      <!-- Variants -->
+      <!-- Secondary -->
       <section class="space-y-4">
         <h2 class="text-2xl font-medium text-black dark:text-white">
-          Variants
+          Secondary
         </h2>
         <UiComponentPreviewTabs
-          title="Variants"
-          description="Different visual styles for the button component."
-          :code="variantsCode"
-          class-name="flex flex-wrap gap-4 p-6"
+          title="Secondary"
+          description="The secondary button component."
+          :code="secondaryButtonCode"
+          class-name="flex items-center gap-4 p-6"
         >
-          <Button>
-            Primary
-          </Button>
-          <Button variant="secondary">
+          <Button variant="secondary" size="sm">
             Secondary
           </Button>
-          <Button variant="outline">
+        </UiComponentPreviewTabs>
+      </section>
+
+      <!-- Outlined -->
+      <section class="space-y-4">
+        <h2 class="text-2xl font-medium text-black dark:text-white">
+          Outlined
+        </h2>
+        <UiComponentPreviewTabs
+          title="Outlined"
+          description="The outlined button component."
+          :code="outlinedButtonCode"
+          class-name="flex items-center gap-4 p-6"
+        >
+          <Button variant="outline" size="sm">
             Outlined
           </Button>
-          <Button variant="ghost">
+        </UiComponentPreviewTabs>
+      </section>
+
+      <!-- Ghost -->
+      <section class="space-y-4">
+        <h2 class="text-2xl font-medium text-black dark:text-white">
+          Ghost
+        </h2>
+        <UiComponentPreviewTabs
+          title="Ghost"
+          description="The ghost button component."
+          :code="ghostButtonCode"
+          class-name="flex items-center gap-4 p-6"
+        >
+          <Button variant="ghost" size="sm">
             Ghost
           </Button>
-          <Button variant="link">
+        </UiComponentPreviewTabs>
+      </section>
+
+      <!-- Link -->
+      <section class="space-y-4">
+        <h2 class="text-2xl font-medium text-black dark:text-white">
+          Link
+        </h2>
+        <UiComponentPreviewTabs
+          title="Link"
+          description="The link button component."
+          :code="linkButtonCode"
+          class-name="flex items-center gap-4 p-6"
+        >
+          <Button variant="link" size="sm">
             Link
           </Button>
-          <Button variant="destructive">
+        </UiComponentPreviewTabs>
+      </section>
+
+      <!-- Destructive -->
+      <section class="space-y-4">
+        <h2 class="text-2xl font-medium text-black dark:text-white">
+          Destructive
+        </h2>
+        <UiComponentPreviewTabs
+          title="Destructive"
+          description="The destructive button component."
+          :code="destructiveButtonCode"
+          class-name="flex items-center gap-4 p-6"
+        >
+          <Button variant="destructive" size="sm">
             Destructive
           </Button>
         </UiComponentPreviewTabs>
@@ -150,10 +200,13 @@ const invertedCode = `<div class="bg-black p-6 rounded-lg space-y-4">
         </h2>
         <UiComponentPreviewTabs
           title="Sizes"
-          description="Different sizes for the button component."
+          description="The sizes button component."
           :code="sizesCode"
           class-name="flex items-center gap-4 p-6"
         >
+          <Button size="xs">
+            XS
+          </Button>
           <Button size="sm">
             Small
           </Button>
@@ -162,6 +215,9 @@ const invertedCode = `<div class="bg-black p-6 rounded-lg space-y-4">
           </Button>
           <Button size="lg">
             Large
+          </Button>
+          <Button size="xl">
+            XL
           </Button>
         </UiComponentPreviewTabs>
       </section>
@@ -177,14 +233,20 @@ const invertedCode = `<div class="bg-black p-6 rounded-lg space-y-4">
           :code="iconOnlyCode"
           class-name="flex items-center gap-4 p-6"
         >
+          <Button size="xs" icon-only>
+            <Star class="size-3" />
+          </Button>
           <Button size="sm" icon-only>
-            <Star class="size-4" />
+            <Star class="size-3" />
           </Button>
           <Button icon-only>
             <Mail class="size-4" />
           </Button>
           <Button size="lg" icon-only>
             <Download class="size-5" />
+          </Button>
+          <Button size="xl" icon-only>
+            <Star class="size-5" />
           </Button>
         </UiComponentPreviewTabs>
       </section>
@@ -210,7 +272,7 @@ const invertedCode = `<div class="bg-black p-6 rounded-lg space-y-4">
               </Button>
               <Button icon-position="right" variant="outline">
                 <template #icon>
-                  <ChevronRight class="size-4" />
+                  <ChevronRight class="size-4 mt-1" />
                 </template>
                 Continue
               </Button>
@@ -244,7 +306,7 @@ const invertedCode = `<div class="bg-black p-6 rounded-lg space-y-4">
           :code="loadingCode"
           class-name="flex gap-4 p-6"
         >
-          <Button :loading="true">
+          <Button loading="true">
             Loading
           </Button>
           <Button variant="outline" :loading="true">

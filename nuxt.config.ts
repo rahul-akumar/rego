@@ -9,6 +9,8 @@ export default defineNuxtConfig({
     "@nuxt/content",
     "@nuxt/eslint",
     "@nuxt/image",
+    "@nuxt/icon",
+    "@nuxt/fonts",
     "@nuxt/scripts",
     "@nuxt/test-utils",
     "nuxt-gtag",
@@ -28,6 +30,13 @@ export default defineNuxtConfig({
       link: [
         { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
       ],
+    },
+  },
+  fonts: {
+    defaults: {
+      weights: [400, 500, 600, 700, 800, 900],
+      styles: ["normal", "italic"],
+      subsets: ["latin"],
     },
   },
 

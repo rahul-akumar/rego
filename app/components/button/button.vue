@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, useAttrs } from "vue";
 
 import type { ButtonProps } from "./types";
 
@@ -15,6 +15,9 @@ const props = withDefaults(defineProps<ButtonProps>(), {
   asChild: false,
 });
 
+const attrs = useAttrs();
+const isIconOnly = computed(() => Object.prototype.hasOwnProperty.call(attrs, "icon-only"));
+
 // Computed classes
 const buttonClasses = computed(() => {
   return cn(
@@ -22,7 +25,7 @@ const buttonClasses = computed(() => {
       variant: props.variant,
       size: props.size,
       iconPosition: props.iconPosition,
-      iconOnly: props.iconOnly,
+      iconOnly: isIconOnly.value,
       loading: props.loading,
       disabled: props.disabled,
       inverted: props.inverted,
@@ -67,7 +70,7 @@ function handleClick(event: MouseEvent) {
     />
 
     <!-- Icon only content -->
-    <template v-if="iconOnly">
+    <template v-if="isIconOnly">
       <slot />
     </template>
 

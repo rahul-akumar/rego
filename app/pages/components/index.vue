@@ -56,6 +56,7 @@ onMounted(() => {
   <UiDocs
     title="Components"
     description="Entire list of components available on REGO."
+    hide-breadcrumb
   >
     <!-- Component Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

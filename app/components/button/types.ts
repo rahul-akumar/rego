@@ -11,7 +11,6 @@ export type ButtonProps = {
   variant?: ButtonVariants["variant"];
   size?: ButtonVariants["size"];
   iconPosition?: ButtonVariants["iconPosition"];
-  iconOnly?: ButtonVariants["iconOnly"];
   loading?: ButtonVariants["loading"];
   disabled?: ButtonVariants["disabled"];
   inverted?: ButtonVariants["inverted"];

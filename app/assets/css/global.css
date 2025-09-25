@@ -218,6 +218,7 @@
 
 html {
   scrollbar-gutter: stable overlay;
+  font-family: Satoshi, sans-serif;
 }
 
 ::-webkit-scrollbar {

@@ -1,5 +1,6 @@
 <!-- filepath: app/components/ui/component-preview-tabs.vue -->
 <script setup lang="ts">
+import { Copy } from "lucide-vue-next";
 import { computed, ref, watch } from "vue";
 
 import type { SupportedLanguage } from "~/composables/use-code-highlighter";
@@ -134,13 +135,15 @@ async function copyCode() {
           <div class="bg-card rounded-lg h-full flex flex-col">
             <!-- Code Header -->
             <div class="flex items-center justify-between px-4 py-2 border-b">
-              <span class="text-sm font-medium">Code</span>
-              <button
-                class="text-sm text-muted-foreground hover:text-foreground transition-colors"
+              <span class="text-primary text-sm font-medium">Code</span>
+              <Button
+                variant="ghost"
+                size="xs"
                 @click="copyCode"
               >
+                <Copy class="size-3" />
                 Copy
-              </button>
+              </Button>
             </div>
 
             <!-- Code Content -->
