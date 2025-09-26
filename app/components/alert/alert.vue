@@ -12,11 +12,11 @@ const props = withDefaults(defineProps<Props>(), {
 });
 
 const styles = {
-  base: "w-full px-4 py-3 flex items-center text-md justify-between gap-4",
+  base: "w-full px-4 py-3 flex items-center text-sm justify-between gap-4",
 
   // Regular variants
   default:
-    "bg-primary text-black dark:bg-white/10 dark:text-white",
+    "bg-primary text-primary-foreground",
   info: "bg-indigo-500 bg-opacity-20 dark:bg-sky-500 dark:bg-opacity-20 text-indigo-800 dark:text-sky-300",
   success:
     "bg-emerald-500 bg-opacity-20 text-emerald-800 dark:text-emerald-300",
@@ -24,7 +24,7 @@ const styles = {
   danger: "bg-rose-500 bg-opacity-20 text-rose-800 dark:text-red-300",
 
   // Important variants
-  defaultImportant: "bg-black/90 text-white dark:bg-white/90 dark:text-black",
+  defaultImportant: "bg-primary text-primary-foreground",
   infoImportant: "bg-blue-700 text-indigo-50 dark:bg-sky-500 dark:text-black",
   successImportant: "bg-emerald-800 text-emerald-50",
   warningImportant: "bg-amber-700 text-amber-50",

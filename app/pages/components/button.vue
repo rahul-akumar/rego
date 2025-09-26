@@ -17,25 +17,18 @@ const ghostButtonCode = `<Button variant="ghost">Button</Button>`;
 const linkButtonCode = `<Button variant="link">Button</Button>`;
 const destructiveButtonCode = `<Button variant="destructive">Button</Button>`;
 
-const sizesCode = `<div class="flex items-center gap-4">
+const sizesCode = `
   <Button size="xs">XS</Button>
   <Button size="sm">Small</Button>
-  <Button size="md">Medium</Button>
+  <Button>Medium</Button>
   <Button size="lg">Large</Button>
-  <Button size="xl">XL</Button>
-</div>`;
+  <Button size="xl">XL</Button>`;
 
-const iconOnlyCode = `<div class="flex items-center gap-4">
-  <Button size="sm" icon-only>
-    <Star class="size-4" />
-  </Button>
-  <Button size="md" icon-only>
+const iconOnlyCode = `
+  <Button icon-only>
     <Mail class="size-4" />
   </Button>
-  <Button size="lg" icon-only>
-    <Download class="size-5" />
-  </Button>
-</div>`;
+`;
 
 const withIconsCode = `<div class="flex flex-col gap-4">
   <div class="flex gap-4">
@@ -193,6 +186,23 @@ const invertedCode = `<div class="bg-black p-6 rounded-lg space-y-4">
         </UiComponentPreviewTabs>
       </section>
 
+      <!-- Icon Only -->
+      <section class="space-y-4">
+        <h2 class="text-2xl font-medium text-black dark:text-white">
+          Icon Only
+        </h2>
+        <UiComponentPreviewTabs
+          title="Icon Only"
+          description="Button component with icon only."
+          :code="iconOnlyCode"
+          class-name="flex items-center gap-4 p-6"
+        >
+          <Button icon-only>
+            <Mail class="size-4" />
+          </Button>
+        </UiComponentPreviewTabs>
+      </section>
+
       <!-- Sizes -->
       <section class="space-y-4">
         <h2 class="text-2xl font-medium text-black dark:text-white">
@@ -218,35 +228,6 @@ const invertedCode = `<div class="bg-black p-6 rounded-lg space-y-4">
           </Button>
           <Button size="xl">
             XL
-          </Button>
-        </UiComponentPreviewTabs>
-      </section>
-
-      <!-- Icon Only -->
-      <section class="space-y-4">
-        <h2 class="text-2xl font-medium text-black dark:text-white">
-          Icon Only
-        </h2>
-        <UiComponentPreviewTabs
-          title="Icon Only"
-          description="Button component with icon only."
-          :code="iconOnlyCode"
-          class-name="flex items-center gap-4 p-6"
-        >
-          <Button size="xs" icon-only>
-            <Star class="size-3" />
-          </Button>
-          <Button size="sm" icon-only>
-            <Star class="size-3" />
-          </Button>
-          <Button icon-only>
-            <Mail class="size-4" />
-          </Button>
-          <Button size="lg" icon-only>
-            <Download class="size-5" />
-          </Button>
-          <Button size="xl" icon-only>
-            <Star class="size-5" />
           </Button>
         </UiComponentPreviewTabs>
       </section>

@@ -31,13 +31,48 @@ const styles = {
     <div class="space-y-8">
       <!-- Variants -->
       <section class="space-y-4">
-        <h2 class="text-2xl font-semibold text-black dark:text-white">
+        <h2 class="text-2xl font-medium text-black dark:text-white">
           Variants
         </h2>
-        <UiComponentPreviewTabs hide-code>
-          <div class="flex flex-col gap-4 max-w-xl">
-            <Alert message="This is a default alert." />
-            <Alert important message="This is an important alert!" />
+        <UiComponentPreviewTabs>
+          <div>
+            <Alert message="This is an alert." class="absolute top-0 left-0 rounded-t-lg" />
+          </div>
+        </UiComponentPreviewTabs>
+      </section>
+
+      <!-- With close icon button -->
+      <section class="space-y-4">
+        <h2 class="text-2xl font-medium text-black dark:text-white">
+          With close button
+        </h2>
+        <UiComponentPreviewTabs>
+          <div>
+            <Alert important message="This is an alert with a close icon button!" class="absolute top-0 left-0 rounded-t-lg">
+              <template #actions>
+                <Button size="xs" variant="ghost" icon-only :inverted="true">
+                  <X class="size-4" />
+                </Button>
+              </template>
+            </Alert>
+          </div>
+        </UiComponentPreviewTabs>
+      </section>
+
+      <!-- With close button -->
+      <section class="space-y-4">
+        <h2 class="text-2xl font-medium text-black dark:text-white">
+          Important
+        </h2>
+        <UiComponentPreviewTabs>
+          <div>
+            <Alert important message="This is an alert with a close button!" class="absolute top-0 left-0 rounded-t-lg">
+              <template #actions>
+                <Button size="xs" :inverted="true">
+                  Close
+                </Button>
+              </template>
+            </Alert>
           </div>
         </UiComponentPreviewTabs>
       </section>
@@ -51,26 +86,9 @@ const styles = {
           Click the button below to toggle the alert in the application header.
         </p>
         <div :class="styles.inspectFrame">
-          <Button @click="toggleAppAlert">
+          <Button size="sm" @click="toggleAppAlert">
             {{ showAppAlert ? "Hide alert" : "Show alert" }}
           </Button>
-        </div>
-      </section>
-
-      <!-- App Alert Control -->
-      <section class="space-y-4">
-        <h2 class="text-2xl font-semibold text-black dark:text-white">
-          App Alert Control
-        </h2>
-        <div class="flex flex-col gap-4 max-w-xl">
-          <p class="text-gray-500 dark:text-gray-400">
-            Click the button below to toggle the alert in the application header.
-          </p>
-          <div>
-            <Button @click="toggleAppAlert">
-              {{ showAppAlert ? "Hide App Alert" : "Show App Alert" }}
-            </Button>
-          </div>
         </div>
       </section>
 

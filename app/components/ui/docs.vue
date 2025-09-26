@@ -93,9 +93,11 @@ const menuItems = [
       <!-- Copy Actions -->
       <div class="flex items-center gap-2 shrink-0">
         <DropdownMenu>
-          <DropdownMenuTrigger class="inline-flex items-center justify-center gap-1 px-3 py-1.5 text-xs font-medium rounded-md bg-secondary text-foreground-secondary hover:bg-secondary/80 transition-colors">
+          <DropdownMenuTrigger>
             <Copy class="size-4" />
-            {{ copied ? 'Copied!' : 'Copy Page' }}
+            <span class="text-sm">
+              {{ copied ? 'Copied!' : 'Copy page' }}
+            </span>
             <ChevronDown class="size-4" />
           </DropdownMenuTrigger>
           <DropdownMenuContent side="bottom" align="end" class="w-48">

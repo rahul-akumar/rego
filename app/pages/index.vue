@@ -1,10 +1,7 @@
 <script setup lang="ts">
 import {
   Braces,
-  Code,
   Code2,
-  Package,
-  Palette,
   Route,
   Sparkles,
   Wind,
@@ -61,14 +58,24 @@ definePageMeta({
 <template>
   <div class="flex flex-col pt-8 gap-10">
     <!-- Header Section -->
-    <section class="flex-col">
-      <h1 class="text-4xl pb-1 font-bold text-black dark:text-white">
-        Welcome to REGO
+    <header class="flex-col">
+      <h1 class="text-3xl mb-2 font-bold text-black dark:text-white text-center">
+        Customizable design system
       </h1>
-      <p class="text-neutral-500 text-lg">
-        A modern Vue 3 component library built with TypeScript and Tailwind CSS
+      <p class="text-neutral-500 text-lg text-center leading-relaxed">
+        A set of beautifully designed components you can customize for your projects.
+        <br>
+        You don't have to start from a blank slate.
       </p>
-    </section>
+      <div class="flex justify-center mt-4 gap-4">
+        <Button size="sm" @click="navigateTo('/themes')">
+          Get started
+        </Button>
+        <Button variant="ghost" size="sm" @click="navigateTo('/components')">
+          View components
+        </Button>
+      </div>
+    </header>
 
     <!-- About Section -->
     <section class="space-y-4">
@@ -138,39 +145,6 @@ definePageMeta({
             </p>
           </div>
         </RouterLink>
-      </div>
-    </section>
-
-    <!-- Getting Started -->
-    <section class="space-y-4">
-      <h2 class="text-2xl font-medium text-black dark:text-white">
-        Getting Started
-      </h2>
-      <div class="text-left max-w-2xl space-y-4">
-        <div class="flex items-center gap-3">
-          <Code class="size-5 text-blue-500" />
-          <span class="text-neutral-700 dark:text-neutral-300">
-            Explore components using the navigation sidebar
-          </span>
-        </div>
-        <div class="flex items-center gap-3">
-          <Palette class="size-5 text-purple-500" />
-          <span class="text-neutral-700 dark:text-neutral-300">
-            Toggle between light and dark themes
-          </span>
-        </div>
-        <div class="flex items-center gap-3">
-          <Zap class="size-5 text-yellow-500" />
-          <span class="text-neutral-700 dark:text-neutral-300">
-            Interactive examples with live previews
-          </span>
-        </div>
-        <div class="flex items-center gap-3">
-          <Package class="size-5 text-green-500" />
-          <span class="text-neutral-700 dark:text-neutral-300">
-            Copy-paste ready component implementations
-          </span>
-        </div>
       </div>
     </section>
   </div>

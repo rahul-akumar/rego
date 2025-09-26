@@ -9,6 +9,13 @@ export type ComponentMeta = {
 };
 
 export const componentsConfig: Record<string, ComponentMeta> = {
+  "accordion": {
+    name: "Accordion",
+    description: "Displays content in a collapsible and expandable way",
+    dateAdded: "2025-09-26",
+    category: "navigation",
+    illustration: "accordion.png",
+  },
   "alert": {
     name: "Alert",
     description: "Display important messages and notifications",
