@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { Mail, Search, X } from "lucide-vue-next";
 import { ref } from "vue";
 
 const { name, description, category } = useComponent("input");
@@ -69,6 +70,63 @@ const withTextCode = `<div class="grid w-full max-w-sm items-center gap-1.5">
           :code="defaultInputCode"
         >
           <Input v-model="basicValue" placeholder="Email" />
+        </UiComponentPreviewTabs>
+      </section>
+
+      <!-- With Prefix -->
+      <section class="space-y-4">
+        <h2 class="text-xl font-semibold text-primary">
+          With Prefix
+        </h2>
+        <UiComponentPreviewTabs
+          title="With Prefix"
+          description="The input component with a prefix."
+          :code="defaultInputCode"
+        >
+          <Input v-model="basicValue" placeholder="Email">
+            <template #prefix>
+              <Mail class="size-4" />
+            </template>
+          </Input>
+        </UiComponentPreviewTabs>
+      </section>
+
+      <!-- With Suffix -->
+      <section class="space-y-4">
+        <h2 class="text-xl font-semibold text-primary">
+          With Suffix
+        </h2>
+        <UiComponentPreviewTabs
+          title="With Suffix"
+          description="The input component with a suffix."
+          :code="defaultInputCode"
+        >
+          <Input v-model="basicValue" placeholder="Search">
+            <template #suffix>
+              <Search class="size-4" />
+            </template>
+          </Input>
+        </UiComponentPreviewTabs>
+      </section>
+
+      <!-- With Both Prefix and Suffix -->
+      <section class="space-y-4">
+        <h2 class="text-xl font-semibold text-primary">
+          With Both Prefix and Suffix
+        </h2>
+        <UiComponentPreviewTabs
+          title="With Both Prefix and Suffix"
+          description="The input component with a suffix."
+          :code="defaultInputCode"
+        >
+          <Input v-model="basicValue" placeholder="Search">
+            <template #prefix>
+              <Search class="size-4" />
+            </template>
+            <template #suffix>
+              <X class="size-4" />
+            </template>
+          </Input>
         </UiComponentPreviewTabs>
       </section>
 

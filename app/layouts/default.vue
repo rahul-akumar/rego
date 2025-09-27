@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { Info, X } from "lucide-vue-next";
 import { onMounted } from "vue";
 // Alert visibility state
 const showAlert = ref(false);
@@ -49,21 +50,19 @@ const styles = {
     >
       <div v-if="showAlert" class="fixed w-full px-6 z-40">
         <Alert
-          important
-          class="rounded-b-lg"
+          class="rounded-b-xl font-medium"
           message="This alert is controlled from the Alert documentation page!"
         >
+          <template #icon>
+            <Info class="size-4" stroke-width="2" />
+          </template>
           <template #actions>
             <Button
               size="sm"
-              variant="ghost"
               icon-only
-              inverted
               @click="toggleAlert"
             >
-              <template #icon>
-                <Icon name="material-symbols:close" />
-              </template>
+              <X class="size-4" />
             </Button>
           </template>
         </Alert>

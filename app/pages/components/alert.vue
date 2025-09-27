@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Bell, Plus, X } from "lucide-vue-next";
+import { Info, X } from "lucide-vue-next";
 
 const { name, description, category } = useComponent("alert");
 
@@ -29,54 +29,6 @@ const styles = {
 <template>
   <UiDocs :title="name" :description="description" :category="category">
     <div class="space-y-8">
-      <!-- Variants -->
-      <section class="space-y-4">
-        <h2 class="text-2xl font-medium text-black dark:text-white">
-          Variants
-        </h2>
-        <UiComponentPreviewTabs>
-          <div>
-            <Alert message="This is an alert." class="absolute top-0 left-0 rounded-t-lg" />
-          </div>
-        </UiComponentPreviewTabs>
-      </section>
-
-      <!-- With close icon button -->
-      <section class="space-y-4">
-        <h2 class="text-2xl font-medium text-black dark:text-white">
-          With close button
-        </h2>
-        <UiComponentPreviewTabs>
-          <div>
-            <Alert important message="This is an alert with a close icon button!" class="absolute top-0 left-0 rounded-t-lg">
-              <template #actions>
-                <Button size="xs" variant="ghost" icon-only :inverted="true">
-                  <X class="size-4" />
-                </Button>
-              </template>
-            </Alert>
-          </div>
-        </UiComponentPreviewTabs>
-      </section>
-
-      <!-- With close button -->
-      <section class="space-y-4">
-        <h2 class="text-2xl font-medium text-black dark:text-white">
-          Important
-        </h2>
-        <UiComponentPreviewTabs>
-          <div>
-            <Alert important message="This is an alert with a close button!" class="absolute top-0 left-0 rounded-t-lg">
-              <template #actions>
-                <Button size="xs" :inverted="true">
-                  Close
-                </Button>
-              </template>
-            </Alert>
-          </div>
-        </UiComponentPreviewTabs>
-      </section>
-
       <!-- System Alert Toggle Demo -->
       <section class="space-y-4">
         <h2 class="text-2xl font-semibold text-black dark:text-white">
@@ -91,6 +43,53 @@ const styles = {
           </Button>
         </div>
       </section>
+      <!-- Variants -->
+      <section class="space-y-4">
+        <h2 class="text-2xl font-medium text-black dark:text-white">
+          Variants
+        </h2>
+        <UiComponentPreviewTabs>
+          <div>
+            <Alert message="This is an alert." class="absolute top-0 left-0 rounded-t-lg font-medium" />
+          </div>
+        </UiComponentPreviewTabs>
+      </section>
+
+      <!-- With close icon button -->
+      <section class="space-y-4">
+        <h2 class="text-2xl font-medium text-black dark:text-white">
+          With close icon button
+        </h2>
+        <UiComponentPreviewTabs>
+          <div>
+            <Alert important message="This is an alert with a close icon button!" class="absolute top-0 left-0 rounded-t-lg font-medium">
+              <template #actions>
+                <Button size="xs" icon-only>
+                  <X class="size-4" />
+                </Button>
+              </template>
+            </Alert>
+          </div>
+        </UiComponentPreviewTabs>
+      </section>
+
+      <!-- With action button -->
+      <section class="space-y-4">
+        <h2 class="text-2xl font-medium text-black dark:text-white">
+          With action button
+        </h2>
+        <UiComponentPreviewTabs>
+          <div>
+            <Alert important message="This is an alert with a action button!" class="absolute top-0 left-0 rounded-t-lg font-medium">
+              <template #button>
+                <Button size="xs" :inverted="true">
+                  Learn more
+                </Button>
+              </template>
+            </Alert>
+          </div>
+        </UiComponentPreviewTabs>
+      </section>
 
       <!-- Custom slots -->
       <section class="space-y-4">
@@ -99,18 +98,9 @@ const styles = {
         </h2>
         <UiComponentPreviewTabs hide-code>
           <div class="flex flex-col gap-4 max-w-xl">
-            <Alert>
-              <template #default>
-                This alert uses the default slot for custom content.
-              </template>
-            </Alert>
-            <Alert important>
+            <Alert message="This alert uses the default slot for custom content." class="absolute top-0 left-0 rounded-t-lg font-medium">
               <template #icon>
-                <Plus class="size-5" />
-              </template>
-              <template #default>
-                <span class="font-bold">Important:</span> This alert uses slots with
-                custom formatting.
+                <Info class="size-4" stroke-width="2" />
               </template>
             </Alert>
           </div>
@@ -124,26 +114,18 @@ const styles = {
         </h2>
         <UiComponentPreviewTabs hide-code>
           <div class="flex flex-col gap-4 max-w-xl">
-            <Alert important>
+            <Alert message="This is an alert with all slots!" class="absolute top-0 left-0 rounded-t-lg font-medium">
               <template #icon>
-                <Bell class="size-4" />
-              </template>
-              <template #default>
-                <div>
-                  <strong>System Alert</strong>
-                  This is an example.
-                </div>
+                <Info class="size-4" />
               </template>
               <template #button>
-                <Button size="sm" variant="outline">
+                <Button size="xs" :inverted="true">
                   Take Action
                 </Button>
               </template>
               <template #actions>
-                <Button size="sm" variant="ghost" icon-only inverted>
-                  <template #icon>
-                    <X class="size-5" />
-                  </template>
+                <Button size="xs" icon-only>
+                  <X class="size-4" />
                 </Button>
               </template>
             </Alert>

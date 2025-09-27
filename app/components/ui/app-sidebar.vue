@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { Sparkle } from "lucide-vue-next";
+
 const { components } = useComponents();
 
 // Introduction pages (could also be config-driven)
@@ -45,12 +47,13 @@ const styles = {
             active-class="bg-primary/15 font-medium"
             class="relative justify-between"
           >
-            <span class="font-regular">{{ comp.name }}</span>
+            <span class="font-regular truncate max-w-16 md:max-w-full">{{ comp.name }}</span>
             <!-- New Badge -->
-            <Badge
-              v-if="comp.isNew"
-            >
-              New
+            <Badge v-if="comp.isNew" collapsible>
+              <Sparkle class="size-3" />
+              <template #label>
+                <span>New</span>
+              </template>
             </Badge>
           </NuxtLink>
         </li>

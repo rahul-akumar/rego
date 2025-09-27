@@ -142,7 +142,7 @@ provide("accordion", ctx);
 <template>
   <div
     :class="cn(
-      'w-full border border-border divide-y divide-border text-foreground h-full justify-center',
+      'w-full divide-y divide-border text-foreground justify-center',
       props.class,
     )"
     data-slot="accordion"

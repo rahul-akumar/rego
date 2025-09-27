@@ -12,6 +12,11 @@ const navigationItems = [
     isActive: () => route.path.startsWith("/components"),
   },
   {
+    name: "Composites",
+    path: "/composites",
+    isActive: () => route.path.startsWith("/composites"),
+  },
+  {
     name: "Themes",
     path: "/themes",
     isActive: () => route.path.startsWith("/themes"),
@@ -42,7 +47,7 @@ function getButtonVariant(item: typeof navigationItems[0]) {
       >
       REGO
     </NuxtLink>
-    <section class="flex gap-6">
+    <section class="flex gap-4">
       <NuxtLink
         v-for="item in navigationItems"
         :key="item.path"

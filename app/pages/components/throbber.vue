@@ -28,13 +28,6 @@ const speedsCode = `<div class="flex items-center gap-4">
   <Throbber />
   <Throbber speed="fast" />
 </div>`;
-
-const inlineCode = `<span class="inline-flex items-center gap-2 text-sm">
-  Loading data
-  <Throbber size="sm" />
-</span>`;
-
-const accessibilityCode = `<Throbber label="Loading user profile" />`;
 </script>
 
 <template>
@@ -114,39 +107,6 @@ const accessibilityCode = `<Throbber label="Loading user profile" />`;
             <Throbber size="xl" />
             <Throbber speed="fast" size="xl" />
           </div>
-        </UiComponentPreviewTabs>
-      </section>
-
-      <!-- Inline usage -->
-      <section class="space-y-4">
-        <h2 class="text-2xl font-medium text-black dark:text-white">
-          Inline usage
-        </h2>
-        <UiComponentPreviewTabs
-          title="Inline usage"
-          description="Place the throbber next to text or other UI to indicate background activity."
-          :code="inlineCode"
-          class-name="p-6"
-        >
-          <span class="inline-flex items-center gap-2 text-sm">
-            Loading data
-            <Throbber size="sm" />
-          </span>
-        </UiComponentPreviewTabs>
-      </section>
-
-      <!-- Accessibility -->
-      <section class="space-y-4">
-        <h2 class="text-2xl font-medium text-black dark:text-white">
-          Accessibility
-        </h2>
-        <UiComponentPreviewTabs
-          title="Accessibility"
-          description="Provide a descriptive label so screen readers announce the loading state."
-          :code="accessibilityCode"
-          class-name="p-6"
-        >
-          <Throbber label="Loading user profile" />
         </UiComponentPreviewTabs>
       </section>
     </div>

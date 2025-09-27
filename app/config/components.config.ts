@@ -84,4 +84,12 @@ export const componentsConfig: Record<string, ComponentMeta> = {
     category: "feedback",
     illustration: "skeleton.png",
   },
+  "orb": {
+    name: "Orb",
+    description: "Animated Siri-like orb indicator for AI interactions and status",
+    dateAdded: "2025-09-26",
+    isNew: true,
+    category: "feedback",
+    illustration: "orb.png",
+  },
 };

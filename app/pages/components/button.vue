@@ -76,6 +76,12 @@ const disabledCode = `<div class="flex gap-4">
 const invertedCode = `<div class="bg-black p-6 rounded-lg space-y-4">
     <Button inverted>Inverted Primary</Button>
 </div>`;
+
+const aiCode = `<Button>
+  <Orb state="thinking" gradient="multi" />
+  Thinking
+</Button>`
+;
 </script>
 
 <template>
@@ -318,6 +324,24 @@ const invertedCode = `<div class="bg-black p-6 rounded-lg space-y-4">
           </Button>
           <Button variant="ghost" :disabled="true">
             Disabled
+          </Button>
+        </UiComponentPreviewTabs>
+      </section>
+
+      <!-- AI component -->
+      <section class="space-y-4">
+        <h2 class="text-2xl font-medium text-black dark:text-white">
+          AI Component
+        </h2>
+        <UiComponentPreviewTabs
+          title="AI Component"
+          description="Button component in AI state."
+          :code="aiCode"
+          class-name="flex gap-4 p-6"
+        >
+          <Button>
+            <Orb size="sm" state="thinking" />
+            Thinking
           </Button>
         </UiComponentPreviewTabs>
       </section>
