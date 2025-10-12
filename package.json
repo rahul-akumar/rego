@@ -12,7 +12,8 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "prepare": "husky",
-    "optimize:images": "node scripts/optimize-images.mjs"
+    "optimize:images": "node scripts/optimize-images.mjs",
+    "sync:ui": "node scripts/sync-registry-to-package.mjs"
   },
   "dependencies": {
     "@nuxt/content": "^3.6.3",

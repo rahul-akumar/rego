@@ -45,7 +45,6 @@ function getButtonVariant(item: typeof navigationItems[0]) {
         alt="Logo"
         class="size-8"
       >
-      REGO
     </NuxtLink>
     <section class="flex gap-4">
       <NuxtLink
