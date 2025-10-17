@@ -1,0 +1,15 @@
+{
+  "version": "0.1.0",
+  "components": [
+    {
+      "name": "button",
+      "version": "0.1.0",
+      "files": [
+        {
+          "path": "app/components/ui/Button.vue",
+          "checksum": "5e+OKoq6P6Shd1DJ5ouO+lccBiWGZuT8WKfk7jHP35I="
+        }
+      ]
+    }
+  ]
+}

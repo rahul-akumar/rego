@@ -1,0 +1,15 @@
+{
+  "name": "rego-cli",
+  "version": "0.1.0",
+  "private": false,
+  "type": "module",
+  "bin": {
+    "rego": "bin/rego.ts"
+  },
+  "files": ["bin"],
+  "license": "MIT",
+  "publishConfig": { "access": "public" },
+  "engines": {
+    "bun": ">=1.0.0"
+  }
+}

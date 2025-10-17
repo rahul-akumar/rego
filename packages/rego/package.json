@@ -1,0 +1,13 @@
+{
+  "name": "rego",
+  "version": "0.1.0",
+  "private": false,
+  "type": "module",
+  "license": "MIT",
+  "files": ["registry"],
+  "publishConfig": { "access": "public" },
+  "engines": {
+    "node": ">=18",
+    "bun": ">=1.0.0"
+  }
+}

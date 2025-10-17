@@ -1,0 +1,16 @@
+{
+  "name": "button",
+  "description": "A versatile Vue SFC Button component with variants.",
+  "version": "0.1.0",
+  "frameworks": ["vue"],
+  "variants": ["solid", "outline"],
+  "deps": [],
+  "tokens": {
+    "uses": ["color.primary", "radius.sm", "space.2"],
+    "overridable": true
+  },
+  "install": {
+    "path": "src/components/ui",
+    "rename": "Button"
+  }
+}
