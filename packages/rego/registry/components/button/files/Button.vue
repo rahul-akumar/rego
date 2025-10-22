@@ -91,7 +91,8 @@ function onClick(ev: MouseEvent) {
   font-weight: var(--ds-btn-font-weight);
   line-height: 1.25;
   cursor: pointer;
-  transition: background-color .2s ease, color .2s ease, border-color .2s ease, box-shadow .2s ease, transform .05s ease;
+  transition: background-color .2s ease, color .2s ease, border-color .2s ease, box-shadow .2s ease, transform .005s ease;
+  transform-origin: center;
   user-select: none;
 }
 
@@ -101,6 +102,7 @@ function onClick(ev: MouseEvent) {
 
 .ds-btn:active:not(:disabled) {
   background: var(--ds-btn-bg-active);
+  transform: translateY(0px) scale(0.98);
 }
 
 .ds-btn:focus-visible {
@@ -154,8 +156,8 @@ function onClick(ev: MouseEvent) {
 
 .ds-btn--outline {
   --ds-btn-bg: transparent;
-  --ds-btn-fg: var(--ds-color-primary, #3b82f6);
-  --ds-btn-border: var(--ds-color-primary, #3b82f6);
+  --ds-btn-fg: var(--ds-color-primary, #121212);
+  --ds-btn-border: var(--ds-color-primary, #737373);
 }
 
 .ds-btn--ghost {

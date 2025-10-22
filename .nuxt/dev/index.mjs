@@ -1579,7 +1579,7 @@ function publicAssetsURL(...path) {
 }
 
 const checksums = {
-  "content": "v3.5.0--WA8ft4rSlvOAww-mDDUcd2lWPbBAE-Oy4VpVNzNshFc"
+  "content": "v3.5.0--PCB541WvEt0Q0PdsirETUTWb4SdNTpyupmWxtLWsF6w"
 };
 const checksumsStructure = {
   "content": "bgIYhpjRuV8zbHJE_CfelwKpJ_Td6YuGJwixiek8lmI"
