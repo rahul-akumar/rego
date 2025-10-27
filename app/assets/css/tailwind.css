@@ -9,6 +9,9 @@
     --ds-color-secondary: theme(colors.gray.300);
     --ds-color-on-secondary: theme(colors.black);
     --ds-border-primary: theme(colors.gray.500);
+    /* app surfaces */
+    --ds-bg: theme(colors.white);
+    --ds-fg: theme(colors.black);
 
     /* radius */
     --ds-radius-md: theme(borderRadius.md);
@@ -29,11 +32,18 @@
     --ds-color-secondary: theme(colors.zinc.800);
     --ds-color-on-secondary: theme(colors.white);
     --ds-border-primary: theme(colors.zinc.600);
+    /* app surfaces */
+    --ds-bg: theme(colors.zinc.950);
+    --ds-fg: theme(colors.white);
     color-scheme: dark;
   }
 
   /* Base page colors for better contrast */
-  html { color-scheme: light; }
-  body { background-color: theme(colors.white); color: theme(colors.black); }
-  .dark body { background-color: theme(colors.zinc.950); color: theme(colors.white); }
+  html {
+    color-scheme: light;
+  }
+  body {
+    background-color: var(--ds-bg);
+    color: var(--ds-fg);
+  }
 }

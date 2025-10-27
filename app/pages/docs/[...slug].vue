@@ -16,6 +16,8 @@
 </template>
 
 <script setup lang="ts">
+import { useTheme } from "~/composables/useTheme";
+
 // * ROUTE-BINDING: Map /docs(/...slug) to /content/docs path
 // -------------------------------------------------
 const route = useRoute();

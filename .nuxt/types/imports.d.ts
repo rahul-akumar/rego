@@ -174,6 +174,7 @@ declare global {
   const useSlots: typeof import('vue')['useSlots']
   const useState: typeof import('../../node_modules/nuxt/dist/app/composables/state')['useState']
   const useTemplateRef: typeof import('vue')['useTemplateRef']
+  const useTheme: typeof import('../../app/composables/useTheme')['useTheme']
   const useTransitionState: typeof import('vue')['useTransitionState']
   const watch: typeof import('vue')['watch']
   const watchEffect: typeof import('vue')['watchEffect']
@@ -194,6 +195,9 @@ declare global {
   // @ts-ignore
   export type { RawDoc, NavItem } from '../../app/composables/useSectionNav'
   import('../../app/composables/useSectionNav')
+  // @ts-ignore
+  export type { ThemeMode } from '../../app/composables/useTheme'
+  import('../../app/composables/useTheme')
 }
 // for vue template auto import
 import { UnwrapRef } from 'vue'
@@ -372,6 +376,7 @@ declare module 'vue' {
     readonly useSlots: UnwrapRef<typeof import('vue')['useSlots']>
     readonly useState: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/state')['useState']>
     readonly useTemplateRef: UnwrapRef<typeof import('vue')['useTemplateRef']>
+    readonly useTheme: UnwrapRef<typeof import('../../app/composables/useTheme')['useTheme']>
     readonly useTransitionState: UnwrapRef<typeof import('vue')['useTransitionState']>
     readonly watch: UnwrapRef<typeof import('vue')['watch']>
     readonly watchEffect: UnwrapRef<typeof import('vue')['watchEffect']>

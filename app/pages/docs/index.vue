@@ -16,6 +16,7 @@
 </template>
 
 <script setup lang="ts">
+import { useTheme } from "#imports";
 const { isDark } = useTheme();
 // * Fetch the docs landing markdown: /content/docs/index.md -> /docs
 // -------------------------------------------------
