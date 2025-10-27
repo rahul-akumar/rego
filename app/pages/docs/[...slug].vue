@@ -2,7 +2,10 @@
   <div>
     <PageHeader v-if="doc" :title="doc.title" :description="doc.description" />
 
-    <article class="prose prose-sm  max-w-none">
+    <article
+      class="prose prose-sm max-w-none"
+      :class="{ 'prose-invert': isDark }"
+    >
       <ContentRenderer v-if="doc" :value="doc" />
       <div v-else>
         <h1 class="text-white">Not found</h1>
@@ -15,12 +18,13 @@
 <script setup lang="ts">
 // * ROUTE-BINDING: Map /docs(/...slug) to /content/docs path
 // -------------------------------------------------
-const route = useRoute()
+const route = useRoute();
+const { isDark } = useTheme();
 
 // * Fetch the current doc based on the route path (e.g., /docs/foo -> content/docs/foo.md)
 const { data: doc } = await useAsyncData(
   () => `doc:${route.fullPath}`,
-  () => queryCollection('content').path(route.path).first(),
-  { watch: [() => route.path] }
-)
+  () => queryCollection("content").path(route.path).first(),
+  { watch: [() => route.path] },
+);
 </script>

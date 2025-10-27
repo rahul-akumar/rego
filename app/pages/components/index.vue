@@ -2,7 +2,7 @@
   <div>
     <PageHeader v-if="doc" :title="doc.title" :description="doc.description" />
 
-    <article class="prose prose-sm max-w-none">
+    <article class="prose prose-sm max-w-none" :class="{ 'prose-invert': isDark }">
       <ContentRenderer v-if="doc" :value="doc" />
       <div v-else>
         <h1 class="text-white">Not found</h1>
@@ -19,4 +19,5 @@ const { data: doc } = await useAsyncData(
   () => 'doc:/components',
   () => queryCollection('content').path('/components').first()
 )
+const { isDark } = useTheme()
 </script>

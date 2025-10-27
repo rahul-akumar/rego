@@ -2,7 +2,10 @@
   <div>
     <PageHeader v-if="doc" :title="doc.title" :description="doc.description" />
 
-    <article class="prose prose-sm max-w-none">
+    <article
+      class="prose prose-sm max-w-none"
+      :class="{ 'prose-invert': isDark }"
+    >
       <ContentRenderer v-if="doc" :value="doc" />
       <div v-else>
         <h1 class="text-black">Not found</h1>
@@ -13,10 +16,11 @@
 </template>
 
 <script setup lang="ts">
+const { isDark } = useTheme();
 // * Fetch the docs landing markdown: /content/docs/index.md -> /docs
 // -------------------------------------------------
 const { data: doc } = await useAsyncData(
-  () => 'doc:/docs',
-  () => queryCollection('content').path('/docs').first()
-)
+  () => "doc:/docs",
+  () => queryCollection("content").path("/docs").first(),
+);
 </script>

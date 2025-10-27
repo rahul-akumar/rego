@@ -21,4 +21,19 @@
     --ds-space-4: theme(spacing.4);
     --ds-space-5: theme(spacing.5);
   }
+
+  /* Dark mode tokens override */
+  .dark {
+    --ds-color-primary: theme(colors.white);
+    --ds-color-on-primary: theme(colors.black);
+    --ds-color-secondary: theme(colors.zinc.800);
+    --ds-color-on-secondary: theme(colors.white);
+    --ds-border-primary: theme(colors.zinc.600);
+    color-scheme: dark;
+  }
+
+  /* Base page colors for better contrast */
+  html { color-scheme: light; }
+  body { background-color: theme(colors.white); color: theme(colors.black); }
+  .dark body { background-color: theme(colors.zinc.950); color: theme(colors.white); }
 }

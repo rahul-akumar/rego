@@ -12,9 +12,18 @@
         Components
       </NuxtLink>
     </div>
-    <div id="right" class="flex items-center px-2">
-      <!-- NOTE: Right-side controls (e.g., theme toggle, GitHub link) -->
-      <p class="text-zinc-700">header-right</p>
+    <div id="right" class="flex items-center gap-2 px-2">
+      <!-- Theme toggle -->
+      <UiButton
+        variant="ghost"
+        size="sm"
+        :aria-pressed="isDark"
+        aria-label="Toggle color theme"
+        @click="toggle()"
+      >
+        <Icon v-if="isDark" name="lucide:sun" class="w-4 h-4" />
+        <Icon v-else name="lucide:moon" class="w-4 h-4" />
+      </UiButton>
     </div>
   </div>
 </template>
@@ -22,4 +31,5 @@
 <script setup lang="ts">
 // * HEADER: Top bar with primary navigation on the left
 // -------------------------------------------------
+const { isDark, toggle } = useTheme()
 </script>

@@ -29,6 +29,7 @@ export { requestIdleCallback, cancelIdleCallback } from '#app/compat/idle-callba
 export { definePageMeta } from '../node_modules/nuxt/dist/pages/runtime/composables';
 export { defineLazyHydrationComponent } from '#app/composables/lazy-hydration';
 export { useCurrentSection, useSectionNav, RawDoc, NavItem } from '../app/composables/useSectionNav';
+export { useTheme, ThemeMode } from '../app/composables/useTheme';
 export { flatUnwrap as unwrapSlot } from '../node_modules/@nuxtjs/mdc/dist/runtime/utils/node';
 export { parseMarkdown } from '../node_modules/@nuxtjs/mdc/dist/runtime/parser';
 export { stringifyMarkdown } from '../node_modules/@nuxtjs/mdc/dist/runtime/stringify';
