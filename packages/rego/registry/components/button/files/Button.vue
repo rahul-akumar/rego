@@ -1,6 +1,11 @@
 <template>
   <button
-    :class="['ds-btn', `ds-btn--${variant}`, `ds-btn--${size}`, { 'is-loading': loading }]"
+    :class="[
+      'ds-btn',
+      `ds-btn--${variant}`,
+      `ds-btn--${size}`,
+      { 'is-loading': loading },
+    ]"
     :type="type"
     :aria-busy="loading"
     :disabled="disabled || loading"
@@ -31,17 +36,17 @@
 // * PROPS: API surface for consumers
 // ----------------------------------
 export interface Props {
-  variant?: 'solid' | 'secondary' | 'outline' | 'ghost';
-  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-  type?: 'button' | 'submit' | 'reset';
+  variant?: "solid" | "secondary" | "outline" | "ghost";
+  size?: "xs" | "sm" | "md" | "lg" | "xl";
+  type?: "button" | "submit" | "reset";
   disabled?: boolean;
   loading?: boolean;
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  variant: 'solid',
-  size: 'md',
-  type: 'button',
+  variant: "solid",
+  size: "md",
+  type: "button",
   disabled: false,
   loading: false,
 });
@@ -49,7 +54,7 @@ const props = withDefaults(defineProps<Props>(), {
 // * EMITS: Bubble click events when enabled
 // ----------------------------------------
 const emit = defineEmits<{
-  (e: 'click', ev: MouseEvent): void;
+  (e: "click", ev: MouseEvent): void;
 }>();
 
 function onClick(ev: MouseEvent) {
@@ -58,7 +63,7 @@ function onClick(ev: MouseEvent) {
     ev.preventDefault();
     return;
   }
-  emit('click', ev);
+  emit("click", ev);
 }
 </script>
 
@@ -76,7 +81,7 @@ function onClick(ev: MouseEvent) {
   --ds-btn-padding-x: var(--ds-space-3, 0.75rem);
   --ds-btn-font-size: 0.875rem;
   --ds-btn-font-weight: 600;
-  --ds-btn-ring: 0 0 0 3px color-mix(in oklab, var(--ds-btn-bg), white 70%);
+  --ds-btn-ring: 0 0 0 3px color-mix(in oklab, var(--ds-btn-bg), black 50%);
 
   display: inline-flex;
   align-items: center;
@@ -91,7 +96,12 @@ function onClick(ev: MouseEvent) {
   font-weight: var(--ds-btn-font-weight);
   line-height: 1.25;
   cursor: pointer;
-  transition: background-color .2s ease, color .2s ease, border-color .2s ease, box-shadow .2s ease, transform .005s ease;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.005s ease-in-out;
   transform-origin: center;
   user-select: none;
 }
@@ -142,16 +152,18 @@ function onClick(ev: MouseEvent) {
 /* * VARIANTS */
 /* ----------- */
 .ds-btn--solid {
-  --ds-btn-bg: var(--ds-color-primary, #101010);
+  --ds-btn-bg: var(--ds-color-primary, #000);
   --ds-btn-fg: var(--ds-color-on-primary, #ffffff);
-  --ds-btn-border: var(--ds-color-primary, #3b82f6);
 }
 
 .ds-btn--secondary {
-  --ds-btn-bg: color-mix(in oklab, var(--ds-color-secondary, #6b7280) 50%, transparent);
+  --ds-btn-bg: color-mix(
+    in oklab,
+    var(--ds-color-secondary, #6b7280) 50%,
+    transparent
+  );
   background-color: var(--ds-btn-bg);
   --ds-btn-fg: var(--ds-color-on-secondary, #ffffff);
-  --ds-btn-border: var(--ds-color-secondary, #6b7280);
 }
 
 .ds-btn--outline {
@@ -162,7 +174,11 @@ function onClick(ev: MouseEvent) {
 
 .ds-btn--ghost {
   --ds-btn-bg: transparent;
-  --ds-btn-bg-hover: color-mix(in oklab, var(--ds-color-primary, #3b82f6) 25%, transparent);
+  --ds-btn-bg-hover: color-mix(
+    in oklab,
+    var(--ds-color-primary, #3b82f6) 25%,
+    transparent
+  );
   --ds-btn-fg: var(--ds-color-primary, #3b82f6);
   --ds-btn-border: transparent;
 }

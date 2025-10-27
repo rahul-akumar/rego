@@ -1,2 +1,24 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
+
+@layer base {
+  :root {
+    /* colors */
+    --ds-color-primary: theme(colors.black);
+    --ds-color-on-primary: theme(colors.white);
+    --ds-color-secondary: theme(colors.gray.300);
+    --ds-color-on-secondary: theme(colors.black);
+    --ds-border-primary: theme(colors.gray.500);
+
+    /* radius */
+    --ds-radius-md: theme(borderRadius.md);
+
+    /* spacing scale */
+    --ds-space-0_5: 0.125rem;
+    --ds-space-1: theme(spacing.1);
+    --ds-space-2: theme(spacing.2);
+    --ds-space-3: theme(spacing.3);
+    --ds-space-4: theme(spacing.4);
+    --ds-space-5: theme(spacing.5);
+  }
+}

@@ -22,7 +22,7 @@ build/
 coverage/
 .cache/
 .tmp/
-.next/
+.nuxt/
 out/
 .turbo/
 
