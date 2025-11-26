@@ -1,0 +1,77 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://rego.dev/schemas/component.json",
+  "title": "Rego Component",
+  "description": "Schema for rego design system component metadata",
+  "type": "object",
+  "required": ["name", "version", "files"],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Unique component identifier (kebab-case)",
+      "pattern": "^[a-z][a-z0-9-]*$"
+    },
+    "displayName": {
+      "type": "string",
+      "description": "Human-readable component name"
+    },
+    "description": {
+      "type": "string",
+      "description": "Brief description of the component"
+    },
+    "version": {
+      "type": "string",
+      "description": "Semver version string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+(-[a-zA-Z0-9.]+)?$"
+    },
+    "frameworks": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["vue", "react", "svelte", "solid"]
+      },
+      "description": "Supported frameworks"
+    },
+    "files": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1,
+      "description": "List of files included in this component"
+    },
+    "tokens": {
+      "type": "object",
+      "properties": {
+        "requires": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "CSS custom properties this component requires"
+        },
+        "provides": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "CSS custom properties this component defines"
+        }
+      },
+      "description": "Design token dependencies"
+    },
+    "dependencies": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Other rego components this depends on"
+    },
+    "peerDependencies": {
+      "type": "object",
+      "additionalProperties": { "type": "string" },
+      "description": "npm packages required (e.g., {'vue': '^3.0.0'})"
+    },
+    "install": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string",
+          "description": "Default installation path"
+        }
+      }
+    }
+  }
+}

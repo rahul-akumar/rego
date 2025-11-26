@@ -1,16 +1,31 @@
 {
+  "$schema": "../component.schema.json",
   "name": "button",
+  "displayName": "Button",
   "description": "A versatile Vue SFC Button component with variants.",
   "version": "0.1.0",
   "frameworks": ["vue"],
-  "variants": ["solid", "outline"],
-  "deps": [],
+  "files": ["Button.vue"],
   "tokens": {
-    "uses": ["color.primary", "radius.sm", "space.2"],
-    "overridable": true
+    "requires": [
+      "--ds-color-primary",
+      "--ds-color-on-primary",
+      "--ds-color-secondary",
+      "--ds-color-on-secondary",
+      "--ds-radius-md",
+      "--ds-space-0_5",
+      "--ds-space-1",
+      "--ds-space-2",
+      "--ds-space-3",
+      "--ds-space-4",
+      "--ds-space-5"
+    ]
+  },
+  "dependencies": [],
+  "peerDependencies": {
+    "vue": "^3.0.0"
   },
   "install": {
-    "path": "src/components/ui",
-    "rename": "Button"
+    "path": "app/components/ui"
   }
 }
