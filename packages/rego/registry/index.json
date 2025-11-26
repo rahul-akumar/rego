@@ -6,7 +6,7 @@
       "version": "0.1.0",
       "files": ["components/button/files/Button.vue"],
       "deps": [],
-      "install": { "path": "src/components/ui" }
+      "install": { "path": "app/components/ui" }
     }
   }
 }
