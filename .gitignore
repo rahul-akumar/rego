@@ -23,6 +23,8 @@ coverage/
 .cache/
 .tmp/
 .nuxt/
+.output/
+.data/
 out/
 .turbo/
 
