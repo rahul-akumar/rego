@@ -11,7 +11,6 @@
     "rego": "REGO_REGISTRY_DIR=packages/rego/registry bun packages/rego-cli/bin/rego.ts"
   },
   "dependencies": {
-    "@googlemaps/markerclusterer": "^2.6.2",
     "@nuxt/content": "3.7.1",
     "@nuxt/fonts": "0.11.4",
     "@nuxt/icon": "2.0.0",

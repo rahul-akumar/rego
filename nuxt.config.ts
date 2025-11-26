@@ -31,8 +31,4 @@ export default defineNuxtConfig({
   // NOTE: CSS lives under app/assets for Nuxt 4 directory structure
   // -------------------------------------------------
   css: ['@/assets/css/tailwind.css'],
-
-  content: {
-
-  },
 })
